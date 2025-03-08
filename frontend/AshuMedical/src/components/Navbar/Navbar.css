@@ -1,0 +1,50 @@
+nav {
+  top: 0;
+  position: relative;
+  width: 100%;
+}
+/* #navid {
+} */
+#navcontainer {
+  background-color: #27374d;
+  color: white !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.nav-link {
+  color: rgba(255, 255, 255, 0.696);
+}
+.navbar-brand {
+  color: antiquewhite;
+}
+.nav-item:hover {
+  background-color: #9aaeca;
+  cursor: pointer;
+}
+.nav-item {
+  margin: 0 1%;
+  border-radius: 5px;
+}
+/* svg{
+  cursor: pointer;
+} */
+#hamburgericon {
+  cursor: pointer;
+  margin: 1%;
+}
+.navbar-brand:hover {
+  color: #9aaeca;
+}
+#searchnavigation {
+  margin: 0 1%;
+  border: #0e141d;
+  background-color: #9aaeca;
+}
+#searchnavigation:hover {
+  background-color: #27374d;
+}
+.searchlink {
+  text-emphasis: none;
+  text-decoration: none;
+  text-decoration-line: none;
+  color: white;
+}

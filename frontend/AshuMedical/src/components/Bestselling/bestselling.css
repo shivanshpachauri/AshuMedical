@@ -1,0 +1,28 @@
+.theading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+#addnewentries {
+  margin-left: 450px;
+  width: 214px;
+  padding: 40px;
+}
+#bestsellingtable {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+#bestsellingtable .thead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+#bestsellingtable .tbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}

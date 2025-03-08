@@ -1,0 +1,6 @@
+---- to Initialize the backendproject
+
+deno init backendproject
+
+---- to run specific file
+deno main.ts to run typescript

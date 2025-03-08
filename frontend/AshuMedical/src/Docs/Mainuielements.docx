@@ -1,0 +1,48 @@
+For a well-structured **pharmacy platform**, here are the key UI components you should include:  
+
+---
+
+### **1. Navigation & Layout Components**  
+- **Navbar (Header)** – Includes logo, search bar, cart icon, user profile, and navigation links.  
+- **Sidebar (Optional)** – If you have a dashboard, include a collapsible sidebar for easy navigation.  
+- **Footer** – Contact info, terms & conditions, social media links, and additional site links.  
+
+---
+
+### **2. Home Page Components**  
+- **Hero Section (Jumbotron)** – A large banner with an attention-grabbing message like "Get Medicines Delivered to Your Doorstep."  
+- **Search Bar** – Quick access to search for medicines, supplements, or health products.  
+- **Carousel (Optional)** – Showcase discounts, featured products, or new arrivals.  
+- **Categories Grid** – Display medicine categories like Pain Relief, Diabetes, Wellness, etc.  
+- **Best-Selling Products** – Highlight top-selling items with an "Add to Cart" button.  
+- **Customer Testimonials** – Reviews from users to build trust.  
+
+---
+
+### **3. Product & Cart Components**  
+- **Product Cards** – Show medicine name, price, discount, and “Add to Cart” button.  
+- **Product Details Page** – Detailed view with description, ingredients, dosage, and “Buy Now” button.  
+- **Prescription Upload** – If a medicine requires a prescription, users should be able to upload an image.  
+- **Cart Drawer/Page** – Lists added items, total price, and checkout button.  
+- **Checkout Page** – Shipping address, payment methods, and order summary.  
+
+---
+
+### **4. User Account Components**  
+- **Login & Signup Forms** – Secure authentication using JWT/OAuth.  
+- **Profile Page** – User details, order history, saved addresses.  
+- **Order Tracking** – Real-time status updates on orders.  
+
+---
+
+### **5. Admin/Dashboard Components** (For Pharmacies)  
+- **Order Management** – View, process, and update order statuses.  
+- **Inventory Management** – Add, update, or remove medicines from the catalog.  
+- **User Management** – View customers and pharmacists.  
+
+---
+
+### **6. Additional Components**  
+- **FAQ Section** – Common questions about orders, prescriptions, and delivery.  
+- **Contact Us Form** – Users can send inquiries directly.  
+- **Chatbot (Optional)** – AI assistant for medicine recommendations.  

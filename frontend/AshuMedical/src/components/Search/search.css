@@ -1,0 +1,13 @@
+#searchcontainer {
+  background-color: #4081c1 !important;
+}
+.searchsubmitbutton {
+  margin: 10px;
+  padding: 10px;
+  background-color: blue !important;
+  text-emphasis: bold;
+}
+.searchsubmitbutton:hover {
+  background-color: #094989 !important;
+  border-radius: 5px;
+}

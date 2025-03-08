@@ -1,0 +1,15 @@
+#custom-cards > h2 {
+  text-emphasis: bold;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.card {
+  object-fit: cover;
+}
+h3 {
+  text-align: center;
+  color: black !important;
+  text-emphasis: bold;
+  opacity: 0.7;
+}

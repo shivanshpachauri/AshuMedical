@@ -1,0 +1,23 @@
+.bestsellingtablerow {
+  position: relative;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3);
+
+  transition: transform 0.2s; /* Animation */
+  background-color: rgba(177, 206, 225, 0.861);
+  transition: ease;
+  /* overflow: hidden; */
+  border: 1px #30475799 solid;
+}
+.bestsellingtablerow .col-0 {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  flex: 1; /* Allow this column to take up remaining space */
+}
+.btn {
+  margin: 1px;
+}
+.bestsellingtablerow:hover {
+  transform: scale(1.02);
+  background-color: white;
+  text-emphasis: bold;
+}
