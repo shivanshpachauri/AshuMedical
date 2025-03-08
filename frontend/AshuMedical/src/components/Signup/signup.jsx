@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "./signup.css";
 import { formregister } from "../Http/http";
@@ -11,11 +11,36 @@ export default function RegisterForm() {
     password: "",
     gender: "",
   });
-  const[confirmpassword,setconfirmpassword]=useState("");
+  const [confirmpassword, setconfirmpassword] = useState({
+    confirmpassword: "",
+    confirmpasswordstate: false,
+  });
+  let alert;
+  useEffect(() => {
+    if (confirmpassword.confirmpasswordstate === true) {
+      alert = (
+        <div className="alert alert-success" role="alert">
+          Password matched successfully
+        </div>
+      );
+    } else if (confirmpassword.confirmpasswordstate === false) {
+      alert = (
+        <div className="alert alert-danger" role="alert">
+          Password do not match please enter password that match
+        </div>
+      );
+    }
+  }, [confirmpassword.confirmpasswordstate]);
+
   const [registrationstate, setregistrationstate] = React.useState(false);
   async function handlesubmit(e) {
     e.preventDefault();
-    if(confirmpassword===register.password){
+    if (confirmpassword.confirmpassword === register.password) {
+      console.log("password matched", confirmpassword);
+      console.log("Register password", register.password);
+
+      setconfirmpassword({ ...confirmpassword, setconfirmpassword: true });
+      // confirmpassword.confirmpasswordstate(true)
       await formregister(register);
       setregistrationstate(true);
       setregister({
@@ -26,8 +51,8 @@ export default function RegisterForm() {
         password: "",
         gender: "",
       });
+      setconfirmpassword({...confirmpassword,confirmpassword:""})
     }
-    
   }
   return (
     <form
@@ -113,8 +138,14 @@ export default function RegisterForm() {
             className="form-control"
             name="Confirmpassword"
             id="Confirmpassword"
-            onChange={(e)=>setconfirmpassword(e.target.value)}
+            onChange={(e) =>
+              setconfirmpassword({
+                ...confirmpassword,
+                confirmpassword: e.target.value,
+              })
+            }
           />
+          {alert}
         </div>
         <div id="gender" className="container mt-3">
           <h5 className="d-block fs-5">Gender</h5>
