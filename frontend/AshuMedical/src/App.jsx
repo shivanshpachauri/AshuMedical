@@ -15,6 +15,7 @@ import { DeleteProvider } from "./components/Context/deletecontext";
 import { EditingProvider } from "./components/Context/Editingcontext.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 import ErrorBoundary from "./components/Errorboundary/Errorboundary.jsx";
+import Parsingcsv from "./components/Dashboard/parsingcsv.jsx";
 const queryClient = new QueryClient();
 const Dashboard = lazy(() => import("./components/Dashboard/Dashboard.jsx"));
 const Carousel = lazy(() => import("./components/Carousel/Carousel.jsx"));
@@ -58,6 +59,16 @@ function App() {
         {
           path: "/dashboard",
           element: <Dashboard />,
+          children:[
+            {
+              path:"csvparsing",
+              element:<Parsingcsv/>
+            },
+            // {
+            //   path:"/Productsale",
+            //   element:
+            // }
+          ]
         },
         {
           path: "/Newentries",
