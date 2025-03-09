@@ -1,10 +1,12 @@
+import { NavLink } from "react-router-dom";
+
 export default function Sidebar() {
   return (
     <nav className="col-md-2 d-none d-md-block bg-dark sidebar">
       <div className="sidebar-sticky">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link active" href="#">
+            <NavLink className="nav-link active" to="/dashboard/csvparsing">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -21,7 +23,7 @@ export default function Sidebar() {
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
               </svg>
               Dashboard <span className="sr-only">(current)</span>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
@@ -65,7 +67,7 @@ export default function Sidebar() {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <NavLink className="nav-link" to="/dashboard/customers">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -84,7 +86,7 @@ export default function Sidebar() {
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
               Customers
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">

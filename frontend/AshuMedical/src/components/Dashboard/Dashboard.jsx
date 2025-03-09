@@ -3,6 +3,7 @@ import Chart from "./Chart";
 import Parsingcsv from "./parsingcsv";
 import DashboardHeading from "./DashboardHeading";
 import SizeMonitor from "./SizeMonitor";
+import { Outlet } from "react-router-dom";
 export default function Dashboard() {
   return (
     <div className="container-fluid">
@@ -11,7 +12,7 @@ export default function Dashboard() {
         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <SizeMonitor />
           <DashboardHeading />
-          <Parsingcsv />
+          <Outlet />
           <Chart />
         </main>
       </div>
