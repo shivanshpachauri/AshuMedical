@@ -117,7 +117,7 @@ export default function Customers() {
             //   }
           />
           <label className="form-check-label" htmlFor="deliverytrue">
-            True
+            Yes
           </label>
         </div>
         <div className="form-check form-check-inline">
@@ -134,7 +134,7 @@ export default function Customers() {
             //   }
           />
           <label className="form-check-label" htmlFor="deliveryfalse">
-            False
+            No
           </label>
         </div>
       </div>
