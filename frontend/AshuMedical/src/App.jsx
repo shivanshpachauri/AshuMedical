@@ -21,6 +21,9 @@ const queryClient = new QueryClient();
 const Dashboard = lazy(() => import("./components/Dashboard/Dashboard.jsx"));
 const Carousel = lazy(() => import("./components/Carousel/Carousel.jsx"));
 const Newentries = lazy(() => import("./components/Newentries/Newentries.jsx"));
+const ViewCustomers = lazy(() =>
+  import("./components/Dashboard/ViewCustomers/ViewCustomers.jsx")
+);
 const Bestselling = lazy(() => import("./components/Bestselling/Bestselling"));
 function App() {
   const router = createBrowserRouter([
@@ -68,6 +71,18 @@ function App() {
             {
               path: "customers",
               element: <Customers />,
+            },
+            {
+              path: "viewcustomers",
+              element: (
+                <ErrorBoundary>
+                  <Suspense
+                    fallback={<Loading title="Loadin view customers" />}
+                  >
+                    <ViewCustomers />
+                  </Suspense>
+                </ErrorBoundary>
+              ),
             },
             // {
             //   path:"/Productsale",

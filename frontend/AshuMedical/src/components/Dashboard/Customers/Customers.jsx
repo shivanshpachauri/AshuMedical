@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Postdelivery from "../../Http/Postdelivery";
 export default function Customers() {
   const [delivery, setdelivery] = useState({
     name: "",
@@ -16,11 +16,11 @@ export default function Customers() {
       ...delivery,
       [name]: value,
     });
-    // console.log(delivery);
   }
+  const { mutate } = Postdelivery();
   function handlesubmit(e) {
     e.preventDefault();
-    console.log(delivery);
+    mutate(delivery);
     setdelivery({
       name: "",
       pack_size_label: "",

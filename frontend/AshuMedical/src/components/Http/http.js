@@ -96,6 +96,34 @@ export async function insertmedicines(medicine) {
     throw new Error("Cannot insert to medicaldb");
   }
 }
+export async function fetchdelivery() {
+  const response = await axios.get("http://localhost:3000/api/fetchdelivery");
+  const dataarray = Object.entries(response.data);
+  return dataarray;
+}
+export async function postdelivery(delivery) {
+  const {
+    name,
+    pack_size_label,
+    manufacturer_name,
+    order_by,
+    quantity,
+    delivered,
+    date,
+  } = delivery;
+  const _response = await axios.post("http://localhost:3000/api/deliverypost", {
+    name: name,
+    pack_size_label: pack_size_label,
+    order_by: order_by,
+    quantity: quantity,
+    manufacturer_name: manufacturer_name,
+    delivered: delivered,
+    date: date,
+  });
+  if (_response.status != 200) {
+    console.log("Error in recieving response");
+  }
+}
 export async function deletemedicine(medicine) {
   const id = String(medicine[1].id);
   const response = await axios.delete("http://localhost:3000/api/delete", {
@@ -129,19 +157,18 @@ export async function updatemedicine(medicine) {
   return response.json();
 }
 export async function formregister(registerables) {
-  const{email,password,fullname,gender,dob,username}=registerables;
-  console.log(email,password,fullname,gender,dob,username);
+  const { email, password, fullname, gender, dob, username } = registerables;
+  console.log(email, password, fullname, gender, dob, username);
   const data = await axios.post("http://localhost:3000/api/register", {
-    fullname:registerables.fullname,
-    username:registerables.username,
-    dob:registerables.dob,
+    fullname: registerables.fullname,
+    username: registerables.username,
+    dob: registerables.dob,
     email: registerables.email,
     password: registerables.password,
     gender: registerables.gender,
   });
-  if(data.status!=200){
+  if (data.status != 200) {
     console.log("Error in formregister");
-    
   }
   return data;
 }

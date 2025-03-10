@@ -29,7 +29,9 @@ pool1.query(
 pool1.query(
   "create table if not exists medicaldb(id BIGSERIAL PRIMARY KEY, name TEXT, price DOUBLE PRECISION, manufacturer_name TEXT, pack_size_label TEXT,short_composition1 TEXT)"
 );
-
+pool1.query(
+  "create table if not exists delivery(id BIGSERIAL PRIMARY KEY,name TEXT,pack_size_label TEXT,manufacturer_name TEXT,order_by TEXT,quantity TEXT,delivered TEXT,DATE TEXT)"
+);
 app.post("/api/register", async (req: Request, res: Response) => {
   try {
     const { email, password, fullname, gender, dob, username } = req.body;
@@ -40,7 +42,46 @@ app.post("/api/register", async (req: Request, res: Response) => {
 
     res.send("registered successfully");
   } catch (err) {
-    console.log("Error in iinserting register", err);
+    console.log("Error in inserting register", err);
+  }
+});
+app.get("/api/fetchdelivery", async (req: Request, res: Response) => {
+  try {
+    const result = await pool1.query(
+      "SELECT * FROM public.delivery ORDER BY id asc limit 100"
+    );
+    res.send(result.rows);
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.post("/api/deliverypost", async (req: Request, res: Response) => {
+  try {
+    const {
+      name,
+      pack_size_label,
+      manufacturer_name,
+      order_by,
+      quantity,
+      delivered,
+      date,
+    } = req.body;
+
+    const _result = pool1.query(
+      "insert into delivery(name,pack_size_label,manufacturer_name,order_by,quantity,delivered,date) values($1,$2,$3,$4,$5,$6,$7)",
+      [
+        name,
+        pack_size_label,
+        manufacturer_name,
+        order_by,
+        quantity,
+        delivered,
+        date,
+      ]
+    );
+    res.send("Delivered to the database successfuly");
+  } catch (error) {
+    console.log(error);
   }
 });
 app.post("/api/postmedicines", async (req: Request, res: Response) => {

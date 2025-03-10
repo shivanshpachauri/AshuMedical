@@ -46,7 +46,7 @@ export default function Sidebar() {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <NavLink className="nav-link" to="/dashboard/viewcustomers">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -64,7 +64,7 @@ export default function Sidebar() {
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
               Products
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/dashboard/customers">
