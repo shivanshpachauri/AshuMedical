@@ -1,6 +1,7 @@
 import { FixedSizeList as List } from "react-window";
 import ViewCustomersHeading from "./ViewCustomersHeading";
 import { useCallback, useState } from "react";
+import "./ViewCustomers.css";
 import Loading from "../../Loading/Loading";
 import Error from "../../Error/Error";
 import fetchdelivery from "../../Http/fetchdelivery";
@@ -12,7 +13,9 @@ export default function ViewCustomers() {
   if (isError) {
     return <Error title="Error in view customers" />;
   }
-  console.log(data[0][1]);
+  function handledoubleclick(e) {
+    alert("doubleclicked");
+  }
 
   return (
     <>
@@ -26,8 +29,9 @@ export default function ViewCustomers() {
       >
         {({ index, style }) => (
           <div
-            className="d-flex flex-row text-capitalize"
+            className="customerstable d-flex flex-row text-capitalize"
             style={style}
+            onDoubleClick={handledoubleclick}
             key={index}
           >
             {/* <div className="col-1">{data[index][1].id}</div> */}

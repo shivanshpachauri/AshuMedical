@@ -17,10 +17,10 @@ export default function Customers() {
       [name]: value,
     });
   }
-  const { mutate } = Postdelivery();
+  const Post = Postdelivery();
   function handlesubmit(e) {
     e.preventDefault();
-    mutate(delivery);
+    Post(delivery);
     setdelivery({
       name: "",
       pack_size_label: "",

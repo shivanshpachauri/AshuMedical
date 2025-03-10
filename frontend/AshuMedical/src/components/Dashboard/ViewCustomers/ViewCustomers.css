@@ -1,0 +1,5 @@
+.customerstable:hover {
+  background-color: white;
+  /* transform: scale(0.25); */
+  transform: scale(1.02);
+}
