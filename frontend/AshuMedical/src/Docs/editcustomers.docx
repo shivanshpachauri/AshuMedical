@@ -1,0 +1,61 @@
+// actions.js
+export const openModal = (modalType, modalData) => ({
+  type: 'OPEN_MODAL',
+  payload: { modalType, modalData },
+});
+
+export const closeModal = () => ({
+  type: 'CLOSE_MODAL',
+});
+
+// modalReducer.js
+const initialState = {
+  isOpen: false,
+  modalType: null,
+  modalData: null,
+};
+
+const modalReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'OPEN_MODAL':
+      return { ...state, isOpen: true, ...action.payload };
+    case 'CLOSE_MODAL':
+      return initialState;
+    default:
+      return state;
+  }
+};
+
+// ModalComponent.js
+import { useSelector, useDispatch } from 'react-redux';
+import { closeModal } from './actions';
+
+const ModalComponent = () => {
+  const dispatch = useDispatch();
+  const { isOpen, modalType, modalData } = useSelector(state => state.modal);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal">
+      <h2>{modalType}</h2>
+      {/* Render modal content based on modalData */}
+      <button onClick={() => dispatch(closeModal())}>Close</button>
+    </div>
+  );
+};
+
+// In your react-window component
+const MyComponent = () => {
+  const dispatch = useDispatch();
+
+  const handleDoubleClick = (item) => {
+    dispatch(openModal('Edit Item', item));
+  };
+
+  return (
+    <div onDoubleClick={() => handleDoubleClick(item)}>
+      {/* Render your item */}
+    </div>
+  );
+};

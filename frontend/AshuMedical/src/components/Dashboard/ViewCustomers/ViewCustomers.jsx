@@ -2,11 +2,14 @@ import { FixedSizeList as List } from "react-window";
 import ViewCustomersHeading from "./ViewCustomersHeading";
 import { useCallback, useState } from "react";
 import "./ViewCustomers.css";
+import { modalActions } from "../../store/editcustomerslice";
 import Loading from "../../Loading/Loading";
 import Error from "../../Error/Error";
 import fetchdelivery from "../../Http/fetchdelivery";
+import { useDispatch } from "react-redux";
 export default function ViewCustomers() {
   const { data, isLoading, isError } = fetchdelivery();
+  const dispatch = useDispatch();
   if (isLoading) {
     return <Loading title="loading view customers" />;
   }
@@ -15,6 +18,7 @@ export default function ViewCustomers() {
   }
   function handledoubleclick(e) {
     alert("doubleclicked");
+    dispatch(modalActions.toggle());
   }
 
   return (

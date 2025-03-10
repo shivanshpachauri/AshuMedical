@@ -40,7 +40,7 @@ app.post("/api/register", async (req: Request, res: Response) => {
       [fullname, dob, username, gender, email, password]
     );
 
-    res.send("registered successfully");
+    res.json({ message: "registered successfully" });
   } catch (err) {
     console.log("Error in inserting register", err);
   }
@@ -79,7 +79,7 @@ app.post("/api/deliverypost", async (req: Request, res: Response) => {
         date,
       ]
     );
-    res.send("Delivered to the database successfuly");
+    res.json({ message: "Delivered to the database successfuly" });
   } catch (error) {
     console.log(error);
   }
@@ -121,7 +121,7 @@ app.post("/api/postmedicines", async (req: Request, res: Response) => {
         [name, price, manufacturer_name, pack_size_label, short_composition1]
       );
     }
-    res.send("medicines added successfully");
+    res.json({ message: "medicines added successfully" });
   } catch (err) {
     console.log("Error in inserting medicines", err);
   }
@@ -140,7 +140,7 @@ app.put("/api/update", async (_req: Request, _res: Response) => {
       "UPDATE medicaldb SET id=$1, name=$2, price=$3, manufacturer_name=$4, pack_size_label=$5,short_composition1=$6 WHERE id=$1",
       [id, name, price, manufacturer_name, pack_size_label, short_composition1]
     );
-    _res.send("updated successfully");
+    _res.json({ message: "updated successfully" });
   } catch (err) {
     console.log("Error in updating medicines", err);
   }
@@ -149,7 +149,7 @@ app.delete("/api/delete", async (req: Request, _res: Response) => {
   try {
     const { id } = req.body;
     await pool1.query("delete from medicaldb where id = $1 ", [id]);
-    _res.send("deleted successfully");
+    _res.json({ message: "deleted successfully" });
   } catch (err) {
     console.log("Error in deleting medicines", err);
   }

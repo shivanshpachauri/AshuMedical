@@ -1,9 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useSelector } from "react-redux";
 export default function EditCustomers() {
   const EditCustomersref = useRef();
+
+  const showModal = useSelector((state) => state.editcustomermodal.modalstate);
   useEffect(() => {
+    console.log(showModal);
     EditCustomersref.current.showModal();
+    if (showModal === true) {
+      console.log("inside the if statement if showmodal is true");
+    }
   }, []);
   const [delivery, setdelivery] = useState({
     name: "",
@@ -22,6 +29,7 @@ export default function EditCustomers() {
     });
   }
   function handlesubmit(e) {
+    e.preventDefault();
     console.log(delivery);
     e.target.reset();
   }
@@ -74,7 +82,7 @@ export default function EditCustomers() {
         <input
           name="Date"
           value={delivery.Date}
-          type="text"
+          type="datetime-local"
           id="date"
           onChange={handlechange}
           autoComplete="one"
