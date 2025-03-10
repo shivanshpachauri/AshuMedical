@@ -1,7 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 export default function EditCustomers() {
   const EditCustomersref = useRef();
+  useEffect(() => {
+    EditCustomersref.current.showModal();
+  }, []);
   const [delivery, setdelivery] = useState({
     name: "",
     pack_size_label: "",
@@ -22,32 +25,86 @@ export default function EditCustomers() {
     console.log(delivery);
     e.target.reset();
   }
-  function handleclick() {
+  function handleclose() {
     EditCustomersref.current.close();
   }
   return createPortal(
-    <dialog ref={EditCustomersref} open>
-      <form onSubmit={handlesubmit}>
+    <dialog className="updatedialog rounded shadow-lg" ref={EditCustomersref}>
+      <form
+        onSubmit={handlesubmit}
+        className="d-flex flex-column text-capitalize"
+      >
         <label htmlFor="name">name</label>
-        <input type="text" id="name" onChange={handlechange} />
+        <input
+          name="name"
+          value={delivery.name}
+          type="text"
+          id="name"
+          onChange={handlechange}
+          autoComplete="one"
+        />
         <label htmlFor="pack_size_label">Pack</label>
-        <input type="text" id="pack_size_label" onChange={handlechange} />
+        <input
+          name="pack_size_label"
+          value={delivery.pack_size_label}
+          type="text"
+          id="pack_size_label"
+          onChange={handlechange}
+          autoComplete="one"
+        />
         <label htmlFor="manufacturer_name">Manufacturer</label>
-        <input type="text" id="manufacturer_name" onChange={handlechange} />
+        <input
+          name="manufacturer_name"
+          value={delivery.manufacturer_name}
+          type="text"
+          id="manufacturer_name"
+          onChange={handlechange}
+          autoComplete="one"
+        />
         <label htmlFor="order_by">Order BY</label>
-        <input type="text" id="order_by" onChange={handlechange} />
+        <input
+          name="order_by"
+          value={delivery.order_by}
+          type="text"
+          id="order_by"
+          onChange={handlechange}
+          autoComplete="one"
+        />
         <label htmlFor="date">date</label>
-        <input type="text" id="date" onChange={handlechange} />
+        <input
+          name="Date"
+          value={delivery.Date}
+          type="text"
+          id="date"
+          onChange={handlechange}
+          autoComplete="one"
+        />
         <label htmlFor="quantity">Quantity</label>
-        <input type="text" id="Quantity" onChange={handlechange} />
+        <input
+          name="quantity"
+          value={delivery.quantity}
+          type="text"
+          id="Quantity"
+          onChange={handlechange}
+          autoComplete="one"
+        />
         <label htmlFor="Delivered">delivered</label>
-        <input type="text" id="delivered" onChange={handlechange} />
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleclick}>
+        <input
+          name="delivered"
+          value={delivery.delivered}
+          type="text"
+          id="delivered"
+          onChange={handlechange}
+          autoComplete="one"
+        />
+        <button className="btn btn-primary" type="submit">
+          Submit
+        </button>
+        <button className="btn btn-danger" type="button" onClick={handleclose}>
           Close
         </button>
       </form>
     </dialog>,
-    document.body
+    document.getElementById("modalid")
   );
 }
