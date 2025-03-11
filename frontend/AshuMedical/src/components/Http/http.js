@@ -101,6 +101,30 @@ export async function fetchdelivery() {
   const dataarray = Object.entries(response.data);
   return dataarray;
 }
+export async function updatedelivery(delivery) {
+  const {
+    id,
+    name,
+    pack_size_label,
+    quantity,
+    manufacturer_name,
+    date,
+    order_by,
+    delivered,
+  } = delivery;
+
+  const response = await axios.put("http://localhost:3000/api/deliveryupdate", {
+    id,
+    name,
+    pack_size_label,
+    quantity,
+    manufacturer_name,
+    date,
+    order_by,
+    delivered,
+  });
+  return response;
+}
 export async function postdelivery(delivery) {
   const {
     name,

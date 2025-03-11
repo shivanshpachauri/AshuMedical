@@ -1,3 +1,4 @@
+import Updatedelivery from "../../Http/Updatedelivery";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,9 +23,11 @@ export default function EditCustomers() {
     //   dispatch(modalInputActions.setdelivery({ ...delivery, [name]: value }));
     dispatch(modalInputActions.setdelivery(data));
   }
+  const deliveryupdate = Updatedelivery();
   function handlesubmit(e) {
     e.preventDefault();
-    console.log(delivery);
+    deliveryupdate(delivery);
+    alert("updated successfully");
     e.target.reset();
   }
   function handleclose() {
@@ -106,12 +109,18 @@ export default function EditCustomers() {
           onChange={handlechange}
           autoComplete="one"
         />
-        <button className="btn btn-primary" type="submit">
-          Submit
-        </button>
-        <button className="btn btn-danger" type="button" onClick={handleclose}>
-          Close
-        </button>
+        <div className="d-flex flex-row m-1 p-1">
+          <button
+            className="btn btn-danger"
+            type="button"
+            onClick={handleclose}
+          >
+            Close
+          </button>
+          <button className="btn btn-primary" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </dialog>,
     document.getElementById("modalid")

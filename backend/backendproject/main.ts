@@ -55,6 +55,37 @@ app.get("/api/fetchdelivery", async (req: Request, res: Response) => {
     console.log(error);
   }
 });
+app.put("/api/deliveryupdate", async (req: Request, res: Response) => {
+  try {
+    const {
+      id,
+      name,
+      pack_size_label,
+      quantity,
+      manufacturer_name,
+      date,
+      order_by,
+      delivered,
+    } = req.body;
+
+    await pool1.query(
+      "UPDATE delivery SET name=$2, pack_size_label=$3,quantity=$4, manufacturer_name=$5, date=$6,order_by=$7,delivered=$8 WHERE id=$1",
+      [
+        id,
+        name,
+        pack_size_label,
+        quantity,
+        manufacturer_name,
+        date,
+        order_by,
+        delivered,
+      ]
+    );
+    res.json({ message: "successfully updated" });
+  } catch (error) {
+    console.log("Error in updating delivery", error);
+  }
+});
 app.post("/api/deliverypost", async (req: Request, res: Response) => {
   try {
     const {
