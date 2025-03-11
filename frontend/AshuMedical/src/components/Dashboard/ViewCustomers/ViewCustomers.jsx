@@ -7,6 +7,7 @@ import Loading from "../../Loading/Loading";
 import Error from "../../Error/Error";
 import fetchdelivery from "../../Http/fetchdelivery";
 import { useDispatch } from "react-redux";
+import { modalInputActions } from "../../store/Editinputcustomerslice";
 export default function ViewCustomers() {
   const { data, isLoading, isError } = fetchdelivery();
   const dispatch = useDispatch();
@@ -16,8 +17,8 @@ export default function ViewCustomers() {
   if (isError) {
     return <Error title="Error in view customers" />;
   }
-  function handledoubleclick(e) {
-    alert("doubleclicked");
+  function handledoubleclick(data) {
+    dispatch(modalInputActions.setdelivery(data));
     dispatch(modalActions.toggle());
   }
 
@@ -35,7 +36,7 @@ export default function ViewCustomers() {
           <div
             className="customerstable d-flex flex-row text-capitalize"
             style={style}
-            onDoubleClick={handledoubleclick}
+            onDoubleClick={() => handledoubleclick(data[index][1])}
             key={index}
           >
             {/* <div className="col-1">{data[index][1].id}</div> */}

@@ -1,32 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { modalInputActions } from "../../store/Editinputcustomerslice";
 export default function EditCustomers() {
   const EditCustomersref = useRef();
 
   const showModal = useSelector((state) => state.editcustomermodal.modalstate);
+
+  const delivery = useSelector((state) => state.editinputmodal);
+  const dispatch = useDispatch();
   useEffect(() => {
-    console.log(showModal);
-    EditCustomersref.current.showModal();
-    if (showModal === true) {
-      console.log("inside the if statement if showmodal is true");
+    if (showModal) {
+      EditCustomersref.current.showModal();
     }
-  }, []);
-  const [delivery, setdelivery] = useState({
-    name: "",
-    pack_size_label: "",
-    quantity: "",
-    manufacturer_name: "",
-    Date: "",
-    order_by: "",
-    delivered: "",
-  });
+  }, [showModal]);
   function handlechange(e) {
     const { name, value } = e.target;
-    setdelivery({
-      ...delivery,
+    const data = {
       [name]: value,
-    });
+    };
+    //   dispatch(modalInputActions.setdelivery({ ...delivery, [name]: value }));
+    dispatch(modalInputActions.setdelivery(data));
   }
   function handlesubmit(e) {
     e.preventDefault();
@@ -44,6 +38,7 @@ export default function EditCustomers() {
       >
         <label htmlFor="name">name</label>
         <input
+          style={{ margin: 0, padding: 0 }}
           name="name"
           value={delivery.name}
           type="text"
@@ -53,6 +48,7 @@ export default function EditCustomers() {
         />
         <label htmlFor="pack_size_label">Pack</label>
         <input
+          style={{ margin: 0, padding: 0 }}
           name="pack_size_label"
           value={delivery.pack_size_label}
           type="text"
@@ -62,6 +58,7 @@ export default function EditCustomers() {
         />
         <label htmlFor="manufacturer_name">Manufacturer</label>
         <input
+          style={{ margin: 0, padding: 0 }}
           name="manufacturer_name"
           value={delivery.manufacturer_name}
           type="text"
@@ -71,6 +68,7 @@ export default function EditCustomers() {
         />
         <label htmlFor="order_by">Order BY</label>
         <input
+          style={{ margin: 0, padding: 0 }}
           name="order_by"
           value={delivery.order_by}
           type="text"
@@ -80,8 +78,9 @@ export default function EditCustomers() {
         />
         <label htmlFor="date">date</label>
         <input
-          name="Date"
-          value={delivery.Date}
+          style={{ margin: 0, padding: 0 }}
+          name="date"
+          value={delivery.date}
           type="datetime-local"
           id="date"
           onChange={handlechange}
@@ -89,15 +88,17 @@ export default function EditCustomers() {
         />
         <label htmlFor="quantity">Quantity</label>
         <input
+          style={{ margin: 0, padding: 0 }}
           name="quantity"
           value={delivery.quantity}
           type="text"
-          id="Quantity"
+          id="quantity"
           onChange={handlechange}
           autoComplete="one"
         />
         <label htmlFor="Delivered">delivered</label>
         <input
+          style={{ margin: 0, padding: 0 }}
           name="delivered"
           value={delivery.delivered}
           type="text"
