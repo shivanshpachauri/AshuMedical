@@ -9,6 +9,9 @@ export const SortingProvider = ({ children }) => {
   const toggleSorting = () => {
     setIsSorted((prevState) => !prevState);
   };
+  // const toggleSearchSorting = () => {
+  //   setIsSorted({ ...isSorted, setsearchsorted: !setissearchsorted });
+  // };
 
   return (
     <SortingContext.Provider value={{ isSorted, toggleSorting }}>

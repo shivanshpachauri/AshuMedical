@@ -21,7 +21,8 @@ export default function Searchmedicines(searchParams) {
       !!searchParams.medicine_name ||
       !!searchParams.pack_size_label ||
       !!searchParams.id ||
-      !!searchParams.short_composition1, // Only run if at least one field is filled
+      !!searchParams.short_composition1 ||
+      !!isSorted, // Only run if at least one field is filled
   });
 
   return data;

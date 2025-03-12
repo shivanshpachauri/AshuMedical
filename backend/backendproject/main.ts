@@ -32,6 +32,24 @@ pool1.query(
 pool1.query(
   "create table if not exists delivery(id BIGSERIAL PRIMARY KEY,name TEXT,pack_size_label TEXT,manufacturer_name TEXT,order_by TEXT,quantity TEXT,delivered TEXT,DATE TEXT)"
 );
+
+app.patch("/api/login", async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  try {
+    const check = await pool1.query(
+      "select email, password from register where email=$1 and password=$2",
+      [email, password]
+    );
+
+    res.send(check.rows);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error logging in");
+  }
+});
+
 app.post("/api/register", async (req: Request, res: Response) => {
   try {
     const { email, password, fullname, gender, dob, username } = req.body;
@@ -42,6 +60,7 @@ app.post("/api/register", async (req: Request, res: Response) => {
 
     res.json({ message: "registered successfully" });
   } catch (err) {
+    res.json({ message: JSON.stringify(err) });
     console.log("Error in inserting register", err);
   }
 });
@@ -52,6 +71,7 @@ app.get("/api/fetchdelivery", async (req: Request, res: Response) => {
     );
     res.send(result.rows);
   } catch (error) {
+    res.json({ message: JSON.stringify(error) });
     console.log(error);
   }
 });
@@ -83,6 +103,7 @@ app.put("/api/deliveryupdate", async (req: Request, res: Response) => {
     );
     res.json({ message: "successfully updated" });
   } catch (error) {
+    res.json({ message: JSON.stringify(error) });
     console.log("Error in updating delivery", error);
   }
 });
@@ -112,6 +133,7 @@ app.post("/api/deliverypost", async (req: Request, res: Response) => {
     );
     res.json({ message: "Delivered to the database successfuly" });
   } catch (error) {
+    res.json({ message: JSON.stringify(error) });
     console.log(error);
   }
 });
@@ -132,7 +154,6 @@ app.post("/api/postmedicines", async (req: Request, res: Response) => {
       short_composition1,
     } = req.body;
     const { id } = req.body;
-    console.log(short_composition1);
 
     if (id) {
       _result = await pool1.query(
@@ -154,6 +175,7 @@ app.post("/api/postmedicines", async (req: Request, res: Response) => {
     }
     res.json({ message: "medicines added successfully" });
   } catch (err) {
+    res.json({ message: JSON.stringify(err) });
     console.log("Error in inserting medicines", err);
   }
 });
@@ -173,6 +195,7 @@ app.put("/api/update", async (_req: Request, _res: Response) => {
     );
     _res.json({ message: "updated successfully" });
   } catch (err) {
+    res.json({ message: JSON.stringify(err) });
     console.log("Error in updating medicines", err);
   }
 });
@@ -182,6 +205,7 @@ app.delete("/api/delete", async (req: Request, _res: Response) => {
     await pool1.query("delete from medicaldb where id = $1 ", [id]);
     _res.json({ message: "deleted successfully" });
   } catch (err) {
+    res.json({ message: JSON.stringify(err) });
     console.log("Error in deleting medicines", err);
   }
 });
@@ -201,6 +225,7 @@ app.get("/api/view", async (_req: Request, res: Response) => {
     }
     res.send(result.rows);
   } catch (err) {
+    res.json({ message: JSON.stringify(err) });
     console.log("Error in viewing medicines", err);
   }
 });
@@ -249,7 +274,7 @@ app.get("/api/view/medicines", async (req: Request, res: Response) => {
     const query = `
       SELECT * FROM public.medicaldb 
       ${conditions.length ? `WHERE ${conditions.join(" AND ")}` : ""}
-      ORDER BY id ${sort === "desc" ? "DESC" : "ASC"}
+      ORDER BY id ${sort === "searchasc" ? "DESC" : "ASC"}
     `;
 
     // Execute query
@@ -257,8 +282,8 @@ app.get("/api/view/medicines", async (req: Request, res: Response) => {
 
     res.send(result.rows);
   } catch (err) {
+    res.json({ message: JSON.stringify(err) });
     console.error("Error fetching medicines:", err);
-    res.status(500).send("Internal Server Error");
   }
 });
 

@@ -1,13 +1,13 @@
 import axios from "axios";
 export async function checkemail(email, password) {
-  const response = await axios.patch("http://localhost:5173/api/login", {
+  const response = await axios.patch("http://localhost:3000/api/login", {
     email: email,
     password: password,
   });
-  if (!response.ok) {
+  if (response.status != 200) {
     throw new Error("Error in login");
   }
-  const data = await response.json();
+  const data = await response.data;
   return data;
 }
 
@@ -49,9 +49,6 @@ export async function searchmedicine(
     return dataArray;
   } catch (error) {
     throw new Error("Error in fetching medicines" + error);
-    // console.error("Error fetching medicines:", error.message);
-
-    // return [];
   }
 }
 
@@ -92,7 +89,7 @@ export async function insertmedicines(medicine) {
       short_composition1: short_composition1,
     }
   );
-  if (_response.status !== 200) {
+  if (_response.status != 200) {
     throw new Error("Cannot insert to medicaldb");
   }
 }
@@ -153,7 +150,7 @@ export async function deletemedicine(medicine) {
   const response = await axios.delete("http://localhost:3000/api/delete", {
     data: { id: id },
   });
-  if (response.status !== 200) {
+  if (response.status != 200) {
     throw new Error("Cannot delete");
   }
   return response.data;

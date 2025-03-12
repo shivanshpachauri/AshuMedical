@@ -8,16 +8,12 @@ import Signup from "./components/Signup/signup";
 import Productcards from "./components/ProductCard/Productcards";
 import Faq from "./components/Faq/faq";
 import Search from "./components/Search/Search";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { SortingProvider } from "./components/Context/sortingcontext";
-import { DeleteProvider } from "./components/Context/deletecontext";
-import { EditingProvider } from "./components/Context/Editingcontext.jsx";
 import Loading from "./components/Loading/Loading.jsx";
 import ErrorBoundary from "./components/Errorboundary/Errorboundary.jsx";
 import Parsingcsv from "./components/Dashboard/parsingcsv.jsx";
 import Customers from "./components/Dashboard/Customers/Customers.jsx";
-const queryClient = new QueryClient();
+
 const Dashboard = lazy(() => import("./components/Dashboard/Dashboard.jsx"));
 const Carousel = lazy(() => import("./components/Carousel/Carousel.jsx"));
 const Newentries = lazy(() => import("./components/Newentries/Newentries.jsx"));
@@ -31,7 +27,6 @@ function App() {
       path: "/",
       element: <Navbar />,
       errorElement: <h1>Error element not found</h1>,
-      // index: true,
       children: [
         {
           path: "/carousel",
@@ -113,17 +108,7 @@ function App() {
       ],
     },
   ]);
-  return (
-    <QueryClientProvider client={queryClient}>
-      <EditingProvider>
-        <DeleteProvider>
-          <SortingProvider>
-            <RouterProvider router={router}></RouterProvider>
-          </SortingProvider>
-        </DeleteProvider>
-      </EditingProvider>
-    </QueryClientProvider>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
