@@ -39,7 +39,6 @@ export default function ViewCustomers() {
             onDoubleClick={() => handledoubleclick(data[index][1])}
             key={index}
           >
-            {/* <div className="col-1">{data[index][1].id}</div> */}
             <div className="col-2">{data[index][1].name}</div>
             <div className="col-2">{data[index][1].pack_size_label}</div>
             <div className="col-2">{data[index][1].order_by}</div>

@@ -31,15 +31,6 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="collapsibleNavId">
             <ul className="navbar-nav me-auto mt-2 mt-lg-0">
               <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/carousel"
-                  aria-current="page"
-                >
-                  Carousel
-                </NavLink>
-              </li>
-              <li className="nav-item">
                 <NavLink className="nav-link" to="/bestselling">
                   Bestselling
                 </NavLink>
@@ -82,6 +73,12 @@ const Navbar = () => {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/signup">
                   Signup
+                </NavLink>
+              </li>
+
+              <li className="nav-item" style={{ borderColor: "linen" }}>
+                <NavLink className="nav-link" to="/ai">
+                  AI
                 </NavLink>
               </li>
             </ul>

@@ -1,16 +1,27 @@
 // @ts-nocheck
 import { Request, Response } from "npm:express";
+import "https://deno.land/std@0.224.0/dotenv/load.ts";
 import pg from "npm:pg";
 import { pool1 } from "./server.ts";
+import axios from "npm:axios";
+import { HF_API_KEY } from "./hfkey.ts";
 import express from "npm:express@^4.17";
 import cors from "npm:cors";
 import morgan from "npm:morgan";
 const app = express();
 const PORT = Number(Deno.env.get("PORT")) || 3000;
+// const HF_API_KEY = Deno.env.get("HF_API_KEY");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // React frontend URL
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allow necessary methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
+    credentials: true, // Allow cookies/auth headers
+  })
+);
 app.use(morgan("tiny"));
 
 pool1
@@ -32,6 +43,27 @@ pool1.query(
 pool1.query(
   "create table if not exists delivery(id BIGSERIAL PRIMARY KEY,name TEXT,pack_size_label TEXT,manufacturer_name TEXT,order_by TEXT,quantity TEXT,delivered TEXT,DATE TEXT)"
 );
+
+app.post("/api/chat", async (req, res) => {
+  try {
+    const userMessage = req.body.message;
+
+    const response = await axios.post(
+      "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct",
+      { inputs: userMessage },
+      {
+        headers: {
+          Authorization: `Bearer ${HF_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    res.json({ botReply: response.data[0].generated_text });
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching response" });
+  }
+});
 
 app.patch("/api/login", async (req, res) => {
   const email = req.body.email;

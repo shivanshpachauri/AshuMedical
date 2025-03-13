@@ -14,6 +14,7 @@ import ErrorBoundary from "./components/Errorboundary/Errorboundary.jsx";
 import Parsingcsv from "./components/Dashboard/parsingcsv.jsx";
 import Customers from "./components/Dashboard/Customers/Customers.jsx";
 
+const AI = lazy(() => import("./components/AI/AI.jsx"));
 const Dashboard = lazy(() => import("./components/Dashboard/Dashboard.jsx"));
 const Carousel = lazy(() => import("./components/Carousel/Carousel.jsx"));
 const Newentries = lazy(() => import("./components/Newentries/Newentries.jsx"));
@@ -104,6 +105,17 @@ function App() {
         {
           path: "/signup",
           element: <Signup />,
+        },
+
+        {
+          path: "/ai",
+          element: (
+            <ErrorBoundary>
+              <Suspense fallback={<Loading title="loading ai" />}>
+                <AI />
+              </Suspense>
+            </ErrorBoundary>
+          ),
         },
       ],
     },
