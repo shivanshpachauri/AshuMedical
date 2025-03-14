@@ -17,7 +17,7 @@ export default function Ai() {
       });
       console.log(res.data);
 
-      const data = await res.json();
+      const data = await res.data;
       setResponse(data.botReply);
     } catch (error) {
       console.error("Error sending message:", error);
