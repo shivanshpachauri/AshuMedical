@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import axios from "axios";
+import { seterror } from "../store/alertslice";
 export async function checkemail({ email, password }) {
   const response = await axios.patch("http://localhost:3000/api/login", {
     email: email,
@@ -90,19 +92,25 @@ export async function insertmedicines(medicine) {
     pack_size_label,
     short_composition1,
   } = medicine;
-  const _response = await axios.post(
-    "http://localhost:3000/api/postmedicines",
-    {
-      id: id,
-      name: name,
-      price: price,
-      manufacturer_name: manufacturer_name,
-      pack_size_label: pack_size_label,
-      short_composition1: short_composition1,
-    }
-  );
-  if (_response.status != 200) {
-    throw new Error("Cannot insert to medicaldb");
+  try {
+    const _response = await axios.post(
+      "http://localhost:3000/api/postmedicines",
+      {
+        id: id,
+        name: name,
+        price: price,
+        manufacturer_name: manufacturer_name,
+        pack_size_label: pack_size_label,
+        short_composition1: short_composition1,
+      }
+    );
+    return _response.data;
+  } catch (error) {
+    throw new Error(
+      error.response?.data?.message ||
+        error.message ||
+        "An unknown error occurred."
+    );
   }
 }
 export async function fetchdelivery() {

@@ -3,12 +3,14 @@ import React, { useEffect } from "react";
 import "./Newentries.css";
 import { useNavigate } from "react-router-dom";
 import Insertmedicines from "../Http/Insertmedicines";
+import { useSelector } from "react-redux";
 export default function Newentries({ submitstate, setsubmitstate }) {
   Newentries.propTypes = {
     submitstate: PropTypes.bool.isRequired,
     setsubmitstate: PropTypes.func.isRequired,
   };
   const navigate = useNavigate();
+  const alertstate = useSelector((state) => state.alertstate.error);
   const [medicines, setmedicines] = React.useState({
     id: 0,
     name: "",
@@ -40,7 +42,7 @@ export default function Newentries({ submitstate, setsubmitstate }) {
       <h1 className="text-center mb-4">New Entries</h1>
       {submitstate && (
         <div className=" text-capitalize alert alert-light" role="alert">
-          <strong>submitted successfully</strong>
+          <strong>submitted {alertstate}</strong>
         </div>
       )}
       <form
