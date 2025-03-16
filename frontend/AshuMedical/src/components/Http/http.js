@@ -1,5 +1,5 @@
 import axios from "axios";
-export async function checkemail(email, password) {
+export async function checkemail({ email, password }) {
   const response = await axios.patch("http://localhost:3000/api/login", {
     email: email,
     password: password,
@@ -10,7 +10,19 @@ export async function checkemail(email, password) {
   const data = await response.data;
   return data;
 }
-
+export const sendMessage = async ({ message }) => {
+  try {
+    const res = await axios.post("http://localhost:3000/api/chat", {
+      message,
+    });
+    const data = await res.data;
+    const dataarray = Object.entries(data);
+    return dataarray;
+  } catch (error) {
+    console.error("Error sending message:", error);
+    setResponse("Error sending message");
+  }
+};
 export async function searchmedicine(
   id,
   manufacturer_name,

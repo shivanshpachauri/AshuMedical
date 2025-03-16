@@ -6,6 +6,7 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const [success, setsuccess] = useState("");
   function handlechange(e) {
     const { name, value } = e.target;
     setlogin({
@@ -15,8 +16,23 @@ export default function Login() {
   }
   async function handlesubmit(e) {
     e.preventDefault();
-    const response = checkemail(login);
-    console.log(response);
+    const response = await checkemail(login);
+    if (response.length > 0 && Array.isArray(response)) {
+      const success = (
+        <div className="alert alert-success" role="alert">
+          Logged in successfully
+        </div>
+      );
+      setsuccess(success);
+    }
+    if (!Array.isArray(response) || response.length <= 0) {
+      const error = (
+        <div className="alert alert-danger" role="alert">
+          invalid email password
+        </div>
+      );
+      setsuccess(error);
+    }
 
     e.target.reset();
   }
@@ -50,6 +66,7 @@ export default function Login() {
         <Button type="submit" className="d-block">
           Submit
         </Button>
+        {success}
         <small id="emailHelpId" className="form-text text-muted">
           <a href="/signup">Register</a>
         </small>

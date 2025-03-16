@@ -4,7 +4,6 @@ import axios from "axios";
 export default function Ai() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
-
   const sendMessage = async () => {
     // const res = await fetch("http://localhost:3000/chat", {
     //   method: "POST",
@@ -36,10 +35,12 @@ export default function Ai() {
       <div
         className="d-flex justify-content-center align-content-center align-items-center container"
         style={{
+          marginTop: "10px",
           backgroundColor: "lightblue",
           height: "500px",
           width: "500px",
           border: "1px solid black",
+          overflow: "scroll",
         }}
       >
         Bot: {response}

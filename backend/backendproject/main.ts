@@ -3,7 +3,7 @@ import { Request, Response } from "npm:express";
 import "https://deno.land/std@0.224.0/dotenv/load.ts";
 import pg from "npm:pg";
 import { pool1 } from "./server.ts";
-import axios from "npm:axios";
+// import axios from "npm:axios";
 // import { HF_API_KEY } from "./hfkey.ts";
 import express from "npm:express@^4.17";
 import cors from "npm:cors";
@@ -50,8 +50,11 @@ app.post("/api/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;
 
+    // "https://api-inference.huggingface.co/models/google/gemma-2-9b-it",
+
+    // google/gemma-2-9b-it
     const response = await axios.post(
-      "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct",
+      "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3",
       { inputs: userMessage },
       {
         headers: {
@@ -70,7 +73,6 @@ app.post("/api/chat", async (req, res) => {
 app.patch("/api/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
   try {
     const check = await pool1.query(
       "select email, password from register where email=$1 and password=$2",
@@ -80,6 +82,7 @@ app.patch("/api/login", async (req, res) => {
     res.send(check.rows);
   } catch (err) {
     console.log(err);
+    res.json({ message: err });
     res.status(500).send("Error logging in");
   }
 });
