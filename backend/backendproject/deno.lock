@@ -3,6 +3,7 @@
   "specifiers": {
     "jsr:@std/assert@1": "1.0.11",
     "jsr:@std/internal@^1.0.5": "1.0.5",
+    "npm:@huggingface/inference@^3.5.2": "3.5.2",
     "npm:axios@^1.8.3": "1.8.3",
     "npm:cors@*": "2.8.5",
     "npm:deno@^2.2.3": "2.2.3",
@@ -40,6 +41,15 @@
     },
     "@deno/win32-x64@2.2.3": {
       "integrity": "sha512-nTDSchrZ7T+T69897ThVbmCYu3WAhI7FJJzXzdvihcfkjxrKOye2SK7e989a4PCBiT1xlSZWeAdbut+wlH3oOg=="
+    },
+    "@huggingface/inference@3.5.2": {
+      "integrity": "sha512-MIB1iZTtTBclIFmRL2fbkoxZTuMjziezx87nUzzsPwCX96c+ciilWV+QQZOjOmBlx1ZrfSuJbhwZ1pylSENZnQ==",
+      "dependencies": [
+        "@huggingface/tasks"
+      ]
+    },
+    "@huggingface/tasks@0.17.4": {
+      "integrity": "sha512-LES7+OosthFKdqRL0e+bA2d4jfKmiQWuqahsPrv0+EsSZtdHdaZ3nje0f2g5wq4miHX4xWpBLuWJknjdnBwXsA=="
     },
     "accepts@1.3.8": {
       "integrity": "sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==",
@@ -605,6 +615,7 @@
     ],
     "packageJson": {
       "dependencies": [
+        "npm:@huggingface/inference@^3.5.2",
         "npm:axios@^1.8.3",
         "npm:deno@^2.2.3"
       ]

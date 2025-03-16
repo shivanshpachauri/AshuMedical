@@ -5,23 +5,16 @@ export default function Ai() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
   const sendMessage = async () => {
-    // const res = await fetch("http://localhost:3000/chat", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ message }),
-    // });
     try {
       const res = await axios.post("http://localhost:3000/api/chat", {
         message,
       });
-      console.log(res.data);
-
-      const data = await res.data;
-      setResponse(data.botReply);
+      const data1 = res.data;
+      const data2 = data1.botReply;
+      setResponse(data2);
     } catch (error) {
       console.error("Error sending message:", error);
-
-      setResponse("Error sending message");
+      setResponse(`Error sending message${error}`);
     }
   };
   return (
@@ -32,18 +25,18 @@ export default function Ai() {
           Ai title
         </h1>
       </div>
+
       <div
         className="d-flex justify-content-center align-content-center align-items-center container"
         style={{
           marginTop: "10px",
           backgroundColor: "lightblue",
-          height: "500px",
           width: "500px",
           border: "1px solid black",
           overflow: "scroll",
         }}
       >
-        Bot: {response}
+        Bot: {response && response}
       </div>
       <div className="d-flex flex-row">
         <input

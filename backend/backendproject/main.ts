@@ -11,11 +11,12 @@ import morgan from "npm:morgan";
 const app = express();
 const PORT = Number(Deno.env.get("PORT")) || 3000;
 const HF_API_KEY = Deno.env.get("HF_API_KEY");
-
+import huggingface from "./huggingface.ts";
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors());
+
 // app.use(
 //   cors({
 //     origin: "http://localhost:3000", // React frontend URL
@@ -48,23 +49,11 @@ pool1.query(
 
 app.post("/api/chat", async (req, res) => {
   try {
-    const userMessage = req.body.message;
+    const content = req.body.message;
 
-    // "https://api-inference.huggingface.co/models/google/gemma-2-9b-it",
+    const response = await huggingface({ content });
 
-    // google/gemma-2-9b-it
-    const response = await axios.post(
-      "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3",
-      { inputs: userMessage },
-      {
-        headers: {
-          Authorization: `Bearer ${HF_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    res.json({ botReply: response.data[0].generated_text });
+    res.json({ botReply: response });
   } catch (error) {
     res.status(500).json({ error: "Error fetching response" });
   }

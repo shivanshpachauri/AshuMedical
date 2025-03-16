@@ -1,8 +1,161 @@
+// import React from "react";
+// import Firstmedicine from "./Productimages/Firstmedicine.jpg";
+// import Secondmedicine from "./Productimages/Secondmedicine.jpg";
+// import Thirdmedicine from "./Productimages/Thirdmedicine.jpg";
+// export default function Productcards() {
+//   return (
+//     <div
+//       className="container px-4 py-5 shadow-lg text-center text-dark mb-4"
+//       id="custom-cards"
+//     >
+//       <h2 className="pb-2 border-bottom">Custom cards</h2>
+
+//       <div className="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+//         <div className="col">
+//           <div
+//             className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+//             style={{
+//               backgroundImage: `url(${Firstmedicine})`,
+//               backgroundSize: "cover",
+//               backgroundPosition: "center",
+//             }}
+//           >
+//             <div className="d-flex flex-column h-100 p-5 pb-3  text-shadow-1">
+//               {/* <ul className="d-flex list-unstyled mt-auto">
+//                 <li className="me-auto">
+//                   <img
+//                     src="https://github.com/twbs.png"
+//                     alt="Bootstrap"
+//                     width="32"
+//                     height="32"
+//                     className="rounded-circle border border-white"
+//                   />
+//                 </li>
+//                 <li className="d-flex align-items-center me-3">
+//                   <svg className="bi me-2" width="1em" height="1em">
+//                     <use xlinkHref="#geo-fill"></use>
+//                   </svg>
+//                   <small>Earth</small>
+//                 </li>
+//                 <li className="d-flex align-items-center">
+//                   <svg className="bi me-2" width="1em" height="1em">
+//                     <use xlinkHref="#calendar3"></use>
+//                   </svg>
+//                   <small>3d</small>
+//                 </li>
+//               </ul> */}
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="col">
+//           <div
+//             className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+//             style={{
+//               backgroundImage: `url(${Secondmedicine})`,
+//               backgroundSize: "cover",
+//               backgroundPosition: "center",
+//             }}
+//           >
+//             <div className="d-flex flex-column h-100 p-5 pb-3  text-shadow-1">
+//               {/* <ul className="d-flex list-unstyled mt-auto">
+//                 <li className="me-auto">
+//                   <img
+//                     src="https://github.com/twbs.png"
+//                     alt="Bootstrap"
+//                     width="32"
+//                     height="32"
+//                     className="rounded-circle border border-white"
+//                   />
+//                 </li>
+//                 <li className="d-flex align-items-center me-3">
+//                   <svg className="bi me-2" width="1em" height="1em">
+//                     <use xlinkHref="#geo-fill"></use>
+//                   </svg>
+//                   <small>India</small>
+//                 </li>
+//                 <li className="d-flex align-items-center">
+//                   <svg className="bi me-2" width="1em" height="1em">
+//                     <use xlinkHref="#calendar3"></use>
+//                   </svg>
+//                   <small>4d</small>
+//                 </li>
+//               </ul> */}
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="col">
+//           <div
+//             className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+//             style={{
+//               backgroundImage: `url(${Thirdmedicine})`,
+//               backgroundSize: "cover",
+//               backgroundPosition: "center",
+//             }}
+//           >
+//             <div className="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+//               {/* <ul className="d-flex list-unstyled mt-auto">
+//                 <li className="me-auto">
+//                   <img
+//                     src="https://github.com/twbs.png"
+//                     alt="Bootstrap"
+//                     width="32"
+//                     height="32"
+//                     className="rounded-circle border border-white"
+//                   />
+//                 </li>
+//                 <li className="d-flex align-items-center me-3">
+//                   <svg className="bi me-2" width="1em" height="1em">
+//                     <use xlinkHref="#geo-fill"></use>
+//                   </svg>
+//                   <small>California</small>
+//                 </li>
+//                 <li className="d-flex align-items-center">
+//                   <svg className="bi me-2" width="1em" height="1em">
+//                     <use xlinkHref="#calendar3"></use>
+//                   </svg>
+//                   <small>5d</small>
+//                 </li>
+//               </ul> */}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//       <br />
+//     </div>
+//   );
+// }
 import React from "react";
 import Firstmedicine from "./Productimages/Firstmedicine.jpg";
 import Secondmedicine from "./Productimages/Secondmedicine.jpg";
 import Thirdmedicine from "./Productimages/Thirdmedicine.jpg";
+
 export default function Productcards() {
+  const products = [
+    {
+      image: Firstmedicine,
+      name: "Product One",
+      description: "This is a brief description of Product One.",
+      dosage: "Take 1 tablet daily.",
+      price: "$19.99",
+    },
+    {
+      image: Secondmedicine,
+      name: "Product Two",
+      description: "This is a brief description of Product Two.",
+      dosage: "Take 2 capsules twice a day.",
+      price: "$29.99",
+    },
+    {
+      image: Thirdmedicine,
+      name: "Product Three",
+      description: "This is a brief description of Product Three.",
+      dosage: "Apply as needed.",
+      price: "$15.99",
+    },
+  ];
+
   return (
     <div
       className="container px-4 py-5 shadow-lg text-center text-dark mb-4"
@@ -11,116 +164,30 @@ export default function Productcards() {
       <h2 className="pb-2 border-bottom">Custom cards</h2>
 
       <div className="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-        <div className="col">
-          <div
-            className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-            style={{
-              backgroundImage: `url(${Firstmedicine})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="d-flex flex-column h-100 p-5 pb-3  text-shadow-1">
-              {/* <ul className="d-flex list-unstyled mt-auto">
-                <li className="me-auto">
-                  <img
-                    src="https://github.com/twbs.png"
-                    alt="Bootstrap"
-                    width="32"
-                    height="32"
-                    className="rounded-circle border border-white"
-                  />
-                </li>
-                <li className="d-flex align-items-center me-3">
-                  <svg className="bi me-2" width="1em" height="1em">
-                    <use xlinkHref="#geo-fill"></use>
-                  </svg>
-                  <small>Earth</small>
-                </li>
-                <li className="d-flex align-items-center">
-                  <svg className="bi me-2" width="1em" height="1em">
-                    <use xlinkHref="#calendar3"></use>
-                  </svg>
-                  <small>3d</small>
-                </li>
-              </ul> */}
+        {products.map((product, index) => (
+          <div className="col" key={index}>
+            <div
+              className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+              style={{
+                backgroundImage: `url(${product.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                <h3 className="mb-3">{product.name}</h3>
+                <p>{product.description}</p>
+                <p>
+                  <strong>Dosage:</strong> {product.dosage}
+                </p>
+                <p className="text-danger">
+                  <strong>Price: {product.price}</strong>
+                </p>
+                <button className="btn btn-primary mt-auto">Buy Now</button>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="col">
-          <div
-            className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-            style={{
-              backgroundImage: `url(${Secondmedicine})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="d-flex flex-column h-100 p-5 pb-3  text-shadow-1">
-              {/* <ul className="d-flex list-unstyled mt-auto">
-                <li className="me-auto">
-                  <img
-                    src="https://github.com/twbs.png"
-                    alt="Bootstrap"
-                    width="32"
-                    height="32"
-                    className="rounded-circle border border-white"
-                  />
-                </li>
-                <li className="d-flex align-items-center me-3">
-                  <svg className="bi me-2" width="1em" height="1em">
-                    <use xlinkHref="#geo-fill"></use>
-                  </svg>
-                  <small>India</small>
-                </li>
-                <li className="d-flex align-items-center">
-                  <svg className="bi me-2" width="1em" height="1em">
-                    <use xlinkHref="#calendar3"></use>
-                  </svg>
-                  <small>4d</small>
-                </li>
-              </ul> */}
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div
-            className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-            style={{
-              backgroundImage: `url(${Thirdmedicine})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-              {/* <ul className="d-flex list-unstyled mt-auto">
-                <li className="me-auto">
-                  <img
-                    src="https://github.com/twbs.png"
-                    alt="Bootstrap"
-                    width="32"
-                    height="32"
-                    className="rounded-circle border border-white"
-                  />
-                </li>
-                <li className="d-flex align-items-center me-3">
-                  <svg className="bi me-2" width="1em" height="1em">
-                    <use xlinkHref="#geo-fill"></use>
-                  </svg>
-                  <small>California</small>
-                </li>
-                <li className="d-flex align-items-center">
-                  <svg className="bi me-2" width="1em" height="1em">
-                    <use xlinkHref="#calendar3"></use>
-                  </svg>
-                  <small>5d</small>
-                </li>
-              </ul> */}
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
       <br />
     </div>
