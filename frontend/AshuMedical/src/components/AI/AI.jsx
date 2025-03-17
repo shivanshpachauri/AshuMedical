@@ -57,6 +57,7 @@ export default function Ai() {
           style={{
             fontSize: "80%",
             margin: "10px",
+            padding: "10px",
           }}
         >
           {response}
@@ -64,7 +65,7 @@ export default function Ai() {
       </div>
       <div className="d-flex flex-row">
         <textarea
-          className="rounded m-2 p-2"
+          className="rounded shadow-lg m-2 p-2"
           value={message}
           style={{
             width: "500px",
