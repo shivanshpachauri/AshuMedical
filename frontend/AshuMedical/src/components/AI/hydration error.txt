@@ -1,0 +1,8 @@
+Imagine you built a big tower with blocks! 🧱 You used different colors of blocks, and you put them together in a special way.
+
+But then, your friend comes over and wants to see your tower, but they can only see a messy pile of all the blocks mixed together. 🤯 They can't see which block goes where!
+
+Source maps are like a special map that tells your friend how to put the blocks back together to make your tower again! 🗺️
+
+They show your friend which block is which color and where it goes in the tower.  So even if the blocks are mixed up, your friend can build your tower exactly the way you built it! 🎉
+

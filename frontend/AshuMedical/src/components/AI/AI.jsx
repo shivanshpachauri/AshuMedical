@@ -36,31 +36,41 @@ export default function Ai() {
       setloadingstate(null);
     }
   };
-
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
-      <h1>AI Title</h1>
+      <h1>AI </h1>
+
       <div
-        className="d-flex justify-content-center align-items-center"
+        className="d-flex rounded shadow-lg"
         style={{
           marginTop: "10px",
           backgroundColor: "lightblue",
           width: "600px",
           height: "500px",
-          border: "1px solid black",
-          whiteSpace: "normal", // Allow text to wrap
+          whiteSpace: "normal",
           overflow: "scroll",
-          // overflowY: "scroll",
-          // overflowX: "scroll",
         }}
       >
         {loadingstate}
-        <pre style={{ fontSize: "80%", margin: "10px" }}>{response}</pre>
+
+        <pre
+          style={{
+            fontSize: "80%",
+            margin: "10px",
+          }}
+        >
+          {response}
+        </pre>
       </div>
       <div className="d-flex flex-row">
-        <input
-          type="text"
+        <textarea
+          className="rounded m-2 p-2"
           value={message}
+          style={{
+            width: "500px",
+            border: "none",
+            borderBottom: "1px solid black",
+          }}
           onChange={(e) => setMessage(e.target.value)}
         />
         <Button className="m-2 p-2" onClick={sendMessage}>
