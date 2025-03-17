@@ -26,11 +26,12 @@ export default function ViewCustomers() {
     <>
       <ViewCustomersHeading />
       <List
+        className="rounded shadow-lg"
         height={400} // Set the height of the list
         itemCount={data.length}
         itemSize={35} // Set the height of each row
         width={"100%"}
-        style={{ border: "1px solid black", backgroundColor: "lightblue" }}
+        style={{ border: "none", backgroundColor: "lightblue" }}
       >
         {({ index, style }) => (
           <div

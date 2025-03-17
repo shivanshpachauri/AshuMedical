@@ -32,7 +32,6 @@ export default function Parsingcsv() {
         itemCount={data.length}
         itemSize={35} // Set the height of each row
         width={"100%"}
-        style={{ border: "1px solid black" }}
       >
         {({ index, style }) => (
           <div style={style} className={styles.listrows} key={index}>
