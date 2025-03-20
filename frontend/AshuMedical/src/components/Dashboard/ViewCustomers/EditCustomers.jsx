@@ -17,11 +17,11 @@ export default function EditCustomers() {
   }, [showModal]);
   function handlechange(e) {
     const { name, value } = e.target;
-    const data = {
-      [name]: value,
-    };
-    //   dispatch(modalInputActions.setdelivery({ ...delivery, [name]: value }));
-    dispatch(modalInputActions.setdelivery(data));
+    // const data = {
+    //   [name]: value,
+    // };
+    dispatch(modalInputActions.setdelivery({ ...delivery, [name]: value }));
+    // dispatch(modalInputActions.setdelivery(data));
   }
   const deliveryupdate = Updatedelivery();
   function handlesubmit(e) {
@@ -43,7 +43,7 @@ export default function EditCustomers() {
         <input
           style={{ margin: 0, padding: 0 }}
           name="name"
-          value={delivery.name}
+          defaultValue={delivery.name}
           type="text"
           id="name"
           onChange={handlechange}
@@ -53,7 +53,7 @@ export default function EditCustomers() {
         <input
           style={{ margin: 0, padding: 0 }}
           name="pack_size_label"
-          value={delivery.pack_size_label}
+          defaultValue={delivery.pack_size_label}
           type="text"
           id="pack_size_label"
           onChange={handlechange}
@@ -63,7 +63,7 @@ export default function EditCustomers() {
         <input
           style={{ margin: 0, padding: 0 }}
           name="manufacturer_name"
-          value={delivery.manufacturer_name}
+          defaultValue={delivery.manufacturer_name}
           type="text"
           id="manufacturer_name"
           onChange={handlechange}
@@ -73,7 +73,7 @@ export default function EditCustomers() {
         <input
           style={{ margin: 0, padding: 0 }}
           name="order_by"
-          value={delivery.order_by}
+          defaultValue={delivery.order_by}
           type="text"
           id="order_by"
           onChange={handlechange}
@@ -83,7 +83,7 @@ export default function EditCustomers() {
         <input
           style={{ margin: 0, padding: 0 }}
           name="date"
-          value={delivery.date}
+          defaultValue={delivery.date}
           type="datetime-local"
           id="date"
           onChange={handlechange}
@@ -93,7 +93,7 @@ export default function EditCustomers() {
         <input
           style={{ margin: 0, padding: 0 }}
           name="quantity"
-          value={delivery.quantity}
+          defaultValue={delivery.quantity}
           type="text"
           id="quantity"
           onChange={handlechange}
@@ -103,7 +103,7 @@ export default function EditCustomers() {
         <input
           style={{ margin: 0, padding: 0 }}
           name="delivered"
-          value={delivery.delivered}
+          defaultValue={delivery.delivered}
           type="text"
           id="delivered"
           onChange={handlechange}

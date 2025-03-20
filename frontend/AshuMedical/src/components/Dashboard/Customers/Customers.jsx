@@ -30,6 +30,7 @@ export default function Customers() {
       delivered: "No",
       quantity: "",
     });
+    alert("submitted successfully");
   }
   return (
     <form className="form-inline" onSubmit={handlesubmit}>

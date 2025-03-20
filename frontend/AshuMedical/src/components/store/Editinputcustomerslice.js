@@ -17,16 +17,16 @@ export const editinputmodal = createSlice({
   reducers: {
     setdelivery(state, action) {
       //   return { ...state, ...action.payload };
-      state.id = action.payload.id || state.id;
-      state.name = action.payload.name || state.name;
+      state.id = action.payload.id || state.id || "";
+      state.name = action.payload.name || state.name || "";
       state.pack_size_label =
-        action.payload.pack_size_label || state.pack_size_label;
-      state.quantity = action.payload.quantity || state.quantity; // Corrected from action.payload.name
+        action.payload.pack_size_label || state.pack_size_label || "";
+      state.quantity = action.payload.quantity || state.quantity || ""; // Corrected from action.payload.name
       state.manufacturer_name =
-        action.payload.manufacturer_name || state.manufacturer_name;
-      state.date = action.payload.date || state.date;
-      state.order_by = action.payload.order_by || state.order_by;
-      state.delivered = action.payload.delivered || state.delivered;
+        action.payload.manufacturer_name || state.manufacturer_name || "";
+      state.date = action.payload.date || state.date || "";
+      state.order_by = action.payload.order_by || state.order_by || "";
+      state.delivered = action.payload.delivered || state.delivered || "";
     },
   },
 });
