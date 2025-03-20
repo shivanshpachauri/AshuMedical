@@ -35,7 +35,7 @@ export default function ViewCustomers() {
       >
         {({ index, style }) => (
           <div
-            className="customerstable d-flex flex-row text-capitalize"
+            className=" m-1 p-1 customerstable d-flex flex-row text-capitalize"
             style={style}
             onDoubleClick={() => handledoubleclick(data[index][1])}
             key={index}

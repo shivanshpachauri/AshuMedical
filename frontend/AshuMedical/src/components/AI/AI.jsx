@@ -5,17 +5,23 @@ import axios from "axios";
 
 export default function Ai() {
   const [message, setMessage] = useState("");
-  const [loadingstate, setloadingstate] = useState(null);
   const [response, setResponse] = useState("");
-
+  function savetodatabase() {
+    console.log("clicked");
+    console.trace("clicked here");
+  }
   const sendMessage = async () => {
     try {
-      setloadingstate(<Loading title="Loading answer" />);
+      setResponse(<Loading title="Loading answer" />);
       const res = await axios.post("http://localhost:3000/api/chat", {
         message,
       });
       const data1 = res.data;
       const data2 = data1.botReply;
+      data2.replace(/\*\*/g, "");
+      data2.replace(/(\*\*)/g, "");
+      console.log(data2);
+
       setMessage("");
       if (data2) {
         if (typeof data2 === "string") {
@@ -28,8 +34,6 @@ export default function Ai() {
       } else {
         setResponse("No response received from bot.");
       }
-
-      setloadingstate(null);
     } catch (error) {
       console.error("Error sending message:", error);
       setResponse(`Error sending message: ${error.message}`);
@@ -46,18 +50,19 @@ export default function Ai() {
           marginTop: "10px",
           backgroundColor: "lightblue",
           width: "600px",
-          height: "500px",
+          height: "auto",
+          maxHeight: "500px",
           whiteSpace: "normal",
-          overflow: "scroll",
+          overflowY: "auto",
         }}
       >
-        {loadingstate}
-
         <pre
           style={{
             fontSize: "80%",
             margin: "10px",
             padding: "10px",
+            overflowWrap: "break-word",
+            fontFamily: "sans-serif",
           }}
         >
           {response}
@@ -76,6 +81,14 @@ export default function Ai() {
         />
         <Button className="m-2 p-2" onClick={sendMessage}>
           Submit
+        </Button>
+        <Button
+          className="m-2 p-2"
+          style={{ backgroundColor: "skyblue" }}
+          onClick={savetodatabase}
+        >
+          {" "}
+          Save
         </Button>
       </div>
     </div>

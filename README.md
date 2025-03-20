@@ -1,11 +1,13 @@
 Ashu medical app
 
-Created by shivansh pachauri
+Created by Shivansh pachauri
 
-Built with vite+react.
+Built with Vite+React.
 
 I have used Deno + Express in the backend.
+
 Postgresql for database
+
 ![Alt text](./Ai.png)
 
 ![Alt text](./Homepage.png)
