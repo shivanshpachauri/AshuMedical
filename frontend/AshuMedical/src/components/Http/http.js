@@ -1,6 +1,4 @@
-import { useDispatch } from "react-redux";
 import axios from "axios";
-import { seterror } from "../store/alertslice";
 export async function checkemail({ email, password }) {
   const response = await axios.patch("http://localhost:3000/api/login", {
     email: email,
@@ -12,6 +10,26 @@ export async function checkemail({ email, password }) {
   const data = await response.data;
   return data;
 }
+
+export async function saveAi(ai) {
+  try {
+    const { title, body } = ai;
+    const response = await axios.post("http://localhost:3000/api/ai/save", {
+      title,
+      body,
+    });
+  } catch (error) {
+    console.trace(error);
+  }
+}
+export async function getAi() {
+  try {
+    const response = await axios.get("http://localhost:3000/api/ai/view");
+  } catch (error) {
+    console.trace(error);
+  }
+}
+
 export const sendMessage = async ({ message }) => {
   try {
     const res = await axios.post("http://localhost:3000/api/chat", {
@@ -76,7 +94,9 @@ export async function Fetchmedicines(isSorted) {
   } else {
     medicines = await axios.get("http://localhost:3000/api/view");
   }
-  const dataarray = Object.entries(medicines.data);
+
+  // const dataarray = Object.entries(medicines.data);
+  const dataarray = medicines.data;
   if (!dataarray) {
     throw new Error("Error in Fetching All Medicines");
   }
@@ -115,7 +135,8 @@ export async function insertmedicines(medicine) {
 }
 export async function fetchdelivery() {
   const response = await axios.get("http://localhost:3000/api/fetchdelivery");
-  const dataarray = Object.entries(response.data);
+
+  const dataarray = response.data;
   return dataarray;
 }
 export async function updatedelivery(delivery) {
@@ -166,7 +187,7 @@ export async function postdelivery(delivery) {
   }
 }
 export async function deletemedicine(medicine) {
-  const id = String(medicine[1].id);
+  const id = String(medicine.id);
   const response = await axios.delete("http://localhost:3000/api/delete", {
     data: { id: id },
   });

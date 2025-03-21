@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { Request, Response } from "npm:express";
 import "https://deno.land/std@0.224.0/dotenv/load.ts";
+import helmet from "npm:helmet";
 import pg from "npm:pg";
 import { pool1 } from "./server.ts";
 // import axios from "npm:axios";
@@ -16,15 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors());
-
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // React frontend URL
-//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allow necessary methods
-//     allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
-//     credentials: true, // Allow cookies/auth headers
-//   })
-// );
+app.use(helmet());
 app.use(morgan("tiny"));
 
 pool1
@@ -46,7 +39,9 @@ pool1.query(
 pool1.query(
   "create table if not exists delivery(id BIGSERIAL PRIMARY KEY,name TEXT,pack_size_label TEXT,manufacturer_name TEXT,order_by TEXT,quantity TEXT,delivered TEXT,DATE TEXT)"
 );
-
+pool1.query(
+  "create table if not exists AI(id bigserial PRIMARY KEY, title TEXT,body text)"
+);
 app.post("/api/chat", async (req, res) => {
   try {
     const content = req.body.message;
@@ -54,6 +49,31 @@ app.post("/api/chat", async (req, res) => {
     const response = await huggingface({ content });
 
     res.json({ botReply: response });
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching response" });
+  }
+});
+app.post("/api/ai/save", async (req, res) => {
+  try {
+    const { title, body } = req.body;
+    const result = await pool1.query(
+      `INSERT into AI(title,body) VALUES($1,$2)`,
+      [title, body]
+    );
+    console.log(result);
+    res.json({ message: result });
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching response" });
+  }
+});
+app.get("/api/ai/view", async (req, res) => {
+  try {
+    const { title, body } = req.body;
+    const result = await pool1.query(
+      `SELECT * FROM AI ORDER BY id ASC LIMIT 100`
+    );
+    console.log(result);
+    res.json({ message: result });
   } catch (error) {
     res.status(500).json({ error: "Error fetching response" });
   }

@@ -18,6 +18,7 @@ export const DeleteProvider = ({ children }) => {
   const handleDelete = useCallback(
     (medicine) => {
       setdelete();
+
       mutate(medicine);
       alert("Deleted successfully");
     },

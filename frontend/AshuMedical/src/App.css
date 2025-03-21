@@ -15,8 +15,8 @@ body {
 label {
   display: block;
   padding-right: 5em;
-  text-emphasis: bold;
-  font-weight: bold;
+  /* text-emphasis: bold;
+  font-weight: bold; */
   margin: 10px;
 }
 input {

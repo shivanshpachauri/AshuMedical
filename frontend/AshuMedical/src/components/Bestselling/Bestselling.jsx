@@ -33,7 +33,7 @@ function Bestselling() {
       <Updatemedicine />
       <div id="bestsellingtable">
         <div className="text-capitalize container px-4 py-5">
-          <h1 className="theading">Bunch of medicines</h1>
+          <h1 className="theading">Medicines</h1>
           <button
             type="button"
             id="addnewentries"

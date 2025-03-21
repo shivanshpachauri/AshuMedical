@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const TableRows = ({ index, style, data }) => {
   const item = data[index];
 
-  return <TableRow key={item[1].id} item={item} style={style} />;
+  return <TableRow key={item.id} item={item} style={style} />;
 };
 TableRows.propTypes = {
   index: PropTypes.number.isRequired,

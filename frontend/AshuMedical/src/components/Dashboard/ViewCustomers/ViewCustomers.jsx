@@ -37,16 +37,16 @@ export default function ViewCustomers() {
           <div
             className=" m-1 p-1 customerstable d-flex flex-row text-capitalize"
             style={style}
-            onDoubleClick={() => handledoubleclick(data[index][1])}
+            onDoubleClick={() => handledoubleclick(data[index])}
             key={index}
           >
-            <div className="col-2">{data[index][1].name}</div>
-            <div className="col-2">{data[index][1].pack_size_label}</div>
-            <div className="col-2">{data[index][1].order_by}</div>
-            <div className="col-2">{data[index][1].manufacturer_name}</div>
-            <div className="col-2">{data[index][1].date}</div>
-            <div className="col-1">{data[index][1].quantity}</div>
-            <div className="col-2">{data[index][1].delivered}</div>
+            <div className="col-2">{data[index].name}</div>
+            <div className="col-2">{data[index].pack_size_label}</div>
+            <div className="col-2">{data[index].order_by}</div>
+            <div className="col-2">{data[index].manufacturer_name}</div>
+            <div className="col-2">{data[index].date}</div>
+            <div className="col-1">{data[index].quantity}</div>
+            <div className="col-2">{data[index].delivered}</div>
           </div>
         )}
       </List>

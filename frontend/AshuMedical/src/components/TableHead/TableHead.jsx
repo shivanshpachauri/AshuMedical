@@ -6,7 +6,7 @@ export default function TableHead() {
   return (
     <>
       <div
-        style={{ position: "relative", left: "35rem", width: "200px" }}
+        style={{ position: "relative", left: "60rem", width: "200px" }}
         className=" d-flex flex-column  m-2 p-2"
       >
         <button
@@ -19,7 +19,7 @@ export default function TableHead() {
           Sort
         </button>
       </div>
-      <div className="container bg-primary  text-capitalize fw-bold rounded shadow-sm">
+      <div className="container bg-primary  text-capitalize rounded shadow-sm">
         <div className="row ">
           <div className="col-1">id</div>
           <div className="col-3">name</div>

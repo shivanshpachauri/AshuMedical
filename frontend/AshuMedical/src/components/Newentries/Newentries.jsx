@@ -37,7 +37,7 @@ export default function Newentries({ submitstate, setsubmitstate }) {
   return (
     <div
       id="newentries"
-      className="container text-capitalize d-flex flex-column align-items-center"
+      className="container rounded text-capitalize d-flex flex-column align-items-center"
     >
       <h1 className="text-center mb-4">New Entries</h1>
       {submitstate && (
@@ -114,7 +114,8 @@ export default function Newentries({ submitstate, setsubmitstate }) {
         <button
           id="submitmedicines"
           type="submit"
-          className="m-4 p-2 btn btn-primary"
+          style={{ backgroundColor: "lightskyblue" }}
+          className="m-4 p-2 btn "
         >
           Submit
         </button>

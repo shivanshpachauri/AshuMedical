@@ -17,7 +17,6 @@ export const EditingProvider = ({ children }) => {
   });
   const toggleEditing = () => {
     setIsEdited((prevState) => !prevState);
-    // setIsEdited((state)=>{..state,!state});
   };
   const Editobject = {
     isEdited: isEdited,

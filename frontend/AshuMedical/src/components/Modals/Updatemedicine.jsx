@@ -6,8 +6,7 @@ import { EditingContext } from "../Context/Editingcontext";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 export default function Updatedialog() {
-  const [confirmstate, setconfirmstate] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { medicines, setmedicines, isEdited, toggleEditing } =
     useContext(EditingContext);
 
@@ -39,17 +38,13 @@ export default function Updatedialog() {
     e.preventDefault();
     mutate(medicines);
     alert("submitted successfully");
-    e.target.reset();
-    navigate(".", { replace: true });
-
-    window.location.reload();
   }
   return createPortal(
     <dialog ref={modalref} className="updatedialog rounded shadow-lg">
       <form
         id="newentriedform"
         onSubmit={handlesubmit}
-        className="text-capitalize"
+        className=" pe-3 text-capitalize"
       >
         <label htmlFor="insertid">Id</label>
         <input
@@ -119,42 +114,26 @@ export default function Updatedialog() {
           }}
           autoComplete="one"
         />
-        {confirmstate ? (
-          <div className="text-capitalise d-flex flex-column justify-content-between">
-            <h5 className="d-block"> Do you want to submit yes or no</h5>
-            <button type="submit" className="btn btn-primary">
-              Yes
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={() => setconfirmstate(false)}
-            >
-              no
-            </button>
-          </div>
-        ) : (
-          <div className="d-flex flex-row justify-content-end">
-            <button
-              id="submitmedicines"
-              type="button"
-              className="btn btn-primary"
-              style={{ float: "right" }}
-              onClick={() => setconfirmstate(true)}
-            >
-              Submit
-            </button>
-            <button
-              id="submitmedicines"
-              type="button"
-              className="d-inline btn btn-danger"
-              onClick={handleclose}
-              style={{ float: "left" }}
-            >
-              Close
-            </button>
-          </div>
-        )}
+
+        <div className="d-flex flex-row justify-content-end">
+          <button
+            id="submitmedicines"
+            type="button"
+            className="d-inline btn btn-danger"
+            onClick={handleclose}
+            style={{ float: "left" }}
+          >
+            Close
+          </button>
+          <button
+            id="submitmedicines"
+            type="submit"
+            className="btn btn-primary"
+            style={{ float: "right" }}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </dialog>,
     document.getElementById("modalid")
