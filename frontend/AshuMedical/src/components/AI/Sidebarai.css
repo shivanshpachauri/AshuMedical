@@ -6,3 +6,6 @@
   color: white;
   border-radius: 5%;
 }
+html {
+  scroll-behavior: auto;
+}

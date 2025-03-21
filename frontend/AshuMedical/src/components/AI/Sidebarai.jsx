@@ -15,6 +15,15 @@ export default function Sidebarai() {
   if (isError) {
     return <Error title={"Error in fetchai sidebar"} />;
   }
+  const MemoizedRow = React.memo(({ index, style }) => (
+    <div
+      style={style}
+      key={data[index].id}
+      className="sidebarrow text-capitalize position-relative m-2"
+    >
+      {data[index].title}
+    </div>
+  ));
   return (
     <nav className="rounded col-md-2 d-none d-md-block bg-dark sidebar">
       <div className="sidebar-sticky">
@@ -22,20 +31,14 @@ export default function Sidebarai() {
           <h1 className="text-light">Database</h1>
           <List
             className="rounded shadow-lg"
-            height={400}
-            itemSize={80}
-            width={"100%"}
+            height={500}
+            itemSize={85}
+            width="100%"
             itemCount={data.length}
-            style={{ border: "none" }}
+            style={{ border: "none", color: "white" }}
           >
             {({ index, style }) => (
-              <div
-                style={style}
-                key={index}
-                className=" sidebarrow text-capitalize position-relative m-2 p-2 "
-              >
-                {data[index].title}
-              </div>
+              <MemoizedRow index={index} style={style} key={data[index].id} />
             )}
           </List>
         </ul>

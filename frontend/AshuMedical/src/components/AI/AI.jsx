@@ -11,7 +11,7 @@ export default function Ai() {
     const title = message;
     const body = response;
     const response1 = await saveAi({ title, body });
-    console.trace(`clicked here ${response1}`);
+    alert("submitted successfully");
   }
   const sendMessage = async () => {
     try {
