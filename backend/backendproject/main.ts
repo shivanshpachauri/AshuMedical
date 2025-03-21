@@ -72,8 +72,8 @@ app.get("/api/ai/view", async (req, res) => {
     const result = await pool1.query(
       `SELECT * FROM AI ORDER BY id ASC LIMIT 100`
     );
-    console.log(result);
-    res.json({ message: result });
+    res.send(result.rows);
+    // res.json({ message: result });
   } catch (error) {
     res.status(500).json({ error: "Error fetching response" });
   }

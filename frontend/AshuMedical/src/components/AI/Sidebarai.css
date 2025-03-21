@@ -1,0 +1,8 @@
+.sidebarrow:hover {
+  background-color: white;
+  color: black;
+}
+.sidebarrow {
+  color: white;
+  border-radius: 5%;
+}

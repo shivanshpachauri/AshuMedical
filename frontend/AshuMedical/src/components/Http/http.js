@@ -25,6 +25,7 @@ export async function saveAi(ai) {
 export async function getAi() {
   try {
     const response = await axios.get("http://localhost:3000/api/ai/view");
+    return response.data;
   } catch (error) {
     console.trace(error);
   }

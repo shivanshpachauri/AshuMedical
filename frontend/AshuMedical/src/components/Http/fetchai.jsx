@@ -1,10 +1,10 @@
-import { sendMessage } from "./http";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getAi } from "./http";
+import { useQuery } from "@tanstack/react-query";
 export default function Fetchai() {
-  const queryClient = useQueryClient();
-  const { mutate: mutateai } = useQuery({
-    mutationFn: sendMessage,
+  const data = useQuery({
+    queryKey: ["fetchai"],
+    queryFn: getAi,
   });
 
-  return mutateai;
+  return data;
 }
