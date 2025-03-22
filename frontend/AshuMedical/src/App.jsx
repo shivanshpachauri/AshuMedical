@@ -13,7 +13,7 @@ import Loading from "./components/Loading/Loading.jsx";
 import ErrorBoundary from "./components/Errorboundary/Errorboundary.jsx";
 import Parsingcsv from "./components/Dashboard/parsingcsv.jsx";
 import Customers from "./components/Dashboard/Customers/Customers.jsx";
-
+const Customid = lazy(() => import("./components/AI/Customid.jsx"));
 const AI = lazy(() => import("./components/AI/AI.jsx"));
 const Dashboard = lazy(() => import("./components/Dashboard/Dashboard.jsx"));
 const Carousel = lazy(() => import("./components/Carousel/Carousel.jsx"));
@@ -116,6 +116,18 @@ function App() {
               </Suspense>
             </ErrorBoundary>
           ),
+          children: [
+            {
+              path: ":id",
+              element: (
+                <ErrorBoundary>
+                  <Suspense fallback={<Loading title="loading id" />}>
+                    <Customid />
+                  </Suspense>
+                </ErrorBoundary>
+              ),
+            },
+          ],
         },
       ],
     },

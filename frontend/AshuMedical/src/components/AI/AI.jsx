@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { saveAi } from "../Http/http";
 import Sidebarai from "./Sidebarai";
+import Customid from "./Customid";
 export default function Ai() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
@@ -11,6 +12,7 @@ export default function Ai() {
     const title = message;
     const body = response;
     const response1 = await saveAi({ title, body });
+
     alert("submitted successfully");
   }
   const sendMessage = async () => {
@@ -46,6 +48,7 @@ export default function Ai() {
       <div className="row">
         <Sidebarai />
         <main className="col">
+          {/* <Customid /> */}
           <div className="d-flex flex-column justify-content-center align-items-center">
             <h1>AI </h1>
             <div
