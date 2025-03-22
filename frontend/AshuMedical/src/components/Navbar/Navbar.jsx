@@ -23,7 +23,19 @@ const Navbar = () => {
           id="navcontainer"
           className="container rounded text-white shadow-lg"
         >
-          <div className="navbar-header">
+          <div
+            className="navbar-header"
+            style={{
+              borderImage:
+                "linear-gradient(to right,rgb(58, 68, 213) 0%,rgb(213, 58, 110) 100%) 1",
+              borderRadius: "5px" /* this doesn't work */,
+              borderWidth: "2px",
+              borderStyle: "solid",
+              padding: "5px",
+
+              borderColor: "linen",
+            }}
+          >
             <a className="navbar-brand" href="/">
               <strong>Ashu Medical</strong>
             </a>
@@ -76,8 +88,21 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li className="nav-item" style={{ borderColor: "linen" }}>
-                <NavLink className="nav-link" to="/ai">
+              <li className="nav-item">
+                <NavLink
+                  style={{
+                    borderImage:
+                      "linear-gradient(to right, #3acfd5 0%, #3a4ed5 100%) 1",
+                    borderRadius: "5px" /* this doesn't work */,
+                    borderWidth: "4px",
+                    borderStyle: "solid",
+                    padding: "5px",
+
+                    borderColor: "linen",
+                  }}
+                  className="nav-link"
+                  to="/ai"
+                >
                   AI
                 </NavLink>
               </li>

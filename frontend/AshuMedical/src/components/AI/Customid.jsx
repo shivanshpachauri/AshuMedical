@@ -1,9 +1,39 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Customid() {
-  const params = useParams();
-  console.log(params);
-  console.trace(params);
-  return <div>Customid{params}</div>;
+  const data = useSelector((state) => state.aislice);
+
+  // prettier-ignore
+  const body = data.body.replace(/\*\*/g, "");
+
+  return (
+    <div
+      className="mx-auto text-capitalize d-flex rounded shadow-lg flex-column"
+      style={{
+        marginTop: "10px",
+        backgroundColor: "lightblue",
+        width: "600px",
+        height: "auto",
+        maxHeight: "500px",
+        whiteSpace: "normal",
+        overflowY: "auto",
+      }}
+    >
+      <strong className="mx-auto m-2 p-2 text-capitalize">{data.title}</strong>
+      <pre
+        style={{
+          fontSize: "80%",
+          overflowX: "hidden",
+          whiteSpace: "break-spaces",
+          margin: "10px",
+          padding: "10px",
+          overflowWrap: "break-word",
+          fontFamily: "sans-serif",
+        }}
+      >
+        {body}
+      </pre>
+    </div>
+  );
 }
