@@ -37,12 +37,17 @@ export default function Login() {
     e.target.reset();
   }
   return (
-    <div className="container px-4 py-5 bg-danger-subtle text-capitalize">
+    <div
+      className="mx-auto mt-5 align-items-center  d-flex flex-column text-white rounded  text-capitalize"
+      style={{ backgroundColor: "#556d8d", width: "400px", height: "341px" }}
+    >
+      <h1 className="text-center m-2 p-2 "> Login</h1>
       <form autoComplete="on" onSubmit={handlesubmit}>
         <label htmlFor="email" className="form-label">
           <strong> Email</strong>
         </label>
         <input
+          style={{ width: "300px" }}
           onChange={handlechange}
           type="email"
           className="form-control"
@@ -55,6 +60,7 @@ export default function Login() {
           <strong>password</strong>
         </label>
         <input
+          style={{ width: "300px" }}
           onChange={handlechange}
           type="password"
           className="form-control"
@@ -63,12 +69,18 @@ export default function Login() {
           aria-describedby="emailHelpId"
           placeholder="password"
         />
-        <Button type="submit" className="d-block">
+        <Button
+          style={{ backgroundColor: "#27374d" }}
+          type="submit"
+          className="l-3 border-0 d-block text-white"
+        >
           Submit
         </Button>
         {success}
-        <small id="emailHelpId" className="form-text text-muted">
-          <a href="/signup">Register</a>
+        <small id="emailHelpId" className="  m-2  form-text text-muted">
+          <a href="/signup" style={{ color: "red", fontWeight: "bolder" }}>
+            Register
+          </a>
         </small>
       </form>
     </div>
