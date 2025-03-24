@@ -25,7 +25,6 @@ export default function Sidebarai() {
   if (isError) {
     return <Error title={"Error in fetchai sidebar"} />;
   }
-
   return (
     <nav
       className="rounded col-md-2 d-none d-md-block bg-dark sidebar"
@@ -35,15 +34,22 @@ export default function Sidebarai() {
     >
       <div className="nav flex-column">
         <h3 className="mx-auto text-light">Save</h3>
-        <div style={{ height: "500px", overflow: "scroll" }}>
-          {data.map((item, index) => (
+        <div
+          className="sidebarlist"
+          style={{ height: "500px", overflow: "auto" }}
+        >
+          {data.toReversed().map((item, index) => (
             <NavLink
               key={index}
               to={`/ai/${item.id}`}
-              className="sidebarrow d-block text-decoration-none text-capitalize position-relative m-2"
+              style={{ maxWidth: "150px" }}
+              className="sidebarrow d-block text-truncate text-decoration-none  position-relative m-2"
               onClick={() => handleclick(item)}
             >
               {item.title}
+              {/* {item.title.length > 20
+                ? `${item.title.substr(0, 20)}...`
+                : item.title.trim()} */}
             </NavLink>
           ))}
         </div>

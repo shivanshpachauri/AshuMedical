@@ -6,17 +6,19 @@ import axios from "axios";
 import { saveAi } from "../Http/http";
 import Sidebarai from "./Sidebarai";
 import Customid from "./Customid";
+import { useQueryClient } from "@tanstack/react-query";
 export default function Ai() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
   const location = useLocation();
-
+  const databaseclient = useQueryClient();
   async function savetodatabase() {
     const title = message;
     const body = response;
-    const response1 = await saveAi({ title, body });
+    await saveAi({ title, body });
 
     alert("submitted successfully");
+    databaseclient.invalidateQueries(["fetchai"]);
   }
   const sendMessage = async () => {
     try {
@@ -26,14 +28,15 @@ export default function Ai() {
       });
       const data1 = res.data;
       const data2 = data1.botReply;
-      data2.replace(/\*\*/g, "");
-      if (data2) {
-        if (typeof data2 === "string") {
-          setResponse(data2);
-        } else if (Array.isArray(data2)) {
-          setResponse(data2.join(" "));
-        } else if (typeof data2 === "object") {
-          setResponse(JSON.stringify(data2, null, 2));
+      const formatted = data2.replace(/\*\*/g, "");
+
+      if (formatted) {
+        if (typeof formatted === "string") {
+          setResponse(formatted);
+        } else if (Array.isArray(formatted)) {
+          setResponse(formatted.join(" "));
+        } else if (typeof formatted === "object") {
+          setResponse(JSON.stringify(formatted, null, 2));
         }
       } else {
         setResponse("No response received from bot.");
@@ -67,6 +70,7 @@ export default function Ai() {
                 }}
               >
                 <pre
+                  className="airesponse"
                   style={{
                     fontSize: "80%",
                     overflowX: "hidden",
@@ -96,7 +100,7 @@ export default function Ai() {
                   Submit
                 </Button>
                 <Button
-                  className="m-2 p-2"
+                  className="m-2 p-2 border-0"
                   style={{ backgroundColor: "skyblue" }}
                   onClick={savetodatabase}
                 >

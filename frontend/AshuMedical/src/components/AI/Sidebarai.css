@@ -6,6 +6,14 @@
   color: white;
   border-radius: 5%;
 }
-/* html {
-  scroll-behavior: auto;
-} */
+
+.sidebarlist::-webkit-scrollbar {
+  /* display: none; */
+  background-color: rgba(97, 97, 235, 0.644);
+  width: 2px;
+  height: 15px;
+  border-radius: 7%;
+}
+.sidebarlist::-webkit-scrollbar-thumb {
+  background: #000;
+}
