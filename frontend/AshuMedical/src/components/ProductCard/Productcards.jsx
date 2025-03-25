@@ -2,8 +2,11 @@ import React from "react";
 import Firstmedicine from "./Productimages/Firstmedicine.jpg";
 import Secondmedicine from "./Productimages/Secondmedicine.jpg";
 import Thirdmedicine from "./Productimages/Thirdmedicine.jpg";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../store/cartslice";
 
 export default function Productcards() {
+  const dispatch = useDispatch();
   const products = [
     {
       image: Firstmedicine,
@@ -27,7 +30,18 @@ export default function Productcards() {
       price: "$15.99",
     },
   ];
-
+  function handleclick(product) {
+    console.trace(product);
+    dispatch(
+      cartActions.setcart({
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        description: product.description,
+        price: product.price,
+      })
+    );
+  }
   return (
     <div
       className="container px-4 py-5 shadow-lg text-center text-dark mb-4"
@@ -57,7 +71,12 @@ export default function Productcards() {
                 <p className="text-danger">
                   <strong>Price: {product.price}</strong>
                 </p>
-                <button className="btn btn-primary mt-auto">Buy Now</button>
+                <button
+                  className="btn btn-primary mt-auto"
+                  onClick={() => handleclick(product)}
+                >
+                  Buy Now
+                </button>
               </div>
             </div>
           </div>

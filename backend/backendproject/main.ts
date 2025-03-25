@@ -36,6 +36,7 @@ const createTables = async () => {
     `CREATE TABLE IF NOT EXISTS medicaldb (id BIGSERIAL PRIMARY KEY, name TEXT, price DOUBLE PRECISION, manufacturer_name TEXT, pack_size_label TEXT, short_composition1 TEXT)`,
     `CREATE TABLE IF NOT EXISTS delivery (id BIGSERIAL PRIMARY KEY, name TEXT, pack_size_label TEXT, manufacturer_name TEXT, order_by TEXT, quantity TEXT, delivered TEXT, date TEXT)`,
     `CREATE TABLE IF NOT EXISTS AI (id BIGSERIAL PRIMARY KEY, title TEXT, body TEXT)`,
+    `CREATE TABLE IF NOT EXISTS CART(id BIGSERIAL PRIMARY KEY,image BYTEA,name TEXT,DESCRIPTION TEXT,price DOUBLE PRECISION)`,
   ];
 
   for (const query of queries) {
@@ -43,6 +44,23 @@ const createTables = async () => {
   }
 };
 createTables();
+app.post("/api/cartpost", async (req, res) => {
+  try {
+    const { id, name, image, description } = req.body;
+    console.log(id, name, image, description);
+    await pool1.query(
+      `INSERT INTO CART(id,image,name,description,price) VALUES($1,$2,$3,$4,$5)`,
+      [id, name, image, description]
+    );
+    res.json({ message: "inserted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching response" });
+  }
+});
+app.get("/api/cartview", async (req, res) => {
+  const result = await pool1.query(" select * from cart order by id asc");
+  res.send(result.rows);
+});
 app.post("/api/chat", async (req, res) => {
   try {
     const content = req.body.message;

@@ -1,25 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  id: "",
-  price: "",
-  name: "",
-  description: "",
-  image: `https://picsum.photos/200`,
-  shopping: [],
+  shopping: [
+    {
+      id: "",
+      price: "",
+      name: "",
+      description: "",
+      image: `https://picsum.photos/200`,
+      price: "",
+    },
+  ],
 };
 
 export const cartslice = createSlice({
-  name: "aislice",
+  name: "cartslice",
   initialState,
   reducers: {
     setcart(state, action) {
+      state.shopping.push({
+        id: action.payload.id || "",
+        price: action.payload.price || "",
+        name: action.payload.name || "",
+        description: action.payload.description || "",
+        image: action.payload.image || "",
+        price: action.payload.price || "",
+      });
       //   return { ...state, ...action.payload };
-      state.id = action.payload.id || state.id || "";
-      state.price = action.payload.price || state.price || "";
-      state.name = action.payload.name || state.name || "";
-      state.description = action.payload.description || state.description || "";
-      state.image = action.payload.image || state.image || "";
     },
   },
 });
