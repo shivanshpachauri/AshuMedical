@@ -13,6 +13,7 @@ import Loading from "./components/Loading/Loading.jsx";
 import ErrorBoundary from "./components/Errorboundary/Errorboundary.jsx";
 import Parsingcsv from "./components/Dashboard/parsingcsv.jsx";
 import Customers from "./components/Dashboard/Customers/Customers.jsx";
+import Cart from "./components/Cart/Cart.jsx";
 const Customid = lazy(() => import("./components/AI/Customid.jsx"));
 const AI = lazy(() => import("./components/AI/AI.jsx"));
 const Dashboard = lazy(() => import("./components/Dashboard/Dashboard.jsx"));
@@ -106,7 +107,10 @@ function App() {
           path: "/signup",
           element: <Signup />,
         },
-
+        {
+          path: "/cart",
+          element: <Cart />,
+        },
         {
           path: "/ai",
           element: (

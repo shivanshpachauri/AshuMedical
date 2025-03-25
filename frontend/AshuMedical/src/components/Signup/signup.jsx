@@ -51,13 +51,13 @@ export default function RegisterForm() {
         password: "",
         gender: "",
       });
-      setconfirmpassword({...confirmpassword,confirmpassword:""})
+      setconfirmpassword({ ...confirmpassword, confirmpassword: "" });
     }
   }
   return (
     <form
       id="registrationform"
-      className="container border border-primary p-5"
+      className="container border border-0 m-2 p-5"
       onSubmit={handlesubmit}
       autoComplete="on"
     >

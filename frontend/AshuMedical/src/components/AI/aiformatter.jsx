@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-function App() {
-  const [text, setText] = useState("");
-  const [boldText, setBoldText] = useState("");
-  const handleChange = (event) => {
-    setText(event.target.value);
-  };
-  const handleBold = () => {
-    setBoldText(text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>"));
-  };
-  return (
-    <div>
-      {" "}
-      <input type="text" value={text} onChange={handleChange} />{" "}
-      <button onClick={handleBold}>Bold</button> <p>{boldText}</p>{" "}
-    </div>
-  );
+import React from "react";
+
+export default function aiformatter(inputstring) {
+  //   could also use marked https://www.npmjs.com/package/marked
+  // marked.setOptions({ breaks: true });
+  // console.log(marked("This is line one.\nThis is line two."));
+
+  const boldText = inputstring.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  const newText = boldText.replace(/\n/g, "<br/>");
+  const withoutapostrophe = newText.replace(/""/g, "");
+  // console.log(newText);
+  console.log(withoutapostrophe);
+
+  return withoutapostrophe;
 }
-export default App;

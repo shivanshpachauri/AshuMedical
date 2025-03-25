@@ -1,15 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import aiformatter from "./aiformatter";
 
 export default function Customid() {
   const data = useSelector((state) => state.aislice);
 
   // prettier-ignore
   const body = data.body.replace(/\*\*/g, "");
+  // const body=aiformatter(data.body);
+  // console.log(body);
+  // console.trace(body);
 
   return (
     <div
-      className="mx-auto text-capitalize d-flex rounded shadow-lg flex-column"
+      className="mx-auto  d-flex rounded shadow-lg flex-column"
       style={{
         marginTop: "10px",
         backgroundColor: "lightblue",

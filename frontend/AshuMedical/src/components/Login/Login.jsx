@@ -69,6 +69,11 @@ export default function Login() {
           aria-describedby="emailHelpId"
           placeholder="password"
         />
+        <small id="emailHelpId" className="  m-2  form-text text-muted">
+          <a href="/signup" style={{ color: "red", fontWeight: "bolder" }}>
+            Register
+          </a>
+        </small>
         <Button
           style={{ backgroundColor: "#27374d" }}
           type="submit"
@@ -77,11 +82,6 @@ export default function Login() {
           Submit
         </Button>
         {success}
-        <small id="emailHelpId" className="  m-2  form-text text-muted">
-          <a href="/signup" style={{ color: "red", fontWeight: "bolder" }}>
-            Register
-          </a>
-        </small>
       </form>
     </div>
   );

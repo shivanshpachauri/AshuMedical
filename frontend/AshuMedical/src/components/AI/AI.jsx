@@ -7,6 +7,7 @@ import { saveAi } from "../Http/http";
 import Sidebarai from "./Sidebarai";
 import Customid from "./Customid";
 import { useQueryClient } from "@tanstack/react-query";
+import aiformatter from "./aiformatter";
 export default function Ai() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
@@ -29,6 +30,9 @@ export default function Ai() {
       const data1 = res.data;
       const data2 = data1.botReply;
       const formatted = data2.replace(/\*\*/g, "");
+      // const formatted = aiformatter(data2);
+      // console.log(formatted);
+      // console.trace(formatted);
 
       if (formatted) {
         if (typeof formatted === "string") {
