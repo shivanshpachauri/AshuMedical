@@ -19,10 +19,10 @@ const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
   return (
     <div
       id="searchlist"
-      className="bestsellingtablerow rounded m-2 p-2 mx-auto"
+      className="bestsellingtablerow d-flex flex-row rounded "
       style={style}
     >
-      <div className="d-flex flex-row">
+      <div className="container d-flex">
         <div className="col-1">{item.id}</div>
 
         <div className="col-3 ">{item.name}</div>
@@ -30,24 +30,24 @@ const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
         <div className="col-3  ">{item.manufacturer_name}</div>
         <div className="col-2 ">{item.pack_size_label}</div>
         <div className="col-1">{item.short_composition1}</div>
-        <div className="col-0">
-          <div className="d-flex flex-column">
-            <button
-              type="button"
-              className="btn btn-danger "
-              onClick={onDelete}
-            >
-              Delete
-            </button>
-            <button
-              type="button"
-              className="visible btn btn-primary"
-              onClick={handleedit}
-            >
-              Edit
-            </button>
-          </div>
-        </div>
+      </div>
+      <div className="col-0 mt-1 mx-1 d-flex flex-column">
+        <button
+          type="button"
+          className="btn btn-danger "
+          style={{ margin: "3px", padding: "3px", height: "5em", width: "5em" }}
+          onClick={onDelete}
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          className="visible  btn btn-primary"
+          style={{ margin: "3px", padding: "3px", height: "5em", width: "5em" }}
+          onClick={handleedit}
+        >
+          Edit
+        </button>
       </div>
     </div>
   );

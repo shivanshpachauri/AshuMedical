@@ -13,7 +13,7 @@ import { DeleteContext } from "../Context/deletecontext";
 function Bestselling() {
   const { deletestate } = useContext(DeleteContext);
   const [newentries, setnewentries] = useState(false);
-  const [submitstate, setsubmitstate] = React.useState(false);
+  const [submitstate, setsubmitstate] = useState(false);
   const queryClient = useQueryClient();
   if (submitstate) {
     queryClient.invalidateQueries(["Fetchmedicines"]);

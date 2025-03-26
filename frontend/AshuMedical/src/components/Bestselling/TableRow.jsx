@@ -9,7 +9,6 @@ const TableRow = React.memo(({ item, style }) => {
   const { handleDelete } = useContext(DeleteContext);
   function handleedit() {
     toggleEditing();
-
     setmedicines({
       id: item.id,
       name: item.name,
@@ -20,31 +19,31 @@ const TableRow = React.memo(({ item, style }) => {
     });
   }
   return (
-    <div className="bestsellingtablerow m-2 p-2 mx-auto rounded" style={style}>
-      <div className="d-flex flex-row">
+    <div className="bestsellingtablerow  d-flex flex-row rounded" style={style}>
+      <div className="container d-flex">
         <div className="col-1">{item.id}</div>
         <div className="col-3">{item.name}</div>
         <div className="col-1">{item.price}</div>
         <div className="col-3">{item.manufacturer_name}</div>
         <div className="col-2">{item.pack_size_label}</div>
         <div className="col-1">{item.short_composition1}</div>
-        <div className="col-0">
-          <div style={{ float: "right" }} className="d-flex flex-column">
-            <button
-              type="button"
-              className="btn btn-danger "
-              onClick={() => handleDelete(item)}
-            >
-              Delete
-            </button>
-            <button
-              type="button"
-              className="visible btn btn-primary"
-              onClick={handleedit}
-            >
-              Edit
-            </button>
-          </div>
+      </div>
+      <div className="col-0">
+        <div style={{ float: "right" }} className="d-flex flex-column">
+          <button
+            type="button"
+            className="btn btn-danger "
+            onClick={() => handleDelete(item)}
+          >
+            Delete
+          </button>
+          <button
+            type="button"
+            className="visible btn btn-primary"
+            onClick={handleedit}
+          >
+            Edit
+          </button>
         </div>
       </div>
     </div>

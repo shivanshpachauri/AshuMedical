@@ -19,16 +19,14 @@ export default function TableHead() {
           Sort
         </button>
       </div>
-      <div className="container bg-primary  text-capitalize rounded shadow-sm">
-        <div className="row ">
-          <div className="col-1">id</div>
-          <div className="col-3">name</div>
+      <div className="container d-flex bg-primary  text-capitalize rounded shadow-sm">
+        <div className="col-1">id</div>
+        <div className="col-3">name</div>
 
-          <div className="col-1">price</div>
-          <div className="col-3">Manufacturer name</div>
-          <div className="col-2">pack size label</div>
-          <div className="col-2">Salt</div>
-        </div>
+        <div className="col-1">price</div>
+        <div className="col-3">Manufacturer name</div>
+        <div className="col-2">pack size label</div>
+        <div className="col-1">Salt</div>
       </div>
     </>
   );
