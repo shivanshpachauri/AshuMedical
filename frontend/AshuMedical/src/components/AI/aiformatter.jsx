@@ -5,6 +5,9 @@ import DOMPurify from "dompurify";
 export default function aiformatter(inputstring) {
   //   could also use marked https://www.npmjs.com/package/marked
   // marked.setOptions({ breaks: true });
+  marked.use({
+    breaks: true,
+  });
   const data = marked.parse(inputstring);
   const clean = DOMPurify.sanitize(data);
 

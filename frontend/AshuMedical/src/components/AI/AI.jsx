@@ -97,17 +97,19 @@ export default function Ai() {
                   }}
                   onChange={(e) => setMessage(e.target.value)}
                 />
-                <Button className="m-2 p-2" onClick={sendMessage}>
-                  Submit
-                </Button>
-                <Button
-                  className="m-2 p-2 border-0"
-                  style={{ backgroundColor: "skyblue" }}
-                  onClick={savetodatabase}
-                >
-                  {" "}
-                  Save
-                </Button>
+                <div className="d-flex flex-row">
+                  <Button className="m-2 p-2" onClick={sendMessage}>
+                    Submit
+                  </Button>
+                  <Button
+                    className="m-2 p-2 border-0"
+                    style={{ backgroundColor: "skyblue" }}
+                    onClick={savetodatabase}
+                  >
+                    {" "}
+                    Save
+                  </Button>
+                </div>
               </div>
             </div>
           )}

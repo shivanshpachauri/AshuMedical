@@ -73,13 +73,8 @@ export async function searchmedicine(
       "http://localhost:3000/api/view/medicines",
       { params }
     );
-    const dataArray = Object.entries(response.data || {});
 
-    if (!dataArray.length) {
-      throw new Error("No medicines found");
-    }
-
-    return dataArray;
+    return response.data;
   } catch (error) {
     throw new Error("Error in fetching medicines" + error);
   }

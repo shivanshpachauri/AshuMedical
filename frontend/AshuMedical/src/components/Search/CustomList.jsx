@@ -8,12 +8,12 @@ const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
   function handleedit() {
     toggleEditing();
     setmedicines({
-      id: item[1].id,
-      name: item[1].name,
-      manufacturer_name: item[1].manufacturer_name,
-      price: item[1].price,
-      pack_size_label: item[1].pack_size_label,
-      short_composition1: item[1].short_composition1,
+      id: item.id,
+      name: item.name,
+      manufacturer_name: item.manufacturer_name,
+      price: item.price,
+      pack_size_label: item.pack_size_label,
+      short_composition1: item.short_composition1,
     });
   }
   return (
@@ -23,13 +23,13 @@ const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
       style={style}
     >
       <div className="d-flex flex-row">
-        <div className="col-1">{item[1].id}</div>
+        <div className="col-1">{item.id}</div>
 
-        <div className="col-3 ">{item[1].name}</div>
-        <div className="col-1">{item[1].price}</div>
-        <div className="col-3  ">{item[1].manufacturer_name}</div>
-        <div className="col-2 ">{item[1].pack_size_label}</div>
-        <div className="col-1">{item[1].short_composition1}</div>
+        <div className="col-3 ">{item.name}</div>
+        <div className="col-1">{item.price}</div>
+        <div className="col-3  ">{item.manufacturer_name}</div>
+        <div className="col-2 ">{item.pack_size_label}</div>
+        <div className="col-1">{item.short_composition1}</div>
         <div className="col-0">
           <div className="d-flex flex-column">
             <button

@@ -13,15 +13,12 @@ export default function Sidebarai() {
   const [finaldata, setfinaldata] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (searchval === "" || searchval === " ") {
-      setfinaldata(data);
-    }
     setfinaldata(
       data.filter((item) =>
         JSON.stringify(item).toLowerCase().includes(searchval.toLowerCase())
       )
     );
-  }, [searchval, setfinaldata]);
+  }, [searchval, data, setfinaldata]);
 
   function handleclick(item) {
     dispatch(

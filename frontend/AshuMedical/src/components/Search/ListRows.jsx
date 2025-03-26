@@ -4,7 +4,7 @@ const ListRows = ({ index, style, data, handleDelete }) => {
   const item = data[index];
   return (
     <CustomList
-      key={item[1].id}
+      key={item.id}
       item={item}
       onDelete={() => handleDelete(item)}
       style={style}
