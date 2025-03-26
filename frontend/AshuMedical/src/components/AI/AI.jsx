@@ -24,7 +24,9 @@ export default function Ai() {
   }
   const sendMessage = async () => {
     try {
-      setloading(<Loading className="d-inline" title="Loading answer" />);
+      setloading(
+        <Loading className="d-flex flex-row" title="Loading answer" />
+      );
 
       const res = await axios.post("http://localhost:3000/api/chat", {
         message,
@@ -61,7 +63,7 @@ export default function Ai() {
             <div className="d-flex flex-column justify-content-center align-items-center">
               <h1>AI </h1>
               <div
-                className="airesponse d-flex rounded shadow-lg"
+                className="airesponse d-flex flex-column rounded shadow-lg"
                 style={{
                   marginTop: "10px",
                   backgroundColor: "lightblue",
