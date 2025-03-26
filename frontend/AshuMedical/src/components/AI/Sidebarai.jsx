@@ -6,10 +6,23 @@ import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 import { useDispatch } from "react-redux";
 import { aiActions } from "../store/aislice";
-
+import { useState, useEffect } from "react";
 export default function Sidebarai() {
   const { data = [], isLoading, isError } = Fetchai();
+  const [searchval, setsearchval] = useState("");
+  const [finaldata, setfinaldata] = useState();
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (searchval === "" || searchval === " ") {
+      setfinaldata(data);
+    }
+    setfinaldata(
+      data.filter((item) =>
+        JSON.stringify(item).toLowerCase().includes(searchval.toLowerCase())
+      )
+    );
+  }, [searchval, setfinaldata]);
+
   function handleclick(item) {
     dispatch(
       aiActions.setaislice({
@@ -34,11 +47,18 @@ export default function Sidebarai() {
     >
       <div className="nav flex-column">
         <h3 className="mx-auto text-light">Save</h3>
+        <input
+          className="mx-auto"
+          type="search"
+          value={searchval}
+          onChange={(e) => setsearchval(e.target.value)}
+          style={{ width: "10em", padding: 0 }}
+        />
         <div
           className="sidebarlist"
           style={{ height: "500px", overflow: "auto" }}
         >
-          {data.toReversed().map((item, index) => (
+          {finaldata.toReversed().map((item, index) => (
             <NavLink
               key={index}
               to={`/ai/${item.id}`}

@@ -12,26 +12,25 @@ export default function Productcards() {
       image: Firstmedicine,
       name: "Product One",
       description: "This is a brief description of Product One.",
-      dosage: "Take 1 tablet daily.",
+      quantity: 1,
       price: "$19.99",
     },
     {
       image: Secondmedicine,
       name: "Product Two",
       description: "This is a brief description of Product Two.",
-      dosage: "Take 2 capsules twice a day.",
+      quantity: 2,
       price: "$29.99",
     },
     {
       image: Thirdmedicine,
       name: "Product Three",
       description: "This is a brief description of Product Three.",
-      dosage: "Apply as needed.",
+      quantity: 3,
       price: "$15.99",
     },
   ];
   function handleclick(product) {
-    console.trace(product);
     dispatch(
       cartActions.setcart({
         id: product.id,
@@ -39,6 +38,7 @@ export default function Productcards() {
         image: product.image,
         description: product.description,
         price: product.price,
+        quantity: product.quantity,
       })
     );
   }
@@ -66,7 +66,7 @@ export default function Productcards() {
                 </h3>
                 <p style={{ color: "black" }}>{product.description}</p>
                 <p style={{ color: "black" }}>
-                  <strong>Dosage:</strong> {product.dosage}
+                  <strong>quantity:</strong> {product.quantity}
                 </p>
                 <p className="text-danger">
                   <strong>Price: {product.price}</strong>

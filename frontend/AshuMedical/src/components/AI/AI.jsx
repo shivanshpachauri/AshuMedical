@@ -3,14 +3,15 @@ import { Button } from "react-bootstrap";
 import { Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import "./ai.css";
 import { saveAi } from "../Http/http";
 import Sidebarai from "./Sidebarai";
-import Customid from "./Customid";
 import { useQueryClient } from "@tanstack/react-query";
 import aiformatter from "./aiformatter";
 export default function Ai() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
+  const [loading, setloading] = useState();
   const location = useLocation();
   const databaseclient = useQueryClient();
   async function savetodatabase() {
@@ -23,17 +24,14 @@ export default function Ai() {
   }
   const sendMessage = async () => {
     try {
-      setResponse(<Loading title="Loading answer" />);
+      setloading(<Loading className="d-inline" title="Loading answer" />);
+
       const res = await axios.post("http://localhost:3000/api/chat", {
         message,
       });
       const data1 = res.data;
       const data2 = data1.botReply;
-      const formatted = data2.replace(/\*\*/g, "");
-      // const formatted = aiformatter(data2);
-      // console.log(formatted);
-      // console.trace(formatted);
-
+      const formatted = aiformatter(data2);
       if (formatted) {
         if (typeof formatted === "string") {
           setResponse(formatted);
@@ -45,10 +43,11 @@ export default function Ai() {
       } else {
         setResponse("No response received from bot.");
       }
+      setloading(null);
     } catch (error) {
       console.error("Error sending message:", error);
       setResponse(`Error sending message: ${error.message}`);
-      setloadingstate(null);
+      setloading(null);
     }
   };
   return (
@@ -62,7 +61,7 @@ export default function Ai() {
             <div className="d-flex flex-column justify-content-center align-items-center">
               <h1>AI </h1>
               <div
-                className="d-flex rounded shadow-lg"
+                className="airesponse d-flex rounded shadow-lg"
                 style={{
                   marginTop: "10px",
                   backgroundColor: "lightblue",
@@ -73,21 +72,19 @@ export default function Ai() {
                   overflowY: "auto",
                 }}
               >
-                <pre
+                {loading}
+                <div
                   className="airesponse"
                   style={{
-                    fontSize: "80%",
+                    fontSize: "90%",
                     overflowX: "hidden",
-                    // whiteSpace:"preserve-breaks",
-                    whiteSpace: "break-spaces",
                     margin: "10px",
                     padding: "10px",
                     overflowWrap: "break-word",
                     fontFamily: "sans-serif",
                   }}
-                >
-                  {response}
-                </pre>
+                  dangerouslySetInnerHTML={{ __html: response }} // Render sanitized HTML
+                />
               </div>
               <div className="d-flex flex-row">
                 <textarea
