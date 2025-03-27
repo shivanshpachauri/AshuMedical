@@ -1,39 +1,62 @@
 import { useCallback, useState } from "react";
 import { Button } from "react-bootstrap";
-import DocViewer from "react-doc-viewer";
+import FileViewer from "react-file-viewer";
 import styles from "./parsingdocument.module.css";
+import DomPurify from "dompurify";
 export default function ParsingDocument() {
-  const [data, setdata] = useState();
-  const [upload, setupload] = useState([]);
-  const handlechange = useCallback(
-    (e) => {
-      setdata(e.target.files[0]);
-    },
-    [setdata]
-  );
-  const handleupload = useCallback(() => {
-    setupload([...upload, data]);
+  const [data, setData] = useState(null);
+  const [upload, setUpload] = useState([]);
 
-    alert("uploaded successfully");
-  }, [setupload]);
+  const handleChange = useCallback((e) => {
+    setData(e.target.files[0]);
+  }, []);
+
+  const handleUpload = useCallback(() => {
+    if (data) {
+      const documentObject = {
+        uri: URL.createObjectURL(data),
+        fileType: data.type,
+        fileName: data.name,
+      };
+
+      setUpload((prevUpload) => [...prevUpload, documentObject]);
+      alert("Uploaded successfully");
+      setData(null); // Clear the file input after upload
+    } else {
+      alert("Please select a file to upload.");
+    }
+  }, [data]);
+  // const Filepurified = DomPurify.sanitize(
+  //   <FileViewer
+  //     fileType={upload[upload.length - 1].fileType.split("/")[1]} // Get the file type
+  //     filePath={upload[upload.length - 1].uri}
+  //     onError={(e) => console.log(e)}
+  //   />
+  // );
   return (
     <section className="text-capitalize">
-      <h5> file supported </h5>
+      <h5>File Supported</h5>
       <p>
-        bmp ,doc, docx ,html,jpg,jpeg,pdf, png ,ppt,pptx,tiff ,txt, xls,xlsx
+        bmp, doc, docx, html, jpg, jpeg, pdf, png, ppt, pptx, tiff, txt, xls,
+        xlsx
       </p>
       <input
         type="file"
         name="wordupload"
         id="wordinput"
         className={styles.docfileupload}
-        onChange={handlechange}
+        onChange={handleChange}
       />
-      <Button type="button" onClick={handleupload}>
-        {" "}
+      <Button type="button" onClick={handleUpload}>
         Submit
       </Button>
-      {data && <DocViewer documents={upload} />}
+      {upload.length > 0 && (
+        <FileViewer
+          fileType={upload[upload.length - 1].fileType.split("/")[1]} // Get the file type
+          filePath={upload[upload.length - 1].uri}
+          onError={(e) => console.log(e)}
+        />
+      )}
     </section>
   );
 }

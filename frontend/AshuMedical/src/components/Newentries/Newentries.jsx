@@ -28,11 +28,6 @@ export default function Newentries({ submitstate, setsubmitstate }) {
     e.target.reset();
     navigate(".", { replace: true });
   }
-  useEffect(() => {
-    setTimeout(() => {
-      setsubmitstate(false);
-    }, 20000);
-  }, [setsubmitstate]);
 
   return (
     <div
