@@ -68,8 +68,8 @@ export default function Ai() {
                   marginTop: "10px",
                   backgroundColor: "lightblue",
                   width: "600px",
-                  height: "auto",
-                  maxHeight: "500px",
+                  height: "500px",
+
                   whiteSpace: "normal",
                   overflowY: "auto",
                 }}

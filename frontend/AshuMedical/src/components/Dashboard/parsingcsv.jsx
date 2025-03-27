@@ -14,12 +14,14 @@ export default function Parsingcsv() {
           setData(results.data);
         },
       });
+      alert("uploaded successfully");
     },
     [setData]
   );
 
   return (
     <section>
+      <h5 className="m-2 p-2">CSV XML</h5>
       <input
         type="file"
         name="csvupload"

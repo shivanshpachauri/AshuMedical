@@ -8,16 +8,21 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 export default function Carousel() {
   return (
     <div className="maincarousel container d-flex shadow-lg px-4 py-4 my-5 align-items-center">
-      <h1
-        style={{
-          fontSize: "2rem",
-          fontWeight: "bold",
-          marginBottom: "20px",
-          color: "#333",
-        }}
-      >
-        Carousel
-      </h1>
+      <div className="d-flex flex-column">
+        {" "}
+        <h1
+          style={{
+            fontSize: "2rem",
+            fontWeight: "bold",
+            marginBottom: "20px",
+            color: "#333",
+          }}
+        >
+          आशु मेडिकल एजेंसी
+        </h1>
+        <p>आशु मेडिकल एजेंसी संजय पचौरी द्वारा बनाई गई थी।</p>
+      </div>
+
       <div
         id="carousel"
         className="d-flex justify-content-center align-content-center"

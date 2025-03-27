@@ -14,18 +14,22 @@ export default function Customid() {
         marginTop: "10px",
         backgroundColor: "lightblue",
         width: "600px",
-        height: "auto",
+        height: "500px",
         maxHeight: "500px",
         whiteSpace: "normal",
         overflowY: "auto",
       }}
     >
-      <strong className="mx-auto m-2 p-2 text-capitalize">{data.title}</strong>
+      <strong className="mx-auto m-2 p-2 text-truncate text-capitalize">
+        {data.title}
+      </strong>
+
       <div
         className="airesponse"
         style={{
           fontSize: "90%",
           overflowX: "hidden",
+          height: "auto",
           margin: "10px",
           padding: "10px",
           overflowWrap: "break-word",

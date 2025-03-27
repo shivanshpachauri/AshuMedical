@@ -14,6 +14,7 @@ import ErrorBoundary from "./components/Errorboundary/Errorboundary.jsx";
 import Parsingcsv from "./components/Dashboard/parsingcsv.jsx";
 import Customers from "./components/Dashboard/Customers/Customers.jsx";
 import Cart from "./components/Cart/Cart.jsx";
+import ParsingDocument from "./components/Dashboard/parsingdocument.jsx";
 const Customid = lazy(() => import("./components/AI/Customid.jsx"));
 const AI = lazy(() => import("./components/AI/AI.jsx"));
 const Dashboard = lazy(() => import("./components/Dashboard/Dashboard.jsx"));
@@ -64,6 +65,10 @@ function App() {
             {
               path: "csvparsing",
               element: <Parsingcsv />,
+            },
+            {
+              path: "documents",
+              element: <ParsingDocument />,
             },
             {
               path: "customers",

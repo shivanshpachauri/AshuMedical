@@ -1,15 +1,9 @@
-/* Center the carousel and give it a nice spacing */
-
 #carousel {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
   text-align: center;
 }
-
-/* Style the heading */
-
-/* Style carousel images */
 .carousel-inner img {
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -17,8 +11,6 @@
   height: 500px;
   width: 500px;
 }
-
-/* Indicators styling */
 .carousel-indicators li {
   background-color: #555;
   width: 10px;
@@ -29,8 +21,6 @@
 .carousel-indicators .active {
   background-color: transparent;
 }
-
-/* Control buttons styling */
 .carousel-control-prev,
 .carousel-control-next {
   filter: brightness(0.8);
@@ -41,8 +31,6 @@
 .carousel-control-next:hover {
   filter: brightness(1);
 }
-
-/* Making carousel responsive */
 @media (max-width: 768px) {
   .carousel-inner img {
     height: 250px;
