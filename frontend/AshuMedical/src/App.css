@@ -1,16 +1,33 @@
 body {
   width: 100%;
-  background-color: #dde6ed;
+  /* background-color: #dde6ed; */
+  background: linear-gradient(45deg, #dde6ed, skyblue);
+
   height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.5),
-    rgba(0, 0, 0, 0.5)
-  ); */
 }
+h1 {
+  position: relative;
+  z-index: 1;
+  /* color: white;
+  mix-blend-mode: difference; Makes the text dynamically adjust */
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to right, rgb(50, 50, 230), #96deda);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: -1;
+}
+
+body:hover::before {
+  opacity: 1;
+}
+
 .bestsellingtablerow {
   position: relative;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.3);
