@@ -76,7 +76,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-            <h5 className="text-light">Cart &nbsp;</h5>
+            <h5 className="m-1 p-1 text-light">Cart &nbsp;</h5>
             <NavLink className="d-flex" to="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

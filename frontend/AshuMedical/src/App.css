@@ -2,12 +2,13 @@ body {
   width: 100%;
   /* background-color: #dde6ed; */
   background: linear-gradient(45deg, #dde6ed, skyblue);
-
+  --webkit-font-smoothing: antialiased;
   height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 h1 {
   position: relative;
   z-index: 1;

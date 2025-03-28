@@ -5,6 +5,7 @@ import { Viewer as PDFViewer, Worker } from "@react-pdf-viewer/core";
 import * as XLSX from "xlsx";
 import { pdfjs } from "@react-pdf-viewer/core";
 import mammoth from "mammoth";
+import "./parsingdocument.css";
 // pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.js`;
 
 export default function ParsingDocument() {
@@ -81,7 +82,9 @@ export default function ParsingDocument() {
           Submit
         </Button>
       </div>
-      {upload.length > 0 && renderFileViewer(upload[upload.length - 1])}
+      <div className="">
+        {upload.length > 0 && renderFileViewer(upload[upload.length - 1])}
+      </div>
     </section>
   );
 }
@@ -126,12 +129,11 @@ function DocViewer({ file }) {
       </Button>
       {content && (
         <pre
-          className=" bg-primary rounded "
+          className="m-2 p-4  documentrenderer bg-primary rounded "
           style={{
-            overflowY: "scroll",
+            overflow: "scroll",
             height: "500px",
-            overflowX: "hidden",
-            wordWrap: "break-word",
+            overflowWrap: "break-word",
           }}
         >
           {content}

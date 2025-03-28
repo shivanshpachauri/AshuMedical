@@ -11,7 +11,7 @@ export default function Hero() {
     const b = Math.floor(Math.random() * 255 + 1);
 
     setcolorname(rgbToColorName(r, g, b));
-    document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    document.body.style.background = `rgb(${r}, ${g}, ${b})`;
   }
   function Reset() {
     window.location.reload();
@@ -50,85 +50,96 @@ export default function Hero() {
       </h1>
       <h1 className="m-2 p-2 d-block">{colorname}</h1>
       <div className="row align-items-md-stretch">
-        <div className="col-md-6">
-          <div
-            id="cardjumbotron"
-            className="lh-1 text-dark h-100 p-5  border rounded-3 shadow-sm"
-            style={{ backgroundColor: "#8F87F1" }}
-          >
-            <h2>Change the background</h2>
-            <button
-              className="btn btn-outline-light"
-              type="button"
-              style={{ background: "#5353a8", border: "none" }}
-              onClick={Changebackground}
+        <div className="d-flex">
+          <div className="col m-2 ">
+            <div
+              id="cardjumbotron"
+              className="lh-1 text-dark h-100 p-5  border border-0 rounded-3 shadow-sm"
+              style={{ backgroundColor: "#8F87F1" }}
             >
-              Change
-            </button>
+              <h2>Change the background</h2>
+              <button
+                className="btn btn-outline-light"
+                type="button"
+                style={{ background: "#5353a8", border: "none" }}
+                onClick={Changebackground}
+              >
+                Change
+              </button>
+            </div>
+          </div>
+          <div className="col m-2">
+            <div
+              id="cardjumbotron"
+              className="lh-1 h-100 p-5  border border-0 rounded-3 shadow-sm"
+              style={{ backgroundColor: "#C68EFD" }}
+            >
+              <h2>Add borders</h2>
+              <button
+                className="btn btn btn-outline-light"
+                type="button"
+                onClick={Changeborders}
+                style={{ backgroundColor: "#693382", border: "none" }}
+              >
+                Borders
+              </button>
+            </div>
           </div>
         </div>
-        <div className="col-md-6">
-          <div
-            id="cardjumbotron"
-            className="lh-1 h-100 p-5  border rounded-3 shadow-sm"
-            style={{ backgroundColor: "#C68EFD" }}
-          >
-            <h2>Add borders</h2>
-            <button
-              className="btn btn btn-outline-light"
-              type="button"
-              onClick={Changeborders}
-              style={{ backgroundColor: "#693382", border: "none" }}
+        <div className="d-flex">
+          <div className="col m-2">
+            <div
+              id="cardjumbotron"
+              className="lh-1 h-100 p-5  border border-0 rounded-3 shadow-sm"
+              style={{ backgroundColor: "#E9A5F1" }}
             >
-              Borders
-            </button>
+              <h2>Reset to defaults</h2>
+              <button
+                className="btn btn btn-outline-light"
+                type="button"
+                onClick={Reset}
+                style={{ background: "#db39c2", border: "none" }}
+              >
+                Default
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div className="col-md-6">
-          <div
-            id="cardjumbotron"
-            className="lh-1 h-100 p-5  border rounded-3 shadow-sm"
-            style={{ backgroundColor: "#E9A5F1" }}
-          >
-            <h2>Reset to defaults</h2>
-            <button
-              className="btn btn btn-outline-light"
-              type="button"
-              onClick={Reset}
-              style={{ background: "#db39c2", border: "none" }}
+          <div className="col m-2">
+            <div
+              id="cardjumbotron"
+              className="lh-1 h-100 p-5  border  border-0 rounded-3 shadow-sm"
+              style={{ backgroundColor: "#FED2E2" }}
             >
-              Default
-            </button>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div
-            id="cardjumbotron"
-            className="lh-1 h-100 p-5  border rounded-3 shadow-sm"
-            style={{ backgroundColor: "#FED2E2" }}
-          >
-            <h2>Font Size</h2>
-            <button
-              className="m-2 p-1 btn btn btn-outline-light"
-              type="button"
-              onClick={fontincrement}
-              style={{ background: "burlywood", width: "10%", border: "none" }}
-            >
-              <span style={{ transform: "scale(1.25)", fontSize: "175%" }}>
-                +
-              </span>
-            </button>
-            <button
-              className="m-2 p-1 btn btn btn-outline-light"
-              type="button"
-              onClick={fontdecrement}
-              style={{ background: "#d32525a8", width: "10%", border: "none" }}
-            >
-              <span style={{ transform: "scale(1.25)", fontSize: "175%" }}>
-                -
-              </span>
-            </button>
+              <h2>Font Size</h2>
+              <button
+                className="m-2 p-1 btn btn btn-outline-light"
+                type="button"
+                onClick={fontincrement}
+                style={{
+                  background: "burlywood",
+                  width: "10%",
+                  border: "none",
+                }}
+              >
+                <span style={{ transform: "scale(1.25)", fontSize: "175%" }}>
+                  +
+                </span>
+              </button>
+              <button
+                className="m-2 p-1 btn btn btn-outline-light"
+                type="button"
+                onClick={fontdecrement}
+                style={{
+                  background: "#d32525a8",
+                  width: "10%",
+                  border: "none",
+                }}
+              >
+                <span style={{ transform: "scale(1.25)", fontSize: "175%" }}>
+                  -
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

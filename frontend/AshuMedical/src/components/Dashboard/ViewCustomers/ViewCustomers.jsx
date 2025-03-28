@@ -43,8 +43,10 @@ export default function ViewCustomers() {
             <div className="col-2">{data[index].name}</div>
             <div className="col-2">{data[index].pack_size_label}</div>
             <div className="col-2">{data[index].order_by}</div>
-            <div className="col-2">{data[index].manufacturer_name}</div>
-            <div className="col-2">{data[index].date}</div>
+            <div className="col-2 flex-wrap">
+              {data[index].manufacturer_name}
+            </div>
+            <div className="col-2">{data[index].date.substr(0, 10)}</div>
             <div className="col-1">{data[index].quantity}</div>
             <div className="col-2">{data[index].delivered}</div>
           </div>

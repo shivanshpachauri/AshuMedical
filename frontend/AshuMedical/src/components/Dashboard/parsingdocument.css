@@ -1,0 +1,7 @@
+.documentrenderer::-webkit-scrollbar {
+  /* display: none; */
+  background-color: rgba(97, 97, 235, 0.644);
+  width: 2px;
+  height: 15px;
+  border-radius: 7%;
+}
