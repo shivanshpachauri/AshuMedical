@@ -4,7 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "./ai.css";
-import { saveAi } from "../Http/http";
+import { saveAi } from "../Http/Ai/Ai";
 import Sidebarai from "./Sidebarai";
 import { useQueryClient } from "@tanstack/react-query";
 import aiformatter from "./aiformatter";

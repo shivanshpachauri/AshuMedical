@@ -1,49 +1,8 @@
 import axios from "axios";
-export async function checkemail({ email, password }) {
-  const response = await axios.patch("http://localhost:3000/api/login", {
-    email: email,
-    password: password,
-  });
-  if (response.status != 200) {
-    throw new Error("Error in login");
-  }
-  const data = await response.data;
-  return data;
-}
+//  for login and password it is in Http/Login/login.js
+// Ai related Ai/Ai.j
 
-export async function saveAi(ai) {
-  try {
-    const { title, body } = ai;
-    const response = await axios.post("http://localhost:3000/api/ai/save", {
-      title,
-      body,
-    });
-  } catch (error) {
-    console.trace(error);
-  }
-}
-export async function getAi() {
-  try {
-    const response = await axios.get("http://localhost:3000/api/ai/view");
-    return response.data;
-  } catch (error) {
-    console.trace(error);
-  }
-}
-
-export const sendMessage = async ({ message }) => {
-  try {
-    const res = await axios.post("http://localhost:3000/api/chat", {
-      message,
-    });
-    const data = await res.data;
-    const dataarray = Object.entries(data);
-    return dataarray;
-  } catch (error) {
-    console.error("Error sending message:", error);
-    setResponse("Error sending message");
-  }
-};
+// for medicines
 export async function searchmedicine(
   id,
   manufacturer_name,
@@ -128,6 +87,40 @@ export async function insertmedicines(medicine) {
     );
   }
 }
+
+export async function deletemedicine(medicine) {
+  const id = String(medicine.id);
+  const response = await axios.delete("http://localhost:3000/api/delete", {
+    data: { id: id },
+  });
+  if (response.status != 200) {
+    throw new Error("Cannot delete");
+  }
+  return response.data;
+}
+export async function updatemedicine(medicine) {
+  const {
+    id,
+    name,
+    price,
+    manufacturer_name,
+    pack_size_label,
+    short_composition1,
+  } = medicine;
+  const response = await axios.put("http://localhost:3000/api/update", {
+    id: id,
+    name: name,
+    price: price,
+    manufacturer_name: manufacturer_name,
+    pack_size_label: pack_size_label,
+    short_composition1: short_composition1,
+  });
+  if (response.status != 200) {
+    throw new Error("Cannot update");
+  }
+  return response.json();
+}
+// delivery related
 export async function fetchdelivery() {
   const response = await axios.get("http://localhost:3000/api/fetchdelivery");
 
@@ -180,52 +173,4 @@ export async function postdelivery(delivery) {
   if (_response.status != 200) {
     console.log("Error in recieving response");
   }
-}
-export async function deletemedicine(medicine) {
-  const id = String(medicine.id);
-  const response = await axios.delete("http://localhost:3000/api/delete", {
-    data: { id: id },
-  });
-  if (response.status != 200) {
-    throw new Error("Cannot delete");
-  }
-  return response.data;
-}
-export async function updatemedicine(medicine) {
-  const {
-    id,
-    name,
-    price,
-    manufacturer_name,
-    pack_size_label,
-    short_composition1,
-  } = medicine;
-  const response = await axios.put("http://localhost:3000/api/update", {
-    id: id,
-    name: name,
-    price: price,
-    manufacturer_name: manufacturer_name,
-    pack_size_label: pack_size_label,
-    short_composition1: short_composition1,
-  });
-  if (response.status != 200) {
-    throw new Error("Cannot update");
-  }
-  return response.json();
-}
-export async function formregister(registerables) {
-  const { email, password, fullname, gender, dob, username } = registerables;
-  console.log(email, password, fullname, gender, dob, username);
-  const data = await axios.post("http://localhost:3000/api/register", {
-    fullname: registerables.fullname,
-    username: registerables.username,
-    dob: registerables.dob,
-    email: registerables.email,
-    password: registerables.password,
-    gender: registerables.gender,
-  });
-  if (data.status != 200) {
-    console.log("Error in formregister");
-  }
-  return data;
 }

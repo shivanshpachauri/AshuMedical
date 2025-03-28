@@ -1,4 +1,4 @@
-import { getAi } from "./http";
+import { getAi } from "./Ai/Ai";
 import { useQuery } from "@tanstack/react-query";
 export default function Fetchai() {
   const data = useQuery({
