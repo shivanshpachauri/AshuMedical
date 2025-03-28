@@ -91,7 +91,6 @@ export async function Fetchmedicines(isSorted) {
     medicines = await axios.get("http://localhost:3000/api/view");
   }
 
-  // const dataarray = Object.entries(medicines.data);
   const dataarray = medicines.data;
   if (!dataarray) {
     throw new Error("Error in Fetching All Medicines");

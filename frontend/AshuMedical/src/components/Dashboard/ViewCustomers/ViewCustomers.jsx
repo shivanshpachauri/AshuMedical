@@ -1,6 +1,5 @@
 import { FixedSizeList as List } from "react-window";
 import ViewCustomersHeading from "./ViewCustomersHeading";
-import { useCallback, useState } from "react";
 import "./ViewCustomers.css";
 import { modalActions } from "../../store/editcustomerslice";
 import Loading from "../../Loading/Loading";

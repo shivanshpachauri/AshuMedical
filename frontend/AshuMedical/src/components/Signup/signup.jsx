@@ -57,8 +57,9 @@ export default function RegisterForm() {
   return (
     <form
       id="registrationform"
-      className="container border border-0 m-2 p-5"
+      className="container mx-auto border border-0 m-2 p-5"
       onSubmit={handlesubmit}
+      style={{ maxWidth: "fit-content" }}
       autoComplete="on"
     >
       <h1 className="text-center">Registration Form</h1>
@@ -183,7 +184,7 @@ export default function RegisterForm() {
           </div>
         </div>
       </div>
-      <Button type="submit" className="btn btn-primary">
+      <Button type="submit" className="submitbutton btn ">
         Submit
       </Button>
       {registrationstate && (
