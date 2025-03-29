@@ -38,6 +38,7 @@ export default function Customers() {
         Name
       </label>
       <input
+        autoComplete="on"
         name="name"
         onChange={handlechange}
         value={delivery.name}
@@ -46,10 +47,11 @@ export default function Customers() {
         id="name"
         placeholder="Enter Medicine name"
       />
-      <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">
+      <label className="sr-only" htmlFor="pack_size_label">
         Pack-size-label
       </label>
       <input
+        id="pack_size_label"
         type="text"
         onChange={handlechange}
         value={delivery.pack_size_label}
@@ -57,10 +59,11 @@ export default function Customers() {
         className="form-control mb-2 mr-sm-2"
         placeholder="Enter packsize"
       />
-      <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">
+      <label className="sr-only" htmlFor="manufacturer_name">
         Manufacturer_name
       </label>
       <input
+        id="manufacturer_name"
         onChange={handlechange}
         value={delivery.manufacturer_name}
         type="text"
@@ -68,10 +71,11 @@ export default function Customers() {
         className="form-control mb-2 mr-sm-2"
         placeholder="Enter manufacturer name"
       />
-      <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">
+      <label className="sr-only" htmlFor="order_by">
         Order-BY
       </label>
       <input
+        id="order_by"
         onChange={handlechange}
         value={delivery.order_by}
         type="text"
@@ -79,10 +83,11 @@ export default function Customers() {
         className="form-control mb-2 mr-sm-2"
         placeholder="ordered by this person"
       />
-      <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">
+      <label className="sr-only" htmlFor="quantity">
         Quantity
       </label>
       <input
+        id="quantity"
         onChange={handlechange}
         value={delivery.quantity}
         type="text"
@@ -97,7 +102,7 @@ export default function Customers() {
         className="rounded shadow-sm"
         autoComplete="on"
         type="datetime-local"
-        id="Dateofdelivery"
+        id="dateofdelivery"
         onChange={handlechange}
         value={delivery.date}
         name="date"
@@ -113,11 +118,8 @@ export default function Customers() {
             value="Yes"
             onChange={handlechange}
             checked={delivery.delivered === "Yes"}
-            //   onChange={(e) =>
-            //     setregister({ ...register, gender: e.target.value })
-            //   }
           />
-          <label className="form-check-label" htmlFor="deliverytrue">
+          <label className="form-check-label" htmlFor="deliveredtrue">
             Yes
           </label>
         </div>
@@ -134,7 +136,7 @@ export default function Customers() {
             //     setregister({ ...register, gender: e.target.value })
             //   }
           />
-          <label className="form-check-label" htmlFor="deliveryfalse">
+          <label className="form-check-label" htmlFor="deliveredfalse">
             No
           </label>
         </div>

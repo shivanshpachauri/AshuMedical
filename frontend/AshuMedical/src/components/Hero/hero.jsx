@@ -27,8 +27,9 @@ export default function Hero() {
     document.body.style.fontSize = `${fontsize}px`;
   }
   function Changeborders() {
-    document.body.style.borderStyle = "solid";
-    document.body.style.borderWidth = "10px";
+    document.body.style.borderStyle = "groove";
+    document.body.style.borderWidth = "8px";
+    document.body.style.borderRadius = "2%";
     const r = Math.floor(Math.random() * 255 + 1);
     const g = Math.floor(Math.random() * 255 + 1);
     const b = Math.floor(Math.random() * 255 + 1);
@@ -39,7 +40,7 @@ export default function Hero() {
       id="heroid"
       className="container px-4 py-5 shadow-lg bg-body-rounded text-center"
     >
-      <h1 className="display-6 m-3  ">
+      <h1 className="display-6 m-3  fw-bold">
         <span style={{ color: "violet" }}>S</span>
         <span style={{ color: "indigo" }}>t</span>
         <span style={{ color: "blue" }}>y</span>

@@ -105,7 +105,7 @@ export default function EditCustomers() {
           name="delivered"
           defaultValue={delivery.delivered}
           type="text"
-          id="delivered"
+          id="Delivered"
           onChange={handlechange}
           autoComplete="one"
         />
