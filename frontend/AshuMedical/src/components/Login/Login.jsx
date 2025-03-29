@@ -17,7 +17,7 @@ export default function Login() {
   async function handlesubmit(e) {
     e.preventDefault();
     const response = await checkemail(login);
-    if (response.length > 0 && Array.isArray(response)) {
+    if (response.length > 0 && response === "password match") {
       const success = (
         <div className="alert alert-success" role="alert">
           Logged in successfully
@@ -25,7 +25,7 @@ export default function Login() {
       );
       setsuccess(success);
     }
-    if (!Array.isArray(response) || response.length <= 0) {
+    if (response === "password do not match" || response.length <= 0) {
       const error = (
         <div className="alert alert-danger" role="alert">
           invalid email password
@@ -47,12 +47,13 @@ export default function Login() {
           <strong> Email</strong>
         </label>
         <input
+          autoComplete="on"
           style={{ width: "300px" }}
           onChange={handlechange}
           type="email"
           className="form-control"
           name="email"
-          id="loginemail"
+          id="email"
           aria-describedby="emailHelpId"
           placeholder="abc@mail.com"
         />
@@ -60,14 +61,14 @@ export default function Login() {
           <strong>password</strong>
         </label>
         <input
+          autoComplete="on"
           style={{ width: "300px" }}
           onChange={handlechange}
           type="password"
           className="form-control"
           name="password"
-          id="loginpassword"
+          id="password"
           aria-describedby="emailHelpId"
-          placeholder="password"
         />
         <small id="emailHelpId" className="  m-2  form-text text-muted">
           <a href="/signup" style={{ color: "red", fontWeight: "bolder" }}>
