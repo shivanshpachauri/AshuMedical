@@ -7,6 +7,7 @@ import { DeleteContext } from "../Context/deletecontext";
 const TableRow = React.memo(({ item, style }) => {
   const { toggleEditing, setmedicines } = useContext(EditingContext);
   const { handleDelete } = useContext(DeleteContext);
+  const loggedin = localStorage.getItem("loggedin");
   function handleedit() {
     toggleEditing();
     setmedicines({
@@ -28,24 +29,26 @@ const TableRow = React.memo(({ item, style }) => {
         <div className="col-2">{item.pack_size_label}</div>
         <div className="col-1">{item.short_composition1}</div>
       </div>
-      <div className="col-0">
-        <div style={{ float: "right" }} className="d-flex flex-column">
-          <button
-            type="button"
-            className="btn btn-danger "
-            onClick={() => handleDelete(item)}
-          >
-            Delete
-          </button>
-          <button
-            type="button"
-            className="visible btn btn-primary"
-            onClick={handleedit}
-          >
-            Edit
-          </button>
+      {loggedin && (
+        <div className="col-0">
+          <div style={{ float: "right" }} className="d-flex flex-column">
+            <button
+              type="button"
+              className="btn btn-danger "
+              onClick={() => handleDelete(item)}
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              className="visible btn btn-primary"
+              onClick={handleedit}
+            >
+              Edit
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }, areEqual);

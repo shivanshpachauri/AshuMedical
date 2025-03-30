@@ -12,15 +12,17 @@ export default function Carousel() {
         {" "}
         <h1
           style={{
-            fontSize: "2rem",
             fontWeight: "bold",
             marginBottom: "20px",
-            color: "#333",
+            color: "black",
           }}
         >
-          आशु मेडिकल एजेंसी
+          आशु मेडिकल एजेंसीज
         </h1>
-        <p>आशु मेडिकल एजेंसी संजय पचौरी द्वारा बनाई गई थी।</p>
+        <p style={{ fontSize: "1.5em" }}>
+          {" "}
+          प्रथम तल चौबे मार्केट,सदर कांटा, ललितपुर-284403
+        </p>
       </div>
 
       <div

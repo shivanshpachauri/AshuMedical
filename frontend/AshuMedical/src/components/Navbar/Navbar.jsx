@@ -75,6 +75,13 @@ const Navbar = () => {
                   AI
                 </NavLink>
               </li>
+              {localStorage.getItem("loggedin") && (
+                <li className="nav-item">
+                  <NavLink className="nav-link ai-link" to="#">
+                    Signout
+                  </NavLink>
+                </li>
+              )}
             </ul>
             <h5 className="m-1 p-1 text-light">Cart &nbsp;</h5>
             <NavLink className="d-flex" to="/cart">

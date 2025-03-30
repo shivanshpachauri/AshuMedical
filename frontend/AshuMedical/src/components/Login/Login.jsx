@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import GoogleAuth from "./Googlesignin";
 import { checkemail } from "../Http/Login/login";
 export default function Login() {
+  // localstorage and session storage
   const [login, setlogin] = useState({
     email: "",
     password: "",
@@ -25,6 +26,7 @@ export default function Login() {
           Logged in successfully
         </div>
       );
+      localStorage.setItem("loggedin", "true");
       setsuccess(success);
     }
     if (response === "password do not match" || response.length <= 0) {
