@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { Button } from "react-bootstrap";
+import GoogleAuth from "./Googlesignin";
 import { checkemail } from "../Http/Login/login";
 export default function Login() {
   const [login, setlogin] = useState({
@@ -84,7 +86,7 @@ export default function Login() {
           </a>
         </small>
 
-        <Button className="m-2 mx-auto p-2 d-block">
+        <Button onClick={GoogleAuth} className="m-2 mx-auto p-2 d-block">
           Sign up with google &nbsp;
           <svg
             xmlns="http://www.w3.org/2000/svg"
