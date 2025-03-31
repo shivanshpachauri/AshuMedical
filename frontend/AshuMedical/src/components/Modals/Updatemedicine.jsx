@@ -4,9 +4,8 @@ import "./updatemedicine.css";
 import Updatemedicine from "../Http/Updatemedicines";
 import { EditingContext } from "../Context/Editingcontext";
 import { createPortal } from "react-dom";
-import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 export default function Updatedialog() {
-  // const navigate = useNavigate();
   const { medicines, setmedicines, isEdited, toggleEditing } =
     useContext(EditingContext);
 
@@ -37,7 +36,8 @@ export default function Updatedialog() {
   function handlesubmit(e) {
     e.preventDefault();
     mutate(medicines);
-    alert("submitted successfully");
+    Swal.fire("submitted successfully");
+    window.location.reload();
   }
   return createPortal(
     <dialog ref={modalref} className="updatedialog rounded shadow-lg">

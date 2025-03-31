@@ -15,6 +15,7 @@ const Search = lazy(() => import("../Search/Search"));
 
 const Navbar = () => {
   const location = useLocation();
+
   return (
     <div style={{ flexWrap: "wrap" }}>
       <nav
@@ -76,10 +77,17 @@ const Navbar = () => {
                 </NavLink>
               </li>
               {localStorage.getItem("loggedin") && (
-                <li className="nav-item">
-                  <NavLink className="nav-link ai-link" to="#">
+                <li className="nav-item" style={{ marginLeft: "0.5em" }}>
+                  <div
+                    className="btn btn-danger "
+                    onClick={() => {
+                      localStorage.removeItem("loggedin");
+                      Swal.fire("logged out successfully");
+                      window.location.reload();
+                    }}
+                  >
                     Signout
-                  </NavLink>
+                  </div>
                 </li>
               )}
             </ul>

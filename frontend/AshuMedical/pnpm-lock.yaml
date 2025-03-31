@@ -35,6 +35,9 @@ importers:
       dompurify:
         specifier: ^3.2.4
         version: 3.2.4
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       mammoth:
         specifier: ^1.9.0
         version: 1.9.0
@@ -83,6 +86,9 @@ importers:
       redux:
         specifier: ^5.0.1
         version: 5.0.1
+      sweetalert2:
+        specifier: ^11.17.2
+        version: 11.17.2
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
@@ -3661,6 +3667,9 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  sweetalert2@11.17.2:
+    resolution: {integrity: sha512-HKxDr1IyV3Lxr3W6sb61qm/p2epFIEdr5EKwteRFHnIg6f8nHFl2kX++DBVz16Mac+fFiU3hMpjq1L6yE2Ge5w==}
 
   tapable@0.2.9:
     resolution: {integrity: sha512-2wsvQ+4GwBvLPLWsNfLCDYGsW6xb7aeC6utq2Qh0PFwgEy7K7dsma9Jsmb2zSQj7GvYAyUGSntLtsv++GmgL1A==}
@@ -8238,6 +8247,8 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  sweetalert2@11.17.2: {}
 
   tapable@0.2.9: {}
 

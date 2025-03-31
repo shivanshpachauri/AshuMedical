@@ -1,11 +1,18 @@
 import React from "react";
 import "./cart.css";
 import { useSelector } from "react-redux";
+import _ from "lodash";
 export default function Cart() {
   const shopping = useSelector((state) => state.cartslice.shopping);
   const [shoppingbuy, setshoppingbuy] = React.useState([
     { name: "", price: "", description: "", quantity: "" },
   ]);
+  const subtotal = _.sumBy(shopping, (item) => {
+    const price = parseFloat(item.price);
+    return isNaN(price) ? 0 : price;
+  });
+  console.log(subtotal);
+
   function handlesubmit(e) {
     e.preventDefault();
     console.log(shoppingbuy);
@@ -24,7 +31,7 @@ export default function Cart() {
             <form
               key={index}
               className=" d-flex flex-column flex-start text-light   rounded flex-wrap bg-dark rounded shadow-lg m-2 p-2"
-              style={{ width: "215px", flex: 1 }}
+              style={{ width: "215px" }}
               onSubmit={handlesubmit}
             >
               <img
@@ -62,7 +69,7 @@ export default function Cart() {
         >
           <h5 className="  text-light">Buy</h5>
           <h6 className=" mb-2 text-muted">Price : </h6>
-          <p className="">Subtotal : </p>
+          <p className="">Subtotal : {subtotal}</p>
           <p className=""> </p>
           <button className="btn btn-outline-light" type="submit">
             Buy

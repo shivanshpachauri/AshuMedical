@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import "./Newentries.css";
 import { useNavigate } from "react-router-dom";
 import Insertmedicines from "../Http/Insertmedicines";
+import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 export default function Newentries({ submitstate, setsubmitstate }) {
   Newentries.propTypes = {
@@ -23,7 +24,7 @@ export default function Newentries({ submitstate, setsubmitstate }) {
   function handlesubmit(e) {
     e.preventDefault();
     mutate(medicines);
-    alert("Submitted successfully");
+    Swal.fire("Submitted successfully");
     setsubmitstate(true);
     e.target.reset();
     navigate(".", { replace: true });

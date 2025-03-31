@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import Papa from "papaparse";
 import styles from "./parsingcsv.module.css";
-
+import Swal from "sweetalert2";
 export default function Parsingcsv() {
   const [data, setData] = useState([]);
 
@@ -14,7 +14,7 @@ export default function Parsingcsv() {
           setData(results.data);
         },
       });
-      alert("uploaded successfully");
+      Swal.fire("uploaded successfully");
     },
     [setData]
   );

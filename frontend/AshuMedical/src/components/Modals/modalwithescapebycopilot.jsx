@@ -4,7 +4,7 @@ import "./updatemedicine.css";
 import Updatemedicine from "../Http/Updatemedicines";
 import { EditingContext } from "../Context/Editingcontext";
 import { createPortal } from "react-dom";
-
+import Swal from "sweetalert2";
 export default function Updatedialog() {
   const { medicines, setmedicines, isEdited, toggleEditing } =
     useContext(EditingContext);
@@ -37,7 +37,7 @@ export default function Updatedialog() {
   function handlesubmit(e) {
     e.preventDefault();
     mutate(medicines);
-    alert("submitted successfully");
+    Swal.fire("submitted successfully");
     e.target.reset();
     window.location.reload();
   }

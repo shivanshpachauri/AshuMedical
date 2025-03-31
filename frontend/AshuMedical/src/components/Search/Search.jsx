@@ -8,6 +8,7 @@ import TableHead from "../TableHead/TableHead";
 import Searchmedicines from "../Http/Searchmedicines";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
+import Swal from "sweetalert2";
 import Updatemedicine from "../Modals/Updatemedicine";
 import { DeleteContext } from "../Context/deletecontext";
 import { useLocation } from "react-router-dom";
@@ -31,7 +32,7 @@ export default function Search() {
   const handleDelete = React.useCallback(
     (medicine) => {
       mutatemedicines(medicine);
-      alert("Deleted successfully");
+      Swal.fire("Deleted successfully");
       setdeletestate(true);
     },
     [mutatemedicines, setdeletestate]

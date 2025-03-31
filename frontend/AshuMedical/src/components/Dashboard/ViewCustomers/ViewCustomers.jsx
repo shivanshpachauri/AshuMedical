@@ -3,6 +3,7 @@ import ViewCustomersHeading from "./ViewCustomersHeading";
 import "./ViewCustomers.css";
 import { modalActions } from "../../store/editcustomerslice";
 import Loading from "../../Loading/Loading";
+import Swal from "sweetalert2";
 import Error from "../../Error/Error";
 import fetchdelivery from "../../Http/fetchdelivery";
 import { useDispatch } from "react-redux";
@@ -36,7 +37,13 @@ export default function ViewCustomers() {
           <div
             className=" m-1 p-1 customerstable d-flex flex-row text-capitalize"
             style={style}
-            onDoubleClick={() => handledoubleclick(data[index])}
+            onDoubleClick={() => {
+              if (localStorage.getItem("loggedin")) {
+                handledoubleclick(data[index]);
+              } else {
+                Swal.fire("You need to log in first!");
+              }
+            }}
             key={index}
           >
             <div className="col-2">{data[index].name}</div>

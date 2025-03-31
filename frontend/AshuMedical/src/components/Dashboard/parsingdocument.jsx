@@ -6,6 +6,7 @@ import * as XLSX from "xlsx";
 import { pdfjs } from "@react-pdf-viewer/core";
 import mammoth from "mammoth";
 import "./parsingdocument.css";
+import Swal from "sweetalert2";
 // pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.js`;
 
 export default function ParsingDocument() {
@@ -17,7 +18,7 @@ export default function ParsingDocument() {
   }, []);
 
   const handleUpload = useCallback(() => {
-    if (!data) return alert("Please select a file to upload.");
+    if (!data) return Swal.fire("Please select a file to upload.");
 
     const fileObject = {
       uri: URL.createObjectURL(data),
@@ -26,7 +27,7 @@ export default function ParsingDocument() {
     };
 
     setUpload((prevUpload) => [...prevUpload, fileObject]);
-    alert("Uploaded successfully");
+    Swal.fire("Uploaded successfully");
     setData(null);
   }, [data]);
 

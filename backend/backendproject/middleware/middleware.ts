@@ -2,12 +2,12 @@ import helmet from "npm:helmet";
 import express from "npm:express@^4.17";
 import cors from "npm:cors";
 import morgan from "npm:morgan";
-const router = express.Router();
+const middleware = express();
 
-router.use(express.urlencoded({ extended: true }));
-router.use(express.json());
-router.use(cors());
-router.use(helmet());
-router.use(morgan("tiny"));
+middleware.use(express.urlencoded({ extended: true }));
+middleware.use(express.json());
+middleware.use(cors());
+middleware.use(helmet());
+middleware.use(morgan("tiny"));
 
-export default router;
+export default middleware;

@@ -1,11 +1,12 @@
 import axios from "axios";
 export async function checkemail({ email, password }) {
-  const response = await axios.patch("http://localhost:3000/api/login", {
+  const response = await axios.post("http://localhost:3000/api/login", {
     email: email,
     password: password,
   });
+
   if (response.status != 200) {
-    throw new Error("Error in login");
+    console.trace(response.data);
   }
   const data = await response.data;
   return data;

@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "./ai.css";
+import Swal from "sweetalert2";
 import { saveAi } from "../Http/Ai/Ai";
 import Sidebarai from "./Sidebarai";
 import { useQueryClient } from "@tanstack/react-query";
@@ -19,7 +20,7 @@ export default function Ai() {
     const body = response;
     await saveAi({ title, body });
 
-    alert("submitted successfully");
+    Swal.fire("submitted successfully");
     databaseclient.invalidateQueries(["fetchai"]);
   }
   const sendMessage = async () => {

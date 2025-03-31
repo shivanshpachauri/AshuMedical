@@ -1,5 +1,6 @@
 import Updatedelivery from "../../Http/Updatedelivery";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import Swal from "sweetalert2";
 import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { modalInputActions } from "../../store/Editinputcustomerslice";
@@ -20,6 +21,7 @@ export default function EditCustomers() {
     // const data = {
     //   [name]: value,
     // };
+
     dispatch(modalInputActions.setdelivery({ ...delivery, [name]: value }));
     // dispatch(modalInputActions.setdelivery(data));
   }
@@ -27,7 +29,7 @@ export default function EditCustomers() {
   function handlesubmit(e) {
     e.preventDefault();
     deliveryupdate(delivery);
-    alert("updated successfully");
+    Swal.fire("updated successfully");
     e.target.reset();
   }
   function handleclose() {

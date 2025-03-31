@@ -1,7 +1,7 @@
 import { useCallback, createContext, useState } from "react";
 import Proptypes from "prop-types";
 import Deletemedicines from "../Http/Deletemedicines";
-
+import Swal from "sweetalert2";
 // Create the context
 // eslint-disable-next-line react-refresh/only-export-components
 export const DeleteContext = createContext();
@@ -20,7 +20,7 @@ export const DeleteProvider = ({ children }) => {
       setdelete();
 
       mutate(medicine);
-      alert("Deleted successfully");
+      Swal.fire("Deleted successfully");
     },
     [mutate, setdelete]
   );

@@ -13,21 +13,21 @@ export default function Productcards() {
       name: "Product One",
       description: "This is a brief description of Product One.",
       quantity: 1,
-      price: "$19.99",
+      price: 20,
     },
     {
       image: Secondmedicine,
       name: "Product Two",
       description: "This is a brief description of Product Two.",
       quantity: 2,
-      price: "$29.99",
+      price: 30,
     },
     {
       image: Thirdmedicine,
       name: "Product Three",
       description: "This is a brief description of Product Three.",
       quantity: 3,
-      price: "$15.99",
+      price: 16,
     },
   ];
   function handleclick(product) {

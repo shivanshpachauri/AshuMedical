@@ -1,6 +1,6 @@
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 const clientId =
   "187145886280-d9i93h36eul8b8niphh92ivk3jql61fu.apps.googleusercontent.com"; // Replace with your client ID
 
@@ -12,7 +12,7 @@ export default function GoogleAuth() {
       const res = await axios.post("http://localhost:3000/validate-google", {
         token,
       });
-      alert(res.data.message); // Show success message
+      Swal.fire(res.data.message); // Show success message
     } catch (error) {
       console.error("Authentication failed", error);
     }

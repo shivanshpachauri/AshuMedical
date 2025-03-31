@@ -3,7 +3,7 @@ const connect = (async () => {
   try {
     const client = await pool1.connect();
     console.log("Connected to database");
-    // client.release();
+    client.release();
   } catch (err) {
     console.error("Database connection error:", err);
   }

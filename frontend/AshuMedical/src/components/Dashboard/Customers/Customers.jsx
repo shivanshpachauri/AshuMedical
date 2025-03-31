@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Postdelivery from "../../Http/Postdelivery";
+import Swal from "sweetalert2";
 export default function Customers() {
   const [delivery, setdelivery] = useState({
     name: "",
@@ -30,7 +31,7 @@ export default function Customers() {
       delivered: "No",
       quantity: "",
     });
-    alert("submitted successfully");
+    Swal.fire("submitted successfully");
   }
   return (
     <form className="form-inline" onSubmit={handlesubmit}>
