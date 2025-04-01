@@ -9,6 +9,7 @@ import Productcards from "../ProductCard/Productcards";
 import Faq from "../Faq/faq";
 import Header from "../Header/Header";
 import "./Navbar.css";
+import Swal from "sweetalert2";
 
 const Bestselling = lazy(() => import("../Bestselling/Bestselling"));
 const Search = lazy(() => import("../Search/Search"));

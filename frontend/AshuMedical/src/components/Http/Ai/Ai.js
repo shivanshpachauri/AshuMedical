@@ -1,8 +1,8 @@
-import axios from "axios";
+import api from "./Axios";
 export async function saveAi(ai) {
   try {
     const { title, body } = ai;
-    const response = await axios.post("http://localhost:3000/api/ai/save", {
+    const response = await api.post("/api/ai/save", {
       title,
       body,
     });
@@ -12,7 +12,7 @@ export async function saveAi(ai) {
 }
 export async function getAi() {
   try {
-    const response = await axios.get("http://localhost:3000/api/ai/view");
+    const response = await api.get("/api/ai/view");
     return response.data;
   } catch (error) {
     console.trace(error);
@@ -21,7 +21,7 @@ export async function getAi() {
 
 export const sendMessage = async ({ message }) => {
   try {
-    const res = await axios.post("http://localhost:3000/api/chat", {
+    const res = await api.post("/api/chat", {
       message,
     });
     const data = await res.data;

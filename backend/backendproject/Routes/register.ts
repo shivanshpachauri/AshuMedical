@@ -2,7 +2,10 @@
 import { pool1 } from "../postgres/server.ts";
 import express from "npm:express";
 import { Request, Response } from "npm:express";
-import bcrypt from "npm:bcrypt";
+// import bcrypt from "npm:bcrypt";
+// import bcrypt from "https://deno.land/x/bcrypt/mod.ts";
+import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
+
 const router = express.Router();
 const saltrounds = 10;
 

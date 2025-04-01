@@ -7,8 +7,13 @@ const createTables = async () => {
     `CREATE TABLE IF NOT EXISTS AI (id BIGSERIAL PRIMARY KEY, title TEXT, body TEXT)`,
     `CREATE TABLE IF NOT EXISTS CART(id BIGSERIAL PRIMARY KEY,image BYTEA,name TEXT,DESCRIPTION TEXT,price DOUBLE PRECISION)`,
   ];
-  for (const query of queries) {
-    await pool1.query(query);
+  try {
+    for (const query of queries) {
+      await pool1.query(query);
+    }
+  } catch (error) {
+    console.error("Error creating tables:", error);
+    throw error;
   }
 };
 export default createTables;

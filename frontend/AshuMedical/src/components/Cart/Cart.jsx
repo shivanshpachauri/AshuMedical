@@ -10,11 +10,10 @@ export default function Cart() {
   ]);
   const subtotal = _.sumBy(shopping, (item) => {
     const price = parseFloat(item.price);
-    return isNaN(price) ? 0 : price;
+    const quantity = parseFloat(item.quantity);
+    const total = price * quantity;
+    return isNaN(total) ? 0 : total;
   });
-  const subgrouped = Object.entries(groupObjects(shopping, "name"));
-
-  subgrouped.map((item, index) => console.log(item[1][0].name));
 
   function handlesubmit(e) {
     e.preventDefault();
@@ -38,8 +37,8 @@ export default function Cart() {
               onSubmit={handlesubmit}
             >
               <img
-                src={item.image}
-                alt="delivery image 1"
+                src={item.image || " "}
+                alt={`${item.name}`}
                 className="rounded shadow-lg"
                 style={{
                   height: "200px",
@@ -54,8 +53,8 @@ export default function Cart() {
                   ? `${item.description.substr(0, 20)}...`
                   : item.description.trim()}
               </label>
-              <label htmlFor="dosage">id : {item.id}</label>
-              <label htmlFor="price">price : {item.price}</label>
+              <label htmlFor="dosage">quantity : {item.quantity}</label>
+              <label htmlFor="price">price : ₹{item.price}</label>
               <button
                 style={{ width: "200px" }}
                 className="btn btn-outline-light"
@@ -72,7 +71,7 @@ export default function Cart() {
         >
           <h5 className="  text-light">Buy</h5>
           <h6 className=" mb-2 text-muted">Price : </h6>
-          <p className="">Subtotal : {subtotal}</p>
+          <p className="">Subtotal : ₹{subtotal}</p>
           <p className=""> </p>
           <button className="btn btn-outline-light" type="submit">
             Buy

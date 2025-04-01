@@ -49,13 +49,13 @@ export default function Hero() {
         <span style={{ color: "orange" }}>n</span>
         <span style={{ color: "red" }}>g</span>
       </h1>
-      <h1 className="m-2 p-2 d-block">{colorname}</h1>
-      <div className="row align-items-md-stretch">
-        <div className="d-flex">
-          <div className="col m-2 ">
+      <h1 className="m-1 p-2 d-block">{colorname}</h1>
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-6 m-1">
             <div
               id="cardjumbotron"
-              className="lh-1 text-dark h-100 p-5  border border-0 rounded-3 shadow-sm"
+              className="lh-1 text-dark h-100 p-5 border border-0 rounded-3 shadow-sm"
               style={{ backgroundColor: "#8F87F1" }}
             >
               <h2>Change the background</h2>
@@ -69,15 +69,15 @@ export default function Hero() {
               </button>
             </div>
           </div>
-          <div className="col m-2">
+          <div className="col-12 col-md-6 m-1">
             <div
               id="cardjumbotron"
-              className="lh-1 h-100 p-5  border border-0 rounded-3 shadow-sm"
+              className="lh-1 h-100 p-5 border border-0 rounded-3 shadow-sm"
               style={{ backgroundColor: "#C68EFD" }}
             >
               <h2>Add borders</h2>
               <button
-                className="btn btn btn-outline-light"
+                className="btn btn-outline-light"
                 type="button"
                 onClick={Changeborders}
                 style={{ backgroundColor: "#693382", border: "none" }}
@@ -86,17 +86,15 @@ export default function Hero() {
               </button>
             </div>
           </div>
-        </div>
-        <div className="d-flex">
-          <div className="col m-2">
+          <div className="col-12 col-md-6 m-1">
             <div
               id="cardjumbotron"
-              className="lh-1 h-100 p-5  border border-0 rounded-3 shadow-sm"
+              className="lh-1 h-100 p-5 border border-0 rounded-3 shadow-sm"
               style={{ backgroundColor: "#E9A5F1" }}
             >
               <h2>Reset to defaults</h2>
               <button
-                className="btn btn btn-outline-light"
+                className="btn btn-outline-light"
                 type="button"
                 onClick={Reset}
                 style={{ background: "#db39c2", border: "none" }}
@@ -105,15 +103,15 @@ export default function Hero() {
               </button>
             </div>
           </div>
-          <div className="col m-2">
+          <div className="col-12 col-md-6 m-1">
             <div
               id="cardjumbotron"
-              className="lh-1 h-100 p-5  border  border-0 rounded-3 shadow-sm"
+              className="lh-1 h-100 p-5 border border-0 rounded-3 shadow-sm"
               style={{ backgroundColor: "#FED2E2" }}
             >
               <h2>Font Size</h2>
               <button
-                className="m-2 p-1 btn btn btn-outline-light"
+                className="m-1 p-1 btn btn-outline-light"
                 type="button"
                 onClick={fontincrement}
                 style={{
@@ -127,7 +125,7 @@ export default function Hero() {
                 </span>
               </button>
               <button
-                className="m-2 p-1 btn btn btn-outline-light"
+                className="m-1 p-1 btn btn-outline-light"
                 type="button"
                 onClick={fontdecrement}
                 style={{

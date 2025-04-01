@@ -20,7 +20,17 @@ app.use(middleware);
 // connect to the database
 connect;
 // create table if not exist
-createTables();
+try {
+  await createTables();
+} catch (error) {
+  if (error instanceof AggregateError) {
+    error.errors.forEach((err) => {
+      console.error("Error:", err);
+    });
+  } else {
+    console.error("Error:", error);
+  }
+}
 
 // register db
 app.use("/api", register);

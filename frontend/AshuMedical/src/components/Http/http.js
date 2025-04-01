@@ -1,7 +1,7 @@
-import axios from "axios";
 //  for login and password it is in Http/Login/login.js
 // Ai related Ai/Ai.j
 
+import api from "./Axios";
 // for medicines
 export async function searchmedicine(
   id,
@@ -28,10 +28,7 @@ export async function searchmedicine(
   }
 
   try {
-    const response = await axios.get(
-      "http://localhost:3000/api/view/medicines",
-      { params }
-    );
+    const response = await api.get("/api/view/medicines", { params });
 
     return response.data;
   } catch (error) {
@@ -43,11 +40,11 @@ export async function Fetchmedicines(isSorted) {
   let medicines;
 
   if (isSorted) {
-    medicines = await axios.get("http://localhost:3000/api/view", {
+    medicines = await api.get("/api/view", {
       params: { sort: "asc" },
     });
   } else {
-    medicines = await axios.get("http://localhost:3000/api/view");
+    medicines = await api.get("/api/view");
   }
 
   const dataarray = medicines.data;
@@ -67,17 +64,14 @@ export async function insertmedicines(medicine) {
     short_composition1,
   } = medicine;
   try {
-    const _response = await axios.post(
-      "http://localhost:3000/api/postmedicines",
-      {
-        id: id,
-        name: name,
-        price: price,
-        manufacturer_name: manufacturer_name,
-        pack_size_label: pack_size_label,
-        short_composition1: short_composition1,
-      }
-    );
+    const _response = await api.post("/api/postmedicines", {
+      id: id,
+      name: name,
+      price: price,
+      manufacturer_name: manufacturer_name,
+      pack_size_label: pack_size_label,
+      short_composition1: short_composition1,
+    });
     return _response.data;
   } catch (error) {
     throw new Error(
@@ -90,7 +84,7 @@ export async function insertmedicines(medicine) {
 
 export async function deletemedicine(medicine) {
   const id = String(medicine.id);
-  const response = await axios.delete("http://localhost:3000/api/delete", {
+  const response = await api.delete("/api/delete", {
     data: { id: id },
   });
   if (response.status != 200) {
@@ -107,7 +101,7 @@ export async function updatemedicine(medicine) {
     pack_size_label,
     short_composition1,
   } = medicine;
-  const response = await axios.put("http://localhost:3000/api/update", {
+  const response = await api.put("/api/update", {
     id: id,
     name: name,
     price: price,
@@ -122,7 +116,7 @@ export async function updatemedicine(medicine) {
 }
 // delivery related
 export async function fetchdelivery() {
-  const response = await axios.get("http://localhost:3000/api/fetchdelivery");
+  const response = await api.get("/api/fetchdelivery");
 
   const dataarray = response.data;
   return dataarray;
@@ -139,7 +133,7 @@ export async function updatedelivery(delivery) {
     delivered,
   } = delivery;
 
-  const response = await axios.put("http://localhost:3000/api/deliveryupdate", {
+  const response = await api.put("/api/deliveryupdate", {
     id,
     name,
     pack_size_label,
@@ -161,7 +155,7 @@ export async function postdelivery(delivery) {
     delivered,
     date,
   } = delivery;
-  const _response = await axios.post("http://localhost:3000/api/deliverypost", {
+  const _response = await api.post("/api/deliverypost", {
     name: name,
     pack_size_label: pack_size_label,
     order_by: order_by,
