@@ -8,9 +8,9 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-.swal2-container {
+/* .swal2-container {
   z-index: 999999; /* Adjust this number as needed */
-}
+/* } */
 
 h1 {
   position: relative;

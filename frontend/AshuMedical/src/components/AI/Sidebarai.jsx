@@ -11,6 +11,7 @@ export default function Sidebarai() {
   const { data = [], isLoading, isError } = Fetchai();
   const [searchval, setsearchval] = useState("");
   const [finaldata, setfinaldata] = useState();
+  const [editdelete, seteditdelete] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     setfinaldata(
@@ -58,12 +59,27 @@ export default function Sidebarai() {
           {finaldata.toReversed().map((item, index) => (
             <NavLink
               key={index}
+              onMouseOver={() => {
+                seteditdelete(true);
+              }}
               to={`/ai/${item.id}`}
               style={{ maxWidth: "150px" }}
               className="sidebarrow d-block text-truncate text-decoration-none  position-relative m-2"
               onClick={() => handleclick(item)}
             >
               {item.title}
+              {editdelete && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-three-dots"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                </svg>
+              )}
               {/* {item.title.length > 20
                 ? `${item.title.substr(0, 20)}...`
                 : item.title.trim()} */}

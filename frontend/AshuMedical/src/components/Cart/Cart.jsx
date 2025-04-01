@@ -2,6 +2,7 @@ import React from "react";
 import "./cart.css";
 import { useSelector } from "react-redux";
 import _ from "lodash";
+import groupObjects from "./Groupby";
 export default function Cart() {
   const shopping = useSelector((state) => state.cartslice.shopping);
   const [shoppingbuy, setshoppingbuy] = React.useState([
@@ -11,7 +12,9 @@ export default function Cart() {
     const price = parseFloat(item.price);
     return isNaN(price) ? 0 : price;
   });
-  console.log(subtotal);
+  const subgrouped = Object.entries(groupObjects(shopping, "name"));
+
+  subgrouped.map((item, index) => console.log(item[1][0].name));
 
   function handlesubmit(e) {
     e.preventDefault();
