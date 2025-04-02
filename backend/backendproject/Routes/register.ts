@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
 
   try {
     const check = await pool1.query(
-      "SELECT email, password FROM register WHERE email=$1",
+      "SELECT email, password FROM medicalschema.register WHERE email=$1",
       [email]
     );
 
@@ -53,7 +53,7 @@ router.post("/register", async (req: Request, res: Response) => {
         return;
       }
       const _result = await pool1.query(
-        "insert into register(fullname,dob,username,gender,email,password) VALUES($1,$2,$3,$4,$5,$6)",
+        "insert into medicalschema.register(fullname,dob,username,gender,email,password) VALUES($1,$2,$3,$4,$5,$6)",
         [fullname, dob, username, gender, email, hashedpassword]
       );
     });

@@ -20,7 +20,7 @@ router.post("/ai/save", async (req, res) => {
   try {
     const { title, body } = req.body;
     const result = await pool1.query(
-      `INSERT into AI(title,body) VALUES($1,$2)`,
+      `INSERT into medicalschema.AI(title,body) VALUES($1,$2)`,
       [title, body]
     );
     res.json({ message: result });
@@ -32,7 +32,7 @@ router.get("/ai/view", async (req, res) => {
   try {
     const { title, body } = req.body;
     const result = await pool1.query(
-      `SELECT * FROM AI ORDER BY id ASC LIMIT 100`
+      `SELECT * FROM medicalschema.AI ORDER BY id ASC LIMIT 100`
     );
     res.send(result.rows);
   } catch (error) {

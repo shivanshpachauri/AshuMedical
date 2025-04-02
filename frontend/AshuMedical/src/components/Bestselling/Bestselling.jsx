@@ -34,14 +34,16 @@ function Bestselling() {
       <div id="bestsellingtable">
         <div className="text-capitalize container px-4 py-5">
           <h1 className="theading">Medicines</h1>
-          <button
-            type="button"
-            id="addnewentries"
-            className="btn btn-success"
-            onClick={() => setnewentries(!newentries)}
-          >
-            Add new entries
-          </button>
+          <div className="d-flex justify-content-center">
+            <button
+              type="button"
+              id="addnewentries"
+              className="btn btn-success"
+              onClick={() => setnewentries(!newentries)}
+            >
+              Add new entries
+            </button>
+          </div>
 
           {newentries && (
             <Newentries

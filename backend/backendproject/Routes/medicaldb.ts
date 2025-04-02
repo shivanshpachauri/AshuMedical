@@ -25,7 +25,7 @@ router.post("/postmedicines", async (req: Request, res: Response) => {
 
     if (id) {
       _result = await pool1.query(
-        "insert into medicaldb(id,name,price,manufacturer_name,pack_size_label,short_composition1 ) VALUES($1,$2,$3,$4,$5,$6)",
+        "insert into medicalschema.medicaldb(id,name,price,manufacturer_name,pack_size_label,short_composition1 ) VALUES($1,$2,$3,$4,$5,$6)",
         [
           id,
           name,
@@ -37,7 +37,7 @@ router.post("/postmedicines", async (req: Request, res: Response) => {
       );
     } else {
       _result = await pool1.query(
-        "insert into medicaldb(name,price,manufacturer_name,pack_size_label,short_composition1) VALUES($1,$2,$3,$4,$5)",
+        "insert into medicalschema.medicaldb(name,price,manufacturer_name,pack_size_label,short_composition1) VALUES($1,$2,$3,$4,$5)",
         [name, price, manufacturer_name, pack_size_label, short_composition1]
       );
     }
@@ -58,7 +58,7 @@ router.put("/update", async (_req: Request, _res: Response) => {
       short_composition1,
     } = _req.body;
     await pool1.query(
-      "UPDATE medicaldb SET id=$1, name=$2, price=$3, manufacturer_name=$4, pack_size_label=$5,short_composition1=$6 WHERE id=$1",
+      "UPDATE medicalschema.medicaldb SET id=$1, name=$2, price=$3, manufacturer_name=$4, pack_size_label=$5,short_composition1=$6 WHERE id=$1",
       [id, name, price, manufacturer_name, pack_size_label, short_composition1]
     );
     _res.json({ message: "updated successfully" });
@@ -70,7 +70,9 @@ router.put("/update", async (_req: Request, _res: Response) => {
 router.delete("/delete", async (req: Request, _res: Response) => {
   try {
     const { id } = req.body;
-    await pool1.query("delete from medicaldb where id = $1 ", [id]);
+    await pool1.query("delete from medicalschema.medicaldb where id = $1 ", [
+      id,
+    ]);
     _res.json({ message: "deleted successfully" });
   } catch (err) {
     res.json({ message: JSON.stringify(err) });
@@ -84,11 +86,11 @@ router.get("/view", async (_req: Request, res: Response) => {
   let result: pg.QueryResult;
   try {
     result = await pool1.query(
-      "SELECT * FROM public.medicaldb ORDER BY id asc limit 100"
+      "SELECT * FROM medicalschema.medicaldb ORDER BY id asc limit 100"
     );
     if (sort) {
       result = await pool1.query(
-        "SELECT * FROM public.medicaldb ORDER BY id desc limit 100"
+        "SELECT * FROM medicalschema.medicaldb ORDER BY id desc limit 100"
       );
     }
     res.send(result.rows);
@@ -140,7 +142,7 @@ router.get("/view/medicines", async (req: Request, res: Response) => {
     }
     // Construct the final query dynamically
     const query = `
-      SELECT * FROM public.medicaldb 
+      SELECT * FROM medicalschema.medicaldb 
       ${conditions.length ? `WHERE ${conditions.join(" AND ")}` : ""}
       ORDER BY id ${sort === "searchasc" ? "DESC" : "ASC"}
     `;

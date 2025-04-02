@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 export default function Carousel() {
   return (
-    <div className="maincarousel container d-flex shadow-lg px-4 py-4 my-5 align-items-center">
+    <div className="maincarousel container d-flex flex-wrap flex-column shadow-lg align-items-center">
       <div className="d-flex flex-column">
         {" "}
         <h1

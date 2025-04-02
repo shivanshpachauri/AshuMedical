@@ -50,8 +50,9 @@ export default function Hero() {
         <span style={{ color: "red" }}>g</span>
       </h1>
       <h1 className="m-1 p-2 d-block">{colorname}</h1>
+
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-center">
           <div className="col-12 col-md-6 m-1">
             <div
               id="cardjumbotron"

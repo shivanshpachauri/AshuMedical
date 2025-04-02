@@ -8,7 +8,7 @@ router.post("/cartpost", async (req, res) => {
     const { id, name, image, description } = req.body;
     console.log(id, name, image, description);
     await pool1.query(
-      `INSERT INTO CART(id,image,name,description,price) VALUES($1,$2,$3,$4,$5)`,
+      `INSERT INTO medicalschema.CART(id,image,name,description,price) VALUES($1,$2,$3,$4,$5)`,
       [id, name, image, description]
     );
     res.json({ message: "inserted successfully" });
@@ -17,7 +17,9 @@ router.post("/cartpost", async (req, res) => {
   }
 });
 router.get("/cartview", async (req, res) => {
-  const result = await pool1.query(" select * from cart order by id asc");
+  const result = await pool1.query(
+    " select * from medicalschema.cart order by id asc"
+  );
   res.send(result.rows);
 });
 export default router;
