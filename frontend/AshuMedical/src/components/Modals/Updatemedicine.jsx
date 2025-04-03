@@ -33,11 +33,11 @@ export default function Updatedialog() {
   }, [isEdited, handleclose]);
 
   const mutate = Updatemedicine();
-  function handlesubmit(e) {
+  async function handlesubmit(e) {
     e.preventDefault();
     mutate(medicines);
+    modalref.current.close();
     Swal.fire("submitted successfully");
-    window.location.reload();
   }
   return createPortal(
     <dialog ref={modalref} className="updatedialog rounded shadow-lg">

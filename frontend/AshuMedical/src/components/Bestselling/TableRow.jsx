@@ -4,10 +4,11 @@ import { areEqual } from "react-window";
 import "./TableRow.css";
 import { EditingContext } from "../Context/Editingcontext";
 import { DeleteContext } from "../Context/deletecontext";
+import { useSelector } from "react-redux";
 const TableRow = React.memo(({ item, style }) => {
   const { toggleEditing, setmedicines } = useContext(EditingContext);
   const { handleDelete } = useContext(DeleteContext);
-  const loggedin = localStorage.getItem("loggedin");
+  const loggedin = useSelector((state) => state.authslice.isLoggedIn);
   function handleedit() {
     toggleEditing();
     setmedicines({

@@ -29,8 +29,8 @@ export default function EditCustomers() {
   function handlesubmit(e) {
     e.preventDefault();
     deliveryupdate(delivery);
+    EditCustomersref.current.close();
     Swal.fire("updated successfully");
-    e.target.reset();
   }
   function handleclose() {
     EditCustomersref.current.close();
