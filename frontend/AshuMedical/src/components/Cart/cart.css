@@ -2,3 +2,31 @@
   background-color: black;
   color: white;
 } */
+table {
+  width: 100%; /* Ensure table takes full width */
+  border-collapse: collapse; /* Remove default spacing between cells */
+}
+
+thead,
+tbody,
+tfoot {
+  display: table-row-group; /* Ensure proper table structure */
+}
+
+th,
+td {
+  border: 1px solid black; /* Add borders for visibility */
+  padding: 8px; /* Add some padding */
+}
+
+tfoot {
+  position: relative; /* Fix the footer to the bottom */
+  bottom: 0; /* Position at the bottom */
+  right: 0;
+  width: 100%; /* Make the footer span the entire width */
+}
+
+tfoot td {
+  text-align: center; /* Center the footer content */
+  font-weight: bold; /* Make the footer content bold */
+}

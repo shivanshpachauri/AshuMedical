@@ -21,7 +21,7 @@ app.use(middleware);
 connect;
 // create table if not exist
 try {
-  await createTables();
+  createTables();
 } catch (error) {
   if (error instanceof AggregateError) {
     error.errors.forEach((err) => {

@@ -29,6 +29,35 @@ export default function Cart() {
       <br />
       <div className="d-flex flex-row justify-content-between">
         <div className="d-flex flex-row flex-wrap">
+          <table className="table table-dark table-striped ">
+            <thead className="thead">
+              <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shopping.map((item, index) => (
+                <tr key={index}>
+                  <th scope="row">{index}</th>
+                  <td>{item.name}</td>
+                  <td>{item.quantity}</td>
+                  <td>{item.description}</td>
+
+                  <td>{item.price}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan={4}>Subtotal : </td>
+                <td>₹{subtotal}</td>
+              </tr>
+            </tfoot>
+          </table>
           {shopping.map((item, index) => (
             <form
               key={index}
