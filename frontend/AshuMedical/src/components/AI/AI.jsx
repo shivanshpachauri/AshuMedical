@@ -106,7 +106,7 @@ export default function Ai() {
                   </Button>
                   <Button
                     className="m-2 p-2 border-0"
-                    style={{ backgroundColor: "skyblue" }}
+                    style={{ backgroundColor: "darkblue" }}
                     onClick={savetodatabase}
                   >
                     {" "}

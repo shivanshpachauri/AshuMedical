@@ -10,16 +10,11 @@ import { useState, useEffect } from "react";
 export default function Sidebarai() {
   const { data = [], isLoading, isError } = Fetchai();
   const [searchval, setsearchval] = useState("");
-  const [finaldata, setfinaldata] = useState();
   const [editdelete, seteditdelete] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-    setfinaldata(
-      data.filter((item) =>
-        JSON.stringify(item).toLowerCase().includes(searchval.toLowerCase())
-      )
-    );
-  }, [searchval, data, setfinaldata]);
+  const filtereddata = data.filter((item) =>
+    JSON.stringify(item).toLowerCase().includes(searchval.toLowerCase())
+  );
 
   function handleclick(item) {
     dispatch(
@@ -56,7 +51,7 @@ export default function Sidebarai() {
           className="sidebarlist"
           style={{ height: "500px", overflow: "auto" }}
         >
-          {finaldata.toReversed().map((item, index) => (
+          {filtereddata.toReversed().map((item, index) => (
             <NavLink
               key={index}
               onMouseOver={() => {

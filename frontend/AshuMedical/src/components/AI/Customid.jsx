@@ -9,7 +9,7 @@ export default function Customid() {
 
   return (
     <div
-      className="mx-auto  d-flex rounded shadow-lg flex-column"
+      className=" d-flex mx-auto rounded shadow-lg flex-column"
       style={{
         marginTop: "10px",
         backgroundColor: "lightblue",
@@ -18,11 +18,10 @@ export default function Customid() {
         maxHeight: "500px",
         whiteSpace: "normal",
         overflowY: "auto",
+        overflowx: "hidden",
       }}
     >
-      <strong className="mx-auto m-2 p-2 text-truncate text-capitalize">
-        {data.title}
-      </strong>
+      <strong className="mx-auto m-2 p-2  text-capitalize">{data.title}</strong>
 
       <div
         className="airesponse"

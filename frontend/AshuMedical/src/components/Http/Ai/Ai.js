@@ -1,4 +1,4 @@
-import api from "./Axios";
+import api from "../Axios";
 export async function saveAi(ai) {
   try {
     const { title, body } = ai;
