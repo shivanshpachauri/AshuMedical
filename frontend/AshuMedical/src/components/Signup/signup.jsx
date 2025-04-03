@@ -40,18 +40,10 @@ export default function RegisterForm() {
       console.log("Register password", register.password);
 
       setconfirmpassword({ ...confirmpassword, setconfirmpassword: true });
-      // confirmpassword.confirmpasswordstate(true)
+
       await formregister(register);
       setregistrationstate(true);
-      setregister({
-        fullname: "",
-        username: "",
-        email: "",
-        dob: "",
-        password: "",
-        gender: "",
-      });
-      setconfirmpassword({ ...confirmpassword, confirmpassword: "" });
+      e.target.reset();
     }
   }
   return (

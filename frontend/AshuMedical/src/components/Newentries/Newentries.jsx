@@ -4,12 +4,11 @@ import "./Newentries.css";
 import { useNavigate } from "react-router-dom";
 import Insertmedicines from "../Http/Insertmedicines";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
-export default function Newentries({ submitstate, setsubmitstate }) {
-  Newentries.propTypes = {
-    submitstate: PropTypes.bool.isRequired,
-    setsubmitstate: PropTypes.func.isRequired,
-  };
+import { useDispatch, useSelector } from "react-redux";
+import { toggle } from "../store/submitstate";
+export default function Newentries() {
+  const submitstate = useSelector((state) => state.submitslice.submitstate);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const alertstate = useSelector((state) => state.alertstate.error);
   const [medicines, setmedicines] = React.useState({
@@ -25,7 +24,7 @@ export default function Newentries({ submitstate, setsubmitstate }) {
     e.preventDefault();
     mutate(medicines);
     Swal.fire("Submitted successfully");
-    setsubmitstate(true);
+    dispatch(toggle());
     e.target.reset();
     navigate(".", { replace: true });
   }

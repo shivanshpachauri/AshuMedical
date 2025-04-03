@@ -21,7 +21,10 @@ export default function Customid() {
         overflowx: "hidden",
       }}
     >
-      <strong className="mx-auto m-2 p-2  text-capitalize">{data.title}</strong>
+      <strong className="mx-auto m-2 p-2  text-capitalize">{`${data.title.substr(
+        0,
+        50
+      )}...`}</strong>
 
       <div
         className="airesponse"

@@ -2,15 +2,13 @@
 import { pool1 } from "../postgres/server.ts";
 import express from "npm:express";
 import { Request, Response } from "npm:express";
-// import bcrypt from "npm:bcrypt";
-// import bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 
 const router = express.Router();
 const saltrounds = 10;
 
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body; // Now, req.body will have data
+  const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).json({ message: "Email and Password are required" });
   }
@@ -22,46 +20,43 @@ router.post("/login", async (req, res) => {
     );
 
     if (check.rows.length === 0) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User  not found" });
     }
 
-    bcrypt.compare(password, check.rows[0].password, (err, result) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      if (result) {
-        console.log("password matched!!");
-        res.send("password match");
-      } else {
-        console.log("password do not match");
-        res.send("password do not match");
-      }
-    });
+    const match = await bcrypt.compare(password, check.rows[0].password);
+    if (match) {
+      console.log("Password matched!!");
+      return res.send("Password match");
+    } else {
+      console.log("Password do not match");
+      return res.send("Password do not match");
+    }
   } catch (err) {
-    console.log(err);
-    res.status(500).send("Error logging in");
+    console.error(err);
+    return res.status(500).send("Error logging in");
   }
 });
 
 router.post("/register", async (req: Request, res: Response) => {
-  try {
-    const { email, password, fullname, gender, dob, username } = req.body;
-    bcrypt.hash(password, saltrounds, async (err, hashedpassword) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      const _result = await pool1.query(
-        "insert into medicalschema.register(fullname,dob,username,gender,email,password) VALUES($1,$2,$3,$4,$5,$6)",
-        [fullname, dob, username, gender, email, hashedpassword]
-      );
-    });
+  const { email, password, fullname, gender, dob, username } = req.body;
 
-    res.json({ message: "registered successfully" });
+  if (!email || !password || !fullname || !gender || !dob || !username) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  try {
+    const salt = await bcrypt.genSalt(saltrounds);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    await pool1.query(
+      "INSERT INTO medicalschema.register(fullname, dob, username, gender, email, password) VALUES($1, $2, $3, $4, $5, $6)",
+      [fullname, dob, username, gender, email, hashedPassword]
+    );
+
+    return res.json({ message: "Registered successfully" });
   } catch (err) {
-    console.log("Error in inserting register", err);
-    res.json({ message: JSON.stringify(err) });
+    console.error("Error in inserting register", err);
+    return res.status(500).json({ message: "Error registering user" });
   }
 });
+
 export default router;

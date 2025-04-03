@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import GoogleAuth from "./Googlesignin";
 import { checkemail } from "../Http/Login/login";
+import { useDispatch } from "react-redux";
+import { login as logindispatch } from "../store/authslice";
 export default function Login() {
-  // localstorage and session storage
+  const dispatch = useDispatch();
   const [login, setlogin] = useState({
     email: "",
     password: "",
@@ -20,16 +22,17 @@ export default function Login() {
   async function handlesubmit(e) {
     e.preventDefault();
     const response = await checkemail(login);
-    if (response.length > 0 && response === "password match") {
+    console.log(response);
+    if (response.length > 0 && response === "Password match") {
       const success = (
         <div className="alert alert-success" role="alert">
           Logged in successfully
         </div>
       );
-      localStorage.setItem("loggedin", "true");
+      dispatch(logindispatch());
       setsuccess(success);
     }
-    if (response === "password do not match" || response.length <= 0) {
+    if (response === "Password do not match" || response.length <= 0) {
       const error = (
         <div className="alert alert-danger" role="alert">
           invalid email password

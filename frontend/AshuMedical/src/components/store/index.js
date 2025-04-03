@@ -5,6 +5,7 @@ import alertslice from "./alertslice.js";
 import aislice from "./aislice.js";
 import cartslice from "./cartslice.js";
 import authslice from "./authslice.js";
+import submitslice from "./submitstate.js";
 export const store = configureStore({
   reducer: {
     editcustomermodal: editcustomermodal.reducer,
@@ -13,5 +14,6 @@ export const store = configureStore({
     aislice: aislice.reducer,
     cartslice: cartslice.reducer,
     authslice: authslice,
+    submitslice: submitslice,
   },
 });

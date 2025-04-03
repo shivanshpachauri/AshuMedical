@@ -13,11 +13,6 @@ import { DeleteContext } from "../Context/deletecontext";
 function Bestselling() {
   const { deletestate } = useContext(DeleteContext);
   const [newentries, setnewentries] = useState(false);
-  const [submitstate, setsubmitstate] = useState(false);
-  const queryClient = useQueryClient();
-  if (submitstate) {
-    queryClient.invalidateQueries(["Fetchmedicines"]);
-  }
 
   const { data, isLoading, isError } = Fetchingmedicines();
 
@@ -45,12 +40,7 @@ function Bestselling() {
             </button>
           </div>
 
-          {newentries && (
-            <Newentries
-              submitstate={submitstate}
-              setsubmitstate={setsubmitstate}
-            />
-          )}
+          {newentries && <Newentries />}
           {deletestate && (
             <div className="alert alert-danger" role="alert">
               <strong>Deleted successfully</strong>

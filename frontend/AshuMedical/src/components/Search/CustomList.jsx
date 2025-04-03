@@ -1,10 +1,12 @@
 import { areEqual } from "react-window";
 import PropTypes from "prop-types";
 import React from "react";
+import { useSelector } from "react-redux";
 import { useContext } from "react";
 import { EditingContext } from "../Context/Editingcontext";
 const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
   const { toggleEditing, setmedicines } = useContext(EditingContext);
+  const isLoggedin = useSelector((state) => state.authslice.isLoggedIn);
   function handleedit() {
     toggleEditing();
     setmedicines({
@@ -31,24 +33,36 @@ const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
         <div className="col-2 ">{item.pack_size_label}</div>
         <div className="col-1">{item.short_composition1}</div>
       </div>
-      <div className="col-0 mt-1 mx-1 d-flex flex-column">
-        <button
-          type="button"
-          className="btn btn-danger "
-          style={{ margin: "3px", padding: "3px", height: "5em", width: "5em" }}
-          onClick={onDelete}
-        >
-          Delete
-        </button>
-        <button
-          type="button"
-          className="visible  btn btn-primary"
-          style={{ margin: "3px", padding: "3px", height: "5em", width: "5em" }}
-          onClick={handleedit}
-        >
-          Edit
-        </button>
-      </div>
+      {isLoggedin && (
+        <div className="col-0 mt-1 mx-1 d-flex flex-column">
+          <button
+            type="button"
+            className="btn btn-danger "
+            style={{
+              margin: "3px",
+              padding: "3px",
+              height: "5em",
+              width: "5em",
+            }}
+            onClick={onDelete}
+          >
+            Delete
+          </button>
+          <button
+            type="button"
+            className="visible  btn btn-primary"
+            style={{
+              margin: "3px",
+              padding: "3px",
+              height: "5em",
+              width: "5em",
+            }}
+            onClick={handleedit}
+          >
+            Edit
+          </button>
+        </div>
+      )}
     </div>
   );
 }, areEqual);
