@@ -13,3 +13,6 @@ h3 {
   text-emphasis: bold;
   opacity: 0.7;
 }
+productcardbutton:active {
+  background-color: darkblue;
+}

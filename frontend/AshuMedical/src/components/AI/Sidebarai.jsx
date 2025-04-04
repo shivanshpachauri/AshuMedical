@@ -6,14 +6,19 @@ import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 import { useDispatch } from "react-redux";
 import { aiActions } from "../store/aislice";
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 export default function Sidebarai() {
   const { data = [], isLoading, isError } = Fetchai();
   const [searchval, setsearchval] = useState("");
   const [editdelete, seteditdelete] = useState(false);
   const dispatch = useDispatch();
-  const filtereddata = data.filter((item) =>
-    JSON.stringify(item).toLowerCase().includes(searchval.toLowerCase())
+
+  const filtereddata = useMemo(
+    () =>
+      data.filter((item) =>
+        JSON.stringify(item).toLowerCase().includes(searchval.toLowerCase())
+      ),
+    [data, searchval]
   );
 
   function handleclick(item) {
@@ -42,6 +47,8 @@ export default function Sidebarai() {
         <h3 className="mx-auto text-light">Save</h3>
         <input
           className="mx-auto"
+          name="search"
+          id="aisearch"
           type="search"
           value={searchval}
           onChange={(e) => setsearchval(e.target.value)}

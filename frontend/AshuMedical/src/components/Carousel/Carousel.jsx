@@ -12,9 +12,9 @@ export default function Carousel() {
         {" "}
         <h1
           style={{
-            fontWeight: "bold",
+            // fontWeight: "bold",
             marginBottom: "20px",
-            color: "black",
+            // color: "black",
           }}
         >
           आशु मेडिकल एजेंसीज

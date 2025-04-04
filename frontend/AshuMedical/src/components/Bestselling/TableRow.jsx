@@ -1,14 +1,28 @@
-import PropTypes from "prop-types";
+import PropTypes, { func } from "prop-types";
 import React, { useContext } from "react";
 import { areEqual } from "react-window";
+import { cartActions } from "../store/cartslice";
 import "./TableRow.css";
 import { EditingContext } from "../Context/Editingcontext";
 import { DeleteContext } from "../Context/deletecontext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const TableRow = React.memo(({ item, style }) => {
+  const dispatch = useDispatch();
   const { toggleEditing, setmedicines } = useContext(EditingContext);
   const { handleDelete } = useContext(DeleteContext);
   const loggedin = useSelector((state) => state.authslice.isLoggedIn);
+  function handleclick(item) {
+    console.log(item);
+    dispatch(
+      cartActions.setcart({
+        id: item.id,
+        name: item.name,
+        description: item.description,
+        price: item.price,
+        quantity: item.quantity,
+      })
+    );
+  }
   function handleedit() {
     toggleEditing();
     setmedicines({
@@ -30,7 +44,7 @@ const TableRow = React.memo(({ item, style }) => {
         <div className="col-2">{item.pack_size_label}</div>
         <div className="col-1">{item.short_composition1}</div>
       </div>
-      {loggedin && (
+      {loggedin ? (
         <div className="col-0">
           <div style={{ float: "right" }} className="d-flex flex-column">
             <button
@@ -49,6 +63,14 @@ const TableRow = React.memo(({ item, style }) => {
             </button>
           </div>
         </div>
+      ) : (
+        <button
+          className="btn productcardbutton btn-primary mt-auto"
+          onClick={() => handleclick(item)}
+        >
+          Buy Now
+          {/* {btnproperty.index === index ? btnproperty.name : "Buy Now"} */}
+        </button>
       )}
     </div>
   );

@@ -39,6 +39,24 @@ export const cartslice = createSlice({
       }
       //   return { ...state, ...action.payload };
     },
+    increment(state, action) {
+      const newitem = action.payload;
+      const existingItem = state.shopping.find(
+        (item) => item.quantity == newitem.quantity
+      );
+      if (existingItem) {
+        existingItem.quantity++;
+      }
+    },
+    decrement(state, action) {
+      const newitem = action.payload;
+      const existingItem = state.shopping.find(
+        (item) => item.quantity == newitem.quantity
+      );
+      if (existingItem) {
+        existingItem.quantity--;
+      }
+    },
   },
 });
 

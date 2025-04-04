@@ -91,6 +91,8 @@ export default function Ai() {
               </div>
               <div className="d-flex flex-row">
                 <textarea
+                  id="searchval"
+                  name="aisearchinput"
                   className="rounded shadow-lg m-2 p-2"
                   value={message}
                   style={{
