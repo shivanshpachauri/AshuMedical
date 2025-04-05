@@ -11,6 +11,14 @@ nav {
   padding: 10px;
 }
 
+.cartcontainer {
+  transition: background-color 0.3 sec ease-in;
+}
+.cartcontainer:hover {
+  color: black;
+  background-color: #9aaeca;
+}
+
 .nav-link {
   color: rgba(255, 255, 255, 0.8);
   padding: 8px 15px;

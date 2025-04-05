@@ -57,7 +57,7 @@ export const cartslice = createSlice({
     },
     removeall(state) {
       localStorage.removeItem("shopping");
-      state.shopping = [];
+      state.shopping = state.shopping.splice(0, state.shopping.length);
     },
   },
 });

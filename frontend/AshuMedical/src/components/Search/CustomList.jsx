@@ -7,11 +7,16 @@ import Swal from "sweetalert2";
 
 import Deletemedicines from "../Http/Deletemedicines";
 import { EditingContext } from "../Context/Editingcontext";
+import { DeleteContext } from "../Context/deletecontext";
 const CustomList = React.memo(function CustomList({ item, style }) {
   const { toggleEditing, setmedicines } = useContext(EditingContext);
   const { setdeletestate } = useContext(DeleteContext);
-  const mutatemedicines = Deletemedicines();
 
+  const isLoggedin = useSelector((state) => state.authslice.isLoggedIn);
+
+  console.trace("inside the custom list component");
+  console.trace(item);
+  const mutatemedicines = Deletemedicines();
   const handleDelete = React.useCallback(
     (medicine) => {
       mutatemedicines(medicine);
@@ -20,7 +25,6 @@ const CustomList = React.memo(function CustomList({ item, style }) {
     },
     [mutatemedicines, setdeletestate]
   );
-  const isLoggedin = useSelector((state) => state.authslice.isLoggedIn);
   function handleedit() {
     toggleEditing();
     setmedicines({

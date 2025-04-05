@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 
 import "./search.css";
 
-import CustomList from "./CustomList";
+import CustomList from "./CustomList.jsx";
 import TableHead from "../TableHead/TableHead";
 import Searchmedicines from "../Http/Searchmedicines";
 import Loading from "../Loading/Loading";
@@ -14,6 +14,7 @@ import Updatemedicine from "../Modals/Updatemedicine";
 
 export default function Search() {
   const location = useLocation();
+
   const medicineref = useRef();
   const manufacturerref = useRef();
   const packref = useRef();
@@ -26,7 +27,9 @@ export default function Search() {
     pack_size_label: "",
     short_composition1: "",
   });
+
   const { data, isLoading, isError } = Searchmedicines(searchParams);
+
   if (isLoading) {
     return <Loading title="loading search" />;
   }
@@ -37,7 +40,6 @@ export default function Search() {
 
   function handlesubmit(e) {
     e.preventDefault();
-
     setSearchParams({
       id: idref.current.value,
       manufacturer_name: manufacturerref.current.value,
@@ -53,14 +55,10 @@ export default function Search() {
 
       <div
         id="searchcontainer"
-        className="d-flex flex-column shadow-lg mx-auto bg-body rounded"
-        style={{ width: "fit-content", height: "fit-content" }}
+        className="d-flex container flex-column shadow-lg flex-wrap bg-body rounded"
       >
         <h1 className="m-3 display-5">Search component</h1>
-        <form
-          className="text-capitalize container px-4 py-5"
-          onSubmit={handlesubmit}
-        >
+        <form className="text-capitalize container " onSubmit={handlesubmit}>
           <label htmlFor="id">Id</label>
           <input type="text" id="id" name="id" ref={idref} />
           <label htmlFor="medicineid"> Medicine Name</label>
@@ -117,7 +115,3 @@ export default function Search() {
     </>
   );
 }
-
-Search.propTypes = {
-  setdeletestate: PropTypes.func.isRequired,
-};

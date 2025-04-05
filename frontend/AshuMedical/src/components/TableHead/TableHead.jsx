@@ -21,25 +21,13 @@ export default function TableHead() {
           Sort
         </button>
       </div>
-      <div className="container d-flex align-items-center flex-wrap bg-primary text-capitalize rounded shadow-sm p-3">
-        <div className="col-1 text-center" style={{ padding: "10px" }}>
-          id
-        </div>
-        <div className="col-3 text-center" style={{ padding: "10px" }}>
-          name
-        </div>
-        <div className="col-1 text-center" style={{ padding: "10px" }}>
-          price
-        </div>
-        <div className="col-3 text-center" style={{ padding: "10px" }}>
-          Manufacturer
-        </div>
-        <div className="col-2 text-center" style={{ padding: "10px" }}>
-          Pack_size
-        </div>
-        <div className="col-1 text-center" style={{ padding: "10px" }}>
-          Salt
-        </div>
+      <div className="container d-flex align-items-center flex-wrap bg-primary text-capitalize rounded shadow-sm text-break text-center">
+        <div className="col-1">id</div>
+        <div className="col-3">name</div>
+        <div className="col-1">price</div>
+        <div className="col-3">Manufacturer</div>
+        <div className="col-2">Pack_size</div>
+        <div className="col-1">Salt</div>
       </div>
     </>
   );
