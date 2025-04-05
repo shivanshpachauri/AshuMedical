@@ -3,9 +3,23 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useContext } from "react";
+import Swal from "sweetalert2";
+
+import Deletemedicines from "../Http/Deletemedicines";
 import { EditingContext } from "../Context/Editingcontext";
-const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
+const CustomList = React.memo(function CustomList({ item, style }) {
   const { toggleEditing, setmedicines } = useContext(EditingContext);
+  const { setdeletestate } = useContext(DeleteContext);
+  const mutatemedicines = Deletemedicines();
+
+  const handleDelete = React.useCallback(
+    (medicine) => {
+      mutatemedicines(medicine);
+      Swal.fire("Deleted successfully");
+      setdeletestate(true);
+    },
+    [mutatemedicines, setdeletestate]
+  );
   const isLoggedin = useSelector((state) => state.authslice.isLoggedIn);
   function handleedit() {
     toggleEditing();
@@ -44,7 +58,7 @@ const CustomList = React.memo(function CustomList({ item, onDelete, style }) {
               height: "5em",
               width: "5em",
             }}
-            onClick={onDelete}
+            onClick={handleDelete}
           >
             Delete
           </button>

@@ -12,7 +12,6 @@ const TableRow = React.memo(({ item, style }) => {
   const { handleDelete } = useContext(DeleteContext);
   const loggedin = useSelector((state) => state.authslice.isLoggedIn);
   function handleclick(item) {
-    console.log(item);
     dispatch(
       cartActions.setcart({
         id: item.id,

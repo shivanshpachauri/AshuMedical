@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import "./bestselling.css";
 import { FixedSizeList as List } from "react-window";
 import Newentries from "../Newentries/Newentries";
-import TableRows from "./TableRows";
+import TableRow from "./TableRow";
 import TableHead from "../TableHead/TableHead";
 import Fetchingmedicines from "../Http/Fetchingmedicines";
 import Error from "../Error/Error";
@@ -53,9 +53,10 @@ function Bestselling() {
             itemCount={data.length}
             itemSize={85}
             width="100%"
+            style={{ overflowX: "hidden" }}
           >
             {({ index, style }) => (
-              <TableRows index={index} style={style} data={data} />
+              <TableRow key={data[index].id} item={data[index]} style={style} />
             )}
           </List>
         </div>
