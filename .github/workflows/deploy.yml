@@ -29,7 +29,7 @@ jobs:
           node-version: lts/*
 
       - name: Install step
-        run: "deno run --allow-all --watch main.ts"
+        run: "deno task start"
 
       - name: Build step
         run: "deployctl deploy"
