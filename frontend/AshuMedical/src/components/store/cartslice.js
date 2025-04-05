@@ -1,17 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+let shoppingFromStorage = [];
+
+try {
+  const stored = localStorage.getItem("shopping");
+  shoppingFromStorage = stored ? JSON.parse(stored) : [];
+} catch (e) {
+  shoppingFromStorage = [];
+}
 
 const initialState = {
-  shopping: [
-    {
-      id: "",
-      price: "",
-      name: "",
-      description: "",
-      quantity: "",
-      image: `https://picsum.photos/200`,
-      price: "",
-    },
-  ],
+  shopping: shoppingFromStorage,
 };
 
 export const cartslice = createSlice({
@@ -37,12 +35,12 @@ export const cartslice = createSlice({
         existingItem.quantity++;
         existingItem.totalPrice = existingItem.totalPrice + newItem.price;
       }
-      //   return { ...state, ...action.payload };
+      localStorage.setItem("shopping", JSON.stringify(state.shopping));
     },
     increment(state, action) {
       const newitem = action.payload;
       const existingItem = state.shopping.find(
-        (item) => item.quantity == newitem.quantity
+        (item) => item.name == newitem.name
       );
       if (existingItem) {
         existingItem.quantity++;
@@ -51,11 +49,15 @@ export const cartslice = createSlice({
     decrement(state, action) {
       const newitem = action.payload;
       const existingItem = state.shopping.find(
-        (item) => item.quantity == newitem.quantity
+        (item) => item.name == newitem.name
       );
       if (existingItem) {
         existingItem.quantity--;
       }
+    },
+    removeall(state) {
+      localStorage.removeItem("shopping");
+      state.shopping = [];
     },
   },
 });

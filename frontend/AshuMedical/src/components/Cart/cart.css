@@ -2,6 +2,22 @@
   background-color: black;
   color: white;
 } */
+/* table tr:last-child td:first-child {
+  border: none;
+  border-bottom-left-radius: 10px;
+} */
+
+/* table tr:last-child td:last-child {
+  border: none;
+  border-bottom-right-radius: 10px;
+} */
+.incrementicon:hover {
+  transform: scale(1.5);
+}
+.decrementicon:hover {
+  transform: scale(1.5);
+}
+
 table {
   width: 100%; /* Ensure table takes full width */
   border-collapse: collapse; /* Remove default spacing between cells */
