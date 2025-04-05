@@ -1,6 +1,7 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
+    "start": "deployctl deploy backend/backendproject/main.ts",
     "dev": "deno run --allow-all --watch main.ts"
   },
   "imports": {
@@ -8,9 +9,7 @@
   },
   "deploy": {
     "project": "91410e67-9011-4d76-8ce0-37637cb3d45d",
-    "exclude": [
-      "**/node_modules"
-    ],
+    "exclude": ["**/node_modules"],
     "include": [],
     "entrypoint": "main.ts"
   }
