@@ -911,7 +911,8 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@std/assert@1"
+      "jsr:@std/assert@1",
+      "npm:express@^4.17.0"
     ],
     "packageJson": {
       "dependencies": [

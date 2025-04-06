@@ -1,5 +1,5 @@
-import express from "npm:express@^4.17";
-import { Request, Response } from "npm:express";
+import express from "express";
+import { Request, Response } from "express";
 import "https://deno.land/std@0.224.0/dotenv/load.ts";
 
 import middleware from "./middleware/middleware.ts";
