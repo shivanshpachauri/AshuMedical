@@ -5,9 +5,10 @@ import _ from "lodash";
 import groupObjects from "./Groupby";
 import { cartActions } from "../store/cartslice";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 export default function Cart() {
   const shopping = useSelector((state) => state.cartslice.shopping);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   if (shopping.length === 0) {
     return (
@@ -39,8 +40,9 @@ export default function Cart() {
 
   function handlesubmit(e) {
     e.preventDefault();
-    dispatch(cartActions.removeall());
+
     Swal.fire("submitted successfully");
+    navigate("/cartsubmit");
   }
 
   return (

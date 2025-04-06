@@ -6,6 +6,7 @@ import "./TableRow.css";
 import { EditingContext } from "../Context/Editingcontext";
 import { DeleteContext } from "../Context/deletecontext";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 const TableRow = React.memo(({ item, style }) => {
   const dispatch = useDispatch();
   const { toggleEditing, setmedicines } = useContext(EditingContext);
@@ -21,6 +22,7 @@ const TableRow = React.memo(({ item, style }) => {
         quantity: item.quantity,
       })
     );
+    Swal.fire("Submitted successfully");
   }
   function handleedit() {
     toggleEditing();

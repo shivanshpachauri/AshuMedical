@@ -52,7 +52,10 @@ export default function ViewCustomers() {
             <div className="col-2 flex-wrap">
               {data[index].manufacturer_name}
             </div>
-            <div className="col-2">{data[index].date.substr(0, 10)}</div>
+            <div className="col-2">
+              {data[index].date ? data[index].date.substr(0, 10) : Date.now()}
+              {/* ${Date().getFullYear()}${Date().getMonth()}${Date().getDate()} */}
+            </div>
             <div className="col-1">{data[index].quantity}</div>
             <div className="col-2">{data[index].delivered}</div>
           </div>
