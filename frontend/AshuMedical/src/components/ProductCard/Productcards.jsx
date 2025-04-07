@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Firstmedicine from "./Productimages/Firstmedicine.jpg";
 import Secondmedicine from "./Productimages/Secondmedicine.jpg";
 import Thirdmedicine from "./Productimages/Thirdmedicine.jpg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cartslice";
 
 export default function Productcards() {
+  // const shopping = useSelector((state) => state.cartslice.shopping);
+
   const dispatch = useDispatch();
   const [btnproperty, setbtnproperty] = useState({
     name: null,

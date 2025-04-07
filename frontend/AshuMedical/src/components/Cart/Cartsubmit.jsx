@@ -9,6 +9,17 @@ import postdelivery from "../Http/Postdelivery.jsx";
 export default function Cartsubmit() {
   const shopping = useSelector((state) => state.cartslice.shopping);
 
+  if (shopping.length === 0) {
+    return (
+      <div
+        className="mx-auto alert alert-danger"
+        style={{ width: "fit-content" }}
+        role="alert"
+      >
+        No items added to the cart please add items to the cart
+      </div>
+    );
+  }
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const mutate = postdelivery();
@@ -39,6 +50,7 @@ export default function Cartsubmit() {
   const handlesubmit = useCallback(
     (e) => {
       e.preventDefault();
+      console.log(buyingdetails);
 
       shopping.forEach((element) => {
         mutate({
@@ -71,19 +83,23 @@ export default function Cartsubmit() {
           onChange={handlechange}
           className="form-control mb-2 mr-sm-2"
           placeholder="partyname"
+          required
         />
         <label htmlFor="phone">phone</label>
         <input
           id="phone"
           name="phone"
+          autoComplete="on"
           value={buyingdetails.phone}
           type="text"
           onChange={handlechange}
           className="form-control mb-2 mr-sm-2"
           placeholder="+91"
+          required
         />
         <label htmlFor="address">address</label>
         <textarea
+          autoComplete="on"
           name="address"
           value={buyingdetails.address}
           id="address"
@@ -100,17 +116,21 @@ export default function Cartsubmit() {
             name="cod"
             value="cod"
             id="cod"
+            checked={buyingdetails.cod === "cod"}
             onChange={handlechange}
+            required
           />
           <label htmlFor="cod"> Cash on Delivery</label>
 
           <input
             className="form-check-input"
             type="radio"
+            checked={buyingdetails.atm === "atm"}
             onChange={handlechange}
             name="atm"
             value="atm"
             id="atmcard"
+            required
           />
           <label htmlFor="atmcard"> atm card</label>
         </div>
