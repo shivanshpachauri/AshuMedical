@@ -17,7 +17,7 @@ const TableRow = React.memo(({ item, style }) => {
       cartActions.setcart({
         id: item.id,
         name: item.name,
-        description: item.description,
+        description: item.short_composition1,
         price: item.price,
         quantity: item.quantity,
       })
@@ -66,7 +66,7 @@ const TableRow = React.memo(({ item, style }) => {
         </div>
       ) : (
         <button
-          className="btn productcardbutton btn-primary mt-auto"
+          className="btn productcardbutton btn-primary m-1 p-1"
           onClick={() => handleclick(item)}
         >
           Buy Now

@@ -1,14 +1,21 @@
 import { FixedSizeList as List } from "react-window";
+import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+
 import ViewCustomersHeading from "./ViewCustomersHeading";
 import "./ViewCustomers.css";
-import { modalActions } from "../../store/editcustomerslice";
 import Loading from "../../Loading/Loading";
-import Swal from "sweetalert2";
 import Error from "../../Error/Error";
 import fetchdelivery from "../../Http/fetchdelivery";
-import { useDispatch } from "react-redux";
+
+import { modalActions } from "../../store/editcustomerslice";
 import { modalInputActions } from "../../store/Editinputcustomerslice";
 export default function ViewCustomers() {
+  const dateInstance = new Date();
+  const date = `${dateInstance.getFullYear()}-${
+    dateInstance.getMonth() + 1
+  }-${dateInstance.getDate()}`;
+
   const { data, isLoading, isError } = fetchdelivery();
   const dispatch = useDispatch();
   if (isLoading) {
@@ -29,13 +36,13 @@ export default function ViewCustomers() {
         className="rounded shadow-lg"
         height={400} // Set the height of the list
         itemCount={data.length}
-        itemSize={35} // Set the height of each row
+        itemSize={65} // Set the height of each row
         width={"100%"}
         style={{ border: "none", backgroundColor: "lightblue" }}
       >
         {({ index, style }) => (
           <div
-            className=" m-1 p-1 customerstable d-flex flex-row text-capitalize"
+            className=" m-1 p-1 shadow-sm  flex-wrap customerstable d-flex flex-row text-capitalize"
             style={style}
             onDoubleClick={() => {
               if (localStorage.getItem("loggedin")) {
@@ -53,11 +60,12 @@ export default function ViewCustomers() {
               {data[index].manufacturer_name}
             </div>
             <div className="col-2">
-              {data[index].date ? data[index].date.substr(0, 10) : Date.now()}
-              {/* ${Date().getFullYear()}${Date().getMonth()}${Date().getDate()} */}
+              {data[index].date ? data[index].date.substr(0, 10) : date}
             </div>
             <div className="col-1">{data[index].quantity}</div>
             <div className="col-2">{data[index].delivered}</div>
+            <br />
+            <br />
           </div>
         )}
       </List>

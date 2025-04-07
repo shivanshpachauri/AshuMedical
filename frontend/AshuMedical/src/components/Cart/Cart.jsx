@@ -4,16 +4,41 @@ import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import groupObjects from "./Groupby";
 import { cartActions } from "../store/cartslice";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 export default function Cart() {
   const shopping = useSelector((state) => state.cartslice.shopping);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  function handlemarkerpen() {
+    console.dir("directory");
+    console.log("log");
+    console.table("table");
+    console.trace("trace");
+    console.error("error");
+  }
+  const markerpen = (
+    <div
+      className=" editmarker  rounded d-flex mx-auto flex-end"
+      onClick={handlemarkerpen}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        className="bi bi-pen-fill"
+        viewBox="0 0 16 16"
+      >
+        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
+      </svg>
+    </div>
+  );
+
   if (shopping.length === 0) {
     return (
       <div
-        className=" mx-auto alert alert-light"
+        className="m-4 mx-auto alert alert-light"
         role="alert"
         style={{ width: "fit-content" }}
       >
@@ -40,8 +65,6 @@ export default function Cart() {
 
   function handlesubmit(e) {
     e.preventDefault();
-
-    Swal.fire("submitted successfully");
     navigate("/cartsubmit");
   }
 
@@ -51,9 +74,10 @@ export default function Cart() {
         {" "}
         Shopping Cart{" "}
       </h1>
-      <br />
-      <div className="d-flex  justify-content-between">
+
+      <div className="mt-5 d-flex  justify-content-between">
         <div className="d-flex mx-auto flex-wrap">
+          {markerpen}
           <table className="table table-dark table-striped ">
             <thead className="thead">
               <tr>
@@ -175,14 +199,3 @@ export default function Cart() {
 //   </form>
 // ))}
 //
-//  marker pen
-// <svg
-// xmlns="http://www.w3.org/2000/svg"
-// width="16"
-// height="16"
-// fill="currentColor"
-// className="bi bi-pen-fill"
-// viewBox="0 0 16 16"
-// >
-// <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
-// </svg>

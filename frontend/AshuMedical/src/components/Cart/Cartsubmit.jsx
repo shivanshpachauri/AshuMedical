@@ -1,10 +1,23 @@
 import { Button } from "react-bootstrap";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import postdelivery from "../Http/Postdelivery.jsx";
+import { useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
+import { cartActions } from "../store/cartslice.js";
+import postdelivery from "../Http/Postdelivery.jsx";
 export default function Cartsubmit() {
   const shopping = useSelector((state) => state.cartslice.shopping);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const mutate = postdelivery();
+
+  const dateInstance = new Date();
+  const date = `${dateInstance.getFullYear()}-${
+    dateInstance.getMonth() + 1
+  }-${dateInstance.getDate()}`;
+
   const [buyingdetails, setbuyingdetails] = useState({
     partyname: "",
     cod: "",
@@ -12,25 +25,36 @@ export default function Cartsubmit() {
     address: "",
     phone: "",
   });
-  function handlechange(e) {
-    const { name, value } = e.target;
-    setbuyingdetails({
-      ...buyingdetails,
-      [name]: value,
-    });
-  }
-  const mutate = postdelivery();
-  function handlesubmit(e) {
-    e.preventDefault();
-    console.log(buyingdetails);
-    shopping.forEach((element) => {
-      mutate(element);
-      console.dir(element);
-    });
-    console.dir(shopping);
-    Swal.fire("submitted successfully");
-    e.preventDefault();
-  }
+
+  const handlechange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setbuyingdetails({
+        ...buyingdetails,
+        [name]: value,
+      });
+    },
+    [setbuyingdetails, buyingdetails]
+  );
+  const handlesubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      shopping.forEach((element) => {
+        mutate({
+          ...element,
+          order_by: buyingdetails.partyname || " ",
+          date: date || " ",
+        });
+      });
+
+      Swal.fire("submitted successfully");
+      dispatch(cartActions.removeall());
+      navigate("/dashboard/viewcustomers");
+    },
+    [shopping, buyingdetails]
+  );
+
   return (
     <div
       className="d-flex flex-column  shadow-lg m-2 p-2 text-capitalize mx-auto"
