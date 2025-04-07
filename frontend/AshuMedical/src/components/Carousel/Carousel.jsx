@@ -7,24 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 export default function Carousel() {
   return (
-    <div className="maincarousel container d-flex flex-wrap flex-column shadow-lg align-items-center">
-      <div className="d-flex flex-column">
-        {" "}
-        <h1
-          style={{
-            // fontWeight: "bold",
-            marginBottom: "20px",
-            // color: "black",
-          }}
-        >
-          आशु मेडिकल एजेंसीज
-        </h1>
-        <p style={{ fontSize: "1.5em" }}>
-          {" "}
-          प्रथम तल चौबे मार्केट,सदर कांटा, ललितपुर-284403
-        </p>
-      </div>
-
+    <div className="maincarousel container d-flex flex-wrap flex-column  align-items-center">
       <div
         id="carousel"
         className="d-flex justify-content-center align-content-center"

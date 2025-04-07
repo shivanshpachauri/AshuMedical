@@ -12,7 +12,13 @@ router.post("/login", async (req, res) => {
   if (!email || !password) {
     return res.status(400).json({ message: "Email and Password are required" });
   }
-
+  // // Server-side code (Node.js example)
+  // res.cookie('authToken', token, {
+  //   httpOnly: true,    // Prevents JavaScript access
+  //   secure: true,      // HTTPS only
+  //   sameSite: 'strict', // Only sent in first-party context
+  //   maxAge: 3600000    // Expires after 1 hour
+  // });
   try {
     const check = await pool1.query(
       "SELECT email, password FROM medicalschema.register WHERE email=$1",

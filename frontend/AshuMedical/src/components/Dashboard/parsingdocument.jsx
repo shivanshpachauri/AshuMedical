@@ -1,15 +1,13 @@
 import { useCallback, useState } from "react";
 import { Button } from "react-bootstrap";
 import styles from "./parsingdocument.module.css";
-import { Viewer as PDFViewer, Worker } from "@react-pdf-viewer/core";
-import * as XLSX from "xlsx";
-import { pdfjs } from "@react-pdf-viewer/core";
+import { Document, Page } from "@react-pdf/renderer";
 import mammoth from "mammoth";
 import "./parsingdocument.css";
 import Swal from "sweetalert2";
-// pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.js`;
 
 export default function ParsingDocument() {
+  // pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.js`;
   const [data, setData] = useState(null);
   const [upload, setUpload] = useState([]);
 
@@ -35,9 +33,9 @@ export default function ParsingDocument() {
     const fileType = file.fileType;
     if (fileType.includes("pdf")) {
       return (
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-          <PDFViewer fileUrl={file.uri} />
-        </Worker>
+        <Document file={file}>
+          <Page size="A4" />
+        </Document>
       );
     }
     if (fileType.includes("image")) {
@@ -53,9 +51,7 @@ export default function ParsingDocument() {
     if (fileType.includes("text")) {
       return <pre>{file.fileName}</pre>;
     }
-    if (fileType.includes("spreadsheet") || fileType.includes("excel")) {
-      return <ExcelViewer file={file} />;
-    }
+
     if (fileType.includes("wordprocessingml") || fileType.includes("doc")) {
       return <DocViewer file={file} />;
     }
@@ -65,7 +61,7 @@ export default function ParsingDocument() {
   return (
     <section>
       <h5>File Supported</h5>
-      <p>PDF, DOCX, XLSX, PPTX, TXT, Images</p>
+      <p>PDF, DOCX, PPTX, TXT, Images</p>
       <div className="d-flex">
         <input
           type="file"
@@ -87,26 +83,6 @@ export default function ParsingDocument() {
         {upload.length > 0 && renderFileViewer(upload[upload.length - 1])}
       </div>
     </section>
-  );
-}
-
-function ExcelViewer({ file }) {
-  const [data, setData] = useState(null);
-
-  const readExcel = async () => {
-    const response = await fetch(file.uri);
-    const blob = await response.arrayBuffer();
-    const workbook = XLSX.read(blob, { type: "array" });
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-    setData(XLSX.utils.sheet_to_json(sheet, { header: 1 }));
-  };
-
-  return (
-    <div>
-      <Button onClick={readExcel}>Load Excel</Button>
-      {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
-    </div>
   );
 }
 

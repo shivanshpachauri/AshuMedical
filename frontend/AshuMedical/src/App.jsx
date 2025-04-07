@@ -80,7 +80,7 @@ function App() {
               element: (
                 <ErrorBoundary>
                   <Suspense
-                    fallback={<Loading title="Loadin view customers" />}
+                    fallback={<Loading title="Loading view customers" />}
                   >
                     <ViewCustomers />
                   </Suspense>
