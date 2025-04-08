@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+import React, { useEffect, useContext, useState } from "react";
 import "./bestselling.css";
 import { FixedSizeList as List } from "react-window";
 import Newentries from "../Newentries/Newentries";
@@ -10,11 +9,16 @@ import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 import Updatemedicine from "../Modals/Updatemedicine";
 import { DeleteContext } from "../Context/deletecontext";
+import { SortingContext } from "../Context/sortingcontext";
 function Bestselling() {
   const { deletestate } = useContext(DeleteContext);
   const [newentries, setnewentries] = useState(false);
 
   const { data, isLoading, isError } = Fetchingmedicines();
+  const { togglebestselling } = useContext(SortingContext);
+  useEffect(() => {
+    togglebestselling();
+  }, []);
 
   if (isLoading) {
     return <Loading title="Loading Bestselling" />;
@@ -24,7 +28,7 @@ function Bestselling() {
   }
 
   return (
-    <>
+    <div>
       <Updatemedicine />
       <div id="bestsellingtable">
         <div className="text-capitalize container px-4 py-5">
@@ -47,21 +51,29 @@ function Bestselling() {
             </div>
           )}
           <TableHead />
-          <List
-            id="Reactwindowlist"
-            height={500}
-            itemCount={data.length}
-            itemSize={85}
-            width="100%"
-            style={{ overflowX: "hidden" }}
-          >
-            {({ index, style }) => (
-              <TableRow key={data[index].id} item={data[index]} style={style} />
-            )}
-          </List>
+          {data ? (
+            <List
+              id="Reactwindowlist"
+              height={500}
+              itemCount={data.length}
+              itemSize={85}
+              width="100%"
+              style={{ overflowX: "hidden" }}
+            >
+              {({ index, style }) => (
+                <TableRow
+                  key={data[index].id}
+                  item={data[index]}
+                  style={style}
+                />
+              )}
+            </List>
+          ) : (
+            <div>No elements present </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

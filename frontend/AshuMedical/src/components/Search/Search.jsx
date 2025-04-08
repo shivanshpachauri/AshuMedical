@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FixedSizeList as List } from "react-window";
 import { useLocation } from "react-router-dom";
@@ -11,6 +11,8 @@ import Searchmedicines from "../Http/Searchmedicines";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 import Updatemedicine from "../Modals/Updatemedicine";
+import React from "react";
+import { SortingContext } from "../Context/sortingcontext.jsx";
 
 export default function Search() {
   const location = useLocation();
@@ -29,7 +31,10 @@ export default function Search() {
   });
 
   const { data, isLoading, isError } = Searchmedicines(searchParams);
-
+  const { togglesearch } = useContext(SortingContext);
+  useEffect(() => {
+    togglesearch();
+  }, []);
   if (isLoading) {
     return <Loading title="loading search" />;
   }

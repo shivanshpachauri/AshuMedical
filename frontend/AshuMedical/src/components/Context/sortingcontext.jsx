@@ -5,16 +5,27 @@ import Proptypes from "prop-types";
 export const SortingContext = createContext();
 // Create a provider component
 export const SortingProvider = ({ children }) => {
-  const [isSorted, setIsSorted] = useState(false);
-  const toggleSorting = () => {
-    setIsSorted((prevState) => !prevState);
+  const [isSorted, setIsSorted] = useState({
+    bestselling: false,
+    search: false,
+  });
+  const togglebestselling = () => {
+    setIsSorted({
+      ...isSorted,
+      bestselling: !isSorted.bestselling,
+    });
   };
-  // const toggleSearchSorting = () => {
-  //   setIsSorted({ ...isSorted, setsearchsorted: !setissearchsorted });
-  // };
 
+  const togglesearch = () => {
+    setIsSorted({
+      ...isSorted,
+      search: !isSorted.search,
+    });
+  };
   return (
-    <SortingContext.Provider value={{ isSorted, toggleSorting }}>
+    <SortingContext.Provider
+      value={{ isSorted, togglesearch, togglebestselling }}
+    >
       {children}
     </SortingContext.Provider>
   );

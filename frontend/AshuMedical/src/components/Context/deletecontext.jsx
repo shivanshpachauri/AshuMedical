@@ -24,11 +24,6 @@ export const DeleteProvider = ({ children }) => {
     },
     [mutate, setdelete]
   );
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setdeletestate(false);
-  //   }, 20000);
-  // }, [deletestate]);
   const deleteobject = {
     deletestate: deletestate,
     setdeletestate: setdeletestate,

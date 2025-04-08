@@ -7,7 +7,7 @@ export default function Fetchingmedicines() {
   const { isSorted } = useContext(SortingContext);
   const data = useQuery({
     queryKey: ["Fetchmedicines", isSorted],
-    queryFn: () => Fetchmedicines(isSorted),
+    queryFn: () => Fetchmedicines(isSorted.bestselling),
     staleTime: 3000,
     cacheTime: 3000,
   });
