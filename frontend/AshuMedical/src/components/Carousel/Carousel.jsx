@@ -1,7 +1,6 @@
-// import React from "react";
-import Firstphoto from "../Carousel/carouselphotos/Firstphoto.jpg";
-import Secondphoto from "../Carousel/carouselphotos//Secondphoto.jpg";
-import Thirdphoto from "../Carousel/carouselphotos/Thirdphoto.jpg";
+import FirstImage from "./carouselphotos/FirstImage.jpg";
+import SecondImage from "./carouselphotos/SecondImage.jpg";
+
 import "./carousel.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -15,13 +14,10 @@ export default function Carousel() {
         <div id="carouselId" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner" role="listbox">
             <div className="carousel-item active">
-              <img src={Firstphoto} className=" d-block" alt="First slide" />
+              <img src={FirstImage} className=" d-block" alt="First slide" />
             </div>
             <div className="carousel-item">
-              <img src={Secondphoto} className=" d-block" alt="Second slide" />
-            </div>
-            <div className="carousel-item">
-              <img src={Thirdphoto} className=" d-block" alt="Third slide" />
+              <img src={SecondImage} className=" d-block" alt="Second slide" />
             </div>
           </div>
           <button
