@@ -9,24 +9,6 @@ export default function Header() {
       >
         Ashu medical agencies
       </h1>
-      <div className=" header d-flex flex-column">
-        {" "}
-        <h1
-          className="mx-auto"
-          style={{
-            // fontWeight: "bold",
-            marginBottom: "20px",
-            // color: "black",
-          }}
-        >
-          आशु मेडिकल एजेंसीज
-        </h1>
-        {/* style={{ fontSize: "1.5em" }} */}
-        <p className="mx-auto">
-          {" "}
-          प्रथम तल चौबे मार्केट,सदर कांटा, ललितपुर-284403
-        </p>
-      </div>
       <marquee> Contact us at +91 9415507955</marquee>
     </div>
   );

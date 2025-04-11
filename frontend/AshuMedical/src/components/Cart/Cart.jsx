@@ -1,14 +1,17 @@
-import React from "react";
+import React, { lazy } from "react";
 import "./cart.css";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import groupObjects from "./Groupby";
 import { cartActions } from "../store/cartslice";
 import { useNavigate } from "react-router-dom";
+const Productcards = lazy(() => import("../ProductCard/Productcards"));
+
 export default function Cart() {
   const shopping = useSelector((state) => state.cartslice.shopping);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const groupobjects = groupObjects(shopping, "name");
 
   function handlemarkerpen() {
     console.dir("directory");
@@ -74,7 +77,6 @@ export default function Cart() {
         {" "}
         Shopping Cart{" "}
       </h1>
-
       <div className="mt-5 d-flex  justify-content-between">
         <div className="d-flex mx-auto flex-wrap">
           {markerpen}
@@ -141,6 +143,8 @@ export default function Cart() {
               </tr>
             </tfoot>
           </table>
+
+          <Productcards />
         </div>
         <aside
           className="rounded bg-dark  text-light m-2 p-2"

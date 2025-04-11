@@ -14,8 +14,6 @@ const CustomList = React.memo(function CustomList({ item, style }) {
 
   const isLoggedin = useSelector((state) => state.authslice.isLoggedIn);
 
-  console.trace("inside the custom list component");
-  console.trace(item);
   const mutatemedicines = Deletemedicines();
   const handleDelete = React.useCallback(
     (medicine) => {

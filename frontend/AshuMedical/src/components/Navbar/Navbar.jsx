@@ -1,17 +1,18 @@
-import { lazy } from "react";
+import { lazy, useState } from "react";
 import { Outlet, useLocation, NavLink } from "react-router-dom";
 import Confirmationdialog from "../Modals/Confirmationdialog";
 import ErrorBoundary from "../Errorboundary/Errorboundary";
 import Footer from "../Footer/Footer";
 import Carousel from "../Carousel/Carousel";
 import Hero from "../Hero/hero";
-import Productcards from "../ProductCard/Productcards";
 import Faq from "../Faq/faq";
 import Header from "../Header/Header";
 import "./Navbar.css";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/authslice";
+import Jumbotron from "../Jumbotron/Jumbotron";
+import Jumbotron2 from "../Jumbotron/Jumbotron2";
 
 const Bestselling = lazy(() => import("../Bestselling/Bestselling"));
 const Search = lazy(() => import("../Search/Search"));
@@ -21,6 +22,10 @@ const Navbar = () => {
   const isLoggedin = useSelector((state) => state.authslice.isLoggedIn);
   const dispatch = useDispatch();
 
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div style={{ flexWrap: "wrap" }}>
       <nav
@@ -39,16 +44,16 @@ const Navbar = () => {
           <button
             className="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            onClick={toggleMenu}
+            aria-expanded={isOpen ? "true" : "false"}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="collapsibleNavId">
+          <div
+            className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
+            id="collapsibleNavId"
+          >
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/bestselling">
@@ -56,20 +61,17 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/Productcard">
-                  Product Card
-                </NavLink>
-              </li>
-              <li className="nav-item">
                 <NavLink className="nav-link" to="/Dashboard/csvparsing">
                   Dashboard
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/Newentries">
-                  New Entries
-                </NavLink>
-              </li>
+              {isLoggedin && (
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/Newentries">
+                    New Entries
+                  </NavLink>
+                </li>
+              )}
               <li className="nav-item">
                 <NavLink className="nav-link" to="/faq">
                   FAQ
@@ -139,12 +141,13 @@ const Navbar = () => {
         <>
           <Header />
           <Confirmationdialog />
+          <Jumbotron2 />
+          <Jumbotron />
           <Carousel />
           <Hero />
           <ErrorBoundary>
             <Bestselling />
           </ErrorBoundary>
-          <Productcards />
           <Faq />
           <ErrorBoundary>
             <Search />

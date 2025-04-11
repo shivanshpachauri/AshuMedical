@@ -2,15 +2,9 @@ import { useContext } from "react";
 import { SortingContext } from "../Context/sortingcontext";
 
 export default function TableHead() {
-  const { isSorted, togglebestselling, togglesearch } =
-    useContext(SortingContext);
+  const { togglesearch } = useContext(SortingContext);
   function handleclick() {
-    console.log(isSorted);
-    if (isSorted.bestselling) {
-      togglebestselling();
-    } else if (isSorted.search) {
-      togglesearch();
-    }
+    togglesearch();
   }
   return (
     <>

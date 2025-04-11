@@ -1,24 +1,21 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./bestselling.css";
 import { FixedSizeList as List } from "react-window";
 import Newentries from "../Newentries/Newentries";
 import TableRow from "./TableRow";
-import TableHead from "../TableHead/TableHead";
+import TableHead from "../TableHead/TableHeadbestselling";
 import Fetchingmedicines from "../Http/Fetchingmedicines";
 import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 import Updatemedicine from "../Modals/Updatemedicine";
 import { DeleteContext } from "../Context/deletecontext";
-import { SortingContext } from "../Context/sortingcontext";
+import { useSelector } from "react-redux";
 function Bestselling() {
   const { deletestate } = useContext(DeleteContext);
   const [newentries, setnewentries] = useState(false);
+  const isLoggedIn = useSelector((state) => state.authslice.isLoggedIn);
 
   const { data, isLoading, isError } = Fetchingmedicines();
-  const { togglebestselling } = useContext(SortingContext);
-  useEffect(() => {
-    togglebestselling();
-  }, []);
 
   if (isLoading) {
     return <Loading title="Loading Bestselling" />;
@@ -33,18 +30,19 @@ function Bestselling() {
       <div id="bestsellingtable">
         <div className="text-capitalize container px-4 py-5">
           <h1 className="theading">Medicines</h1>
-          <div className="d-flex justify-content-center">
-            <button
-              type="button"
-              id="addnewentries"
-              className="btn btn-success"
-              onClick={() => setnewentries(!newentries)}
-            >
-              Add new entries
-            </button>
-          </div>
-
-          {newentries && <Newentries />}
+          {isLoggedIn && (
+            <div className="d-flex justify-content-center">
+              <button
+                type="button"
+                id="addnewentries"
+                className="btn btn-success"
+                onClick={() => setnewentries(!newentries)}
+              >
+                Add new entries
+              </button>
+            </div>
+          )}
+          {newentries && isLoggedIn && <Newentries />}
           {deletestate && (
             <div className="alert alert-danger" role="alert">
               <strong>Deleted successfully</strong>
