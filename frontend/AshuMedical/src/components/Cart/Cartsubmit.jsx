@@ -113,12 +113,13 @@ export default function Cartsubmit() {
           <input
             className="form-check-input"
             type="radio"
-            name="cod"
+            name="paymentmethod"
             value="cod"
             id="cod"
             checked={buyingdetails.cod === "cod"}
-            onChange={handlechange}
-            required
+            onChange={() => {
+              setbuyingdetails({ ...buyingdetails, cod: e.target.value });
+            }}
           />
           <label htmlFor="cod"> Cash on Delivery</label>
 
@@ -126,11 +127,12 @@ export default function Cartsubmit() {
             className="form-check-input"
             type="radio"
             checked={buyingdetails.atm === "atm"}
-            onChange={handlechange}
-            name="atm"
+            onChange={() => {
+              setbuyingdetails({ ...buyingdetails, atm: e.target.value });
+            }}
+            name="paymentmethod"
             value="atm"
             id="atmcard"
-            required
           />
           <label htmlFor="atmcard"> atm card</label>
         </div>

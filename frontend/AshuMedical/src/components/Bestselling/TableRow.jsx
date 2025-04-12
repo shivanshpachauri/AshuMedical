@@ -36,15 +36,17 @@ const TableRow = React.memo(({ item, style }) => {
     });
   }
   return (
-    <div className="bestsellingtablerow  d-flex flex-row rounded" style={style}>
-      <div className="container d-flex">
-        <div className="col-1">{item.id}</div>
-        <div className="col-3">{item.name}</div>
-        <div className="col-1">{item.price}</div>
-        <div className="col-3">{item.manufacturer_name}</div>
-        <div className="col-2">{item.pack_size_label}</div>
-        <div className="col-1">{item.short_composition1}</div>
-      </div>
+    <div
+      className="bestsellingtablerow  align-items-center justify-content-center d-flex flex-row rounded"
+      style={style}
+    >
+      <div className="col-1">{item.id}</div>
+      <div className="col-3">{item.name}</div>
+      <div className="col-1">{item.price}</div>
+      <div className="col-3">{item.manufacturer_name}</div>
+      <div className="col-2">{item.pack_size_label}</div>
+      <div className="col-1">{item.short_composition1}</div>
+
       {loggedin ? (
         <div className="col-0">
           <div style={{ float: "right" }} className="d-flex flex-column">
@@ -66,11 +68,10 @@ const TableRow = React.memo(({ item, style }) => {
         </div>
       ) : (
         <button
-          className="btn productcardbutton btn-primary m-1 p-1"
+          className="btn productcardbutton btn-primary "
           onClick={() => handleclick(item)}
         >
           Buy Now
-          {/* {btnproperty.index === index ? btnproperty.name : "Buy Now"} */}
         </button>
       )}
     </div>
