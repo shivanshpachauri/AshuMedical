@@ -7,11 +7,20 @@ import { useDispatch } from "react-redux";
 import { login as logindispatch } from "../store/authslice";
 export default function Login() {
   const dispatch = useDispatch();
+
   const [login, setlogin] = useState({
     email: "",
     password: "",
   });
   const [success, setsuccess] = useState("");
+  function showpassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   function handlechange(e) {
     const { name, value } = e.target;
     setlogin({
@@ -81,6 +90,14 @@ export default function Login() {
           id="password"
           aria-describedby="emailHelpId"
         />
+        <div className="d-flex align-items-center justify-content-center">
+          <input
+            type="checkbox"
+            style={{ width: "fit-content" }}
+            onClick={showpassword}
+          />
+          Show Password
+        </div>
         <small
           id="emailHelpId"
           className="mx-auto d-flex  m-2  form-text text-muted"
@@ -90,7 +107,6 @@ export default function Login() {
             Register
           </a>
         </small>
-
         {/* <Button onClick={GoogleAuth} className="m-2 mx-auto p-2 d-block">
           Sign up with google &nbsp;
           <svg

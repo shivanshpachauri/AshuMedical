@@ -16,6 +16,14 @@ export default function RegisterForm() {
     confirmpasswordstate: false,
   });
   let alert;
+  function showpassword() {
+    var x = document.getElementById("Password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
   useEffect(() => {
     if (confirmpassword.confirmpasswordstate === true) {
       alert = (
@@ -124,6 +132,15 @@ export default function RegisterForm() {
               setregister({ ...register, password: e.target.value })
             }
           />
+
+          <div className="d-flex align-items-center justify-content-center">
+            <input
+              type="checkbox"
+              style={{ width: "fit-content" }}
+              onClick={showpassword}
+            />
+            Show Password
+          </div>
           <label htmlFor="Confirmpassword">Confirm Password</label>
           <input
             type="password"
