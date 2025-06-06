@@ -1,12 +1,5 @@
-.bestsellingtablerow .col-0 {
-  display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
-  flex: 1; /* Allow this column to take up remaining space */
-}
-.btn {
-  margin: 1px;
-}
 .bestsellingtablerow {
+  height: fit-content;
   flex-wrap: wrap;
   word-wrap: break-word;
 }

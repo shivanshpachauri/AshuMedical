@@ -8,20 +8,28 @@
   width: 214px;
   padding: 20px;
 }
-#bestsellingtable {
+.bestsellingtable {
   position: relative;
   height: 100%;
   width: 100%;
 }
-#bestsellingtable .thead {
+.bestsellingtable .thead {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
 }
-#bestsellingtable .tbody {
+.bestsellingtable .tbody {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
+}
+.Reactwindowlist {
+  display: table;
+  gap: 10px;
+}
+.Reactwindowlist > div {
+  display: flex;
+  gap: 10px;
 }

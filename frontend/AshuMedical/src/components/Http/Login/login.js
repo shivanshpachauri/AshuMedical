@@ -1,4 +1,3 @@
-import axios from "axios";
 import api from "../Axios";
 export async function checkemail({ email, password }) {
   const response = await api.post("/api/login", {

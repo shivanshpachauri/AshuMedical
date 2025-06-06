@@ -27,7 +27,7 @@ function Bestselling() {
   return (
     <div>
       <Updatemedicine />
-      <div id="bestsellingtable">
+      <div className="bestsellingtable">
         <div className="text-capitalize container px-4 py-5">
           <h1 className="theading">Medicines</h1>
           {isLoggedIn && (
@@ -51,10 +51,10 @@ function Bestselling() {
           <TableHead />
           {data ? (
             <List
-              id="Reactwindowlist"
+              className="Reactwindowlist table-responsive"
               height={500}
               itemCount={data.length}
-              itemSize={85}
+              itemSize={100}
               width="100%"
               style={{ overflowX: "hidden" }}
             >

@@ -40,15 +40,15 @@ const TableRow = React.memo(({ item, style }) => {
       className="bestsellingtablerow  align-items-center justify-content-center d-flex flex-row rounded"
       style={style}
     >
-      <div className="col-1">{item.id}</div>
-      <div className="col-3">{item.name}</div>
-      <div className="col-1">{item.price}</div>
-      <div className="col-3">{item.manufacturer_name}</div>
-      <div className="col-2">{item.pack_size_label}</div>
-      <div className="col-1">{item.short_composition1}</div>
+      <div className="col-xl-1 col">{item.id}</div>
+      <div className="col-xl-3 col">{item.name}</div>
+      <div className="col-xl-1 col">{item.price}</div>
+      <div className="col-xl-3 col">{item.manufacturer_name}</div>
+      <div className="col-xl-2 col">{item.pack_size_label}</div>
+      <div className="col-xl-1 col">{item.short_composition1}</div>
 
       {loggedin ? (
-        <div className="col-0">
+        <div className="col-xl-0 col">
           <div style={{ float: "right" }} className="d-flex flex-column">
             <button
               type="button"
@@ -68,7 +68,7 @@ const TableRow = React.memo(({ item, style }) => {
         </div>
       ) : (
         <button
-          className="btn productcardbutton btn-primary "
+          className="col-xl-1 col btn productcardbutton btn-primary "
           onClick={() => handleclick(item)}
         >
           Buy Now
