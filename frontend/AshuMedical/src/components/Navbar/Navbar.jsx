@@ -113,7 +113,11 @@ const Navbar = () => {
             </ul>
             <div className="d-flex align-items-center">
               <div className="d-flex rounded cartcontainer">
-                <NavLink className="d-flex" to="/cart">
+                <NavLink
+                  className="d-flex"
+                  to="/cart"
+                  style={{ textDecoration: "none" }}
+                >
                   <h5 className="m-1 p-1 text-light">Cart &nbsp;</h5>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
