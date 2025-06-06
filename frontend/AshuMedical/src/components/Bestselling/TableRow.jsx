@@ -36,44 +36,46 @@ const TableRow = React.memo(({ item, style }) => {
     });
   }
   return (
-    <div
-      className="bestsellingtablerow  align-items-center justify-content-center d-flex flex-row rounded"
-      style={style}
-    >
-      <div className="col-xl-1 col">{item.id}</div>
-      <div className="col-xl-3 col">{item.name}</div>
-      <div className="col-xl-1 col">{item.price}</div>
-      <div className="col-xl-3 col">{item.manufacturer_name}</div>
-      <div className="col-xl-2 col">{item.pack_size_label}</div>
-      <div className="col-xl-1 col">{item.short_composition1}</div>
+    <div className="d-flex flex-col">
+      <div
+        className="bestsellingtablerow  align-items-center justify-content-center d-flex flex-row rounded"
+        style={style}
+      >
+        <div className="col-xl-1 ">{item.id}</div>
+        <div className="col-xl-3 ">{item.name}</div>
+        <div className="col-xl-1 ">{item.price}</div>
+        <div className="col-xl-3 ">{item.manufacturer_name}</div>
+        <div className="col-xl-2 ">{item.pack_size_label}</div>
+        <div className="col-xl-1 ">{item.short_composition1}</div>
 
-      {loggedin ? (
-        <div className="col-xl-0 col">
-          <div style={{ float: "right" }} className="d-flex flex-column">
-            <button
-              type="button"
-              className="btn btn-danger "
-              onClick={() => handleDelete(item)}
-            >
-              Delete
-            </button>
-            <button
-              type="button"
-              className="visible btn btn-primary"
-              onClick={handleedit}
-            >
-              Edit
-            </button>
+        {loggedin ? (
+          <div className="col-xl-0 ">
+            <div style={{ float: "right" }} className="d-flex flex-column">
+              <button
+                type="button"
+                className="btn btn-danger "
+                onClick={() => handleDelete(item)}
+              >
+                Delete
+              </button>
+              <button
+                type="button"
+                className="visible btn btn-primary"
+                onClick={handleedit}
+              >
+                Edit
+              </button>
+            </div>
           </div>
-        </div>
-      ) : (
-        <button
-          className="col-xl-1 col btn productcardbutton btn-primary "
-          onClick={() => handleclick(item)}
-        >
-          Buy Now
-        </button>
-      )}
+        ) : (
+          <button
+            className="col-xl-1  btn productcardbutton btn-primary "
+            onClick={() => handleclick(item)}
+          >
+            Buy Now
+          </button>
+        )}
+      </div>
     </div>
   );
 }, areEqual);
