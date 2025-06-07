@@ -27,7 +27,7 @@ function Bestselling() {
   return (
     <div>
       <Updatemedicine />
-      <div className="bestsellingtable">
+      <div className="bestsellingtable " style={{ height: "1000px" }}>
         <div className="text-capitalize container ">
           <h1 className="theading">Medicines</h1>
           {isLoggedIn && (

@@ -51,16 +51,7 @@ export default function Hero() {
       </h1>
       <h1 className="m-1 p-2 d-block">{colorname}</h1>
 
-      <div
-        className="container"
-        style={{
-          display: "grid",
-          placeItems: "center",
-          gridTemplateColumns: "1fr 1fr",
-          gridTemplateRows: "12em 12em",
-          gap: "1em",
-        }}
-      >
+      <div className="container herocontainer">
         <div
           className="text-dark d-flex justify-content-center flex-column h-100   rounded-3 shadow-sm"
           style={{

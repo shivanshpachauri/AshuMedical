@@ -1,1 +1,14 @@
-
+.herocontainer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 12em 12em;
+  gap: 1em;
+}
+@media only screen and (max-width: 550px) {
+  .herocontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+}

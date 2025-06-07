@@ -33,3 +33,13 @@
   display: flex;
   gap: 10px;
 }
+#root
+  > div
+  > div:nth-child(2)
+  > div
+  > div
+  > div.Reactwindowlist.table-responsive
+  > div {
+  background-color: red;
+  height: fit-content !important;
+}
