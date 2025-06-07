@@ -1,10 +1,23 @@
 .bestsellingtablerow {
-  height: fit-content;
-  flex-wrap: wrap;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  overflow: auto;
+  gap: 10px;
+
   word-wrap: break-word;
 }
 .bestsellingtablerow:hover {
   transform: scale(1.02);
   background-color: white;
   text-emphasis: bold;
+}
+.bestsellingtablerow > div {
+  display: flex;
+  flex-direction: row;
+}
+.bestsellingtablerow > button {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 5em; */
 }

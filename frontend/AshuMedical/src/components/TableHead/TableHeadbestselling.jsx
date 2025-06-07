@@ -23,13 +23,22 @@ export default function TableHead() {
           Sort
         </button>
       </div>
-      <div className="container d-flex align-items-center flex-wrap bg-primary text-capitalize rounded shadow-sm text-break text-center">
-        <div className="col-1">id</div>
-        <div className="col-3">name</div>
-        <div className="col-1">price</div>
-        <div className="col-3">Manufacturer</div>
-        <div className="col-2">Pack_size</div>
-        <div className="col-1">Salt</div>
+      <div
+        className="container bg-primary text-capitalize rounded shadow-sm text-break "
+        style={{
+          border: "1px solid black",
+          display: "grid",
+          gridTemplateColumns: "repeat(7,1fr)",
+          placeItems: "center",
+        }}
+      >
+        <div>id</div>
+        <div>name</div>
+        <div>price</div>
+        <div>Manufacturer</div>
+        <div>Pack_size</div>
+        <div>Salt</div>
+        <div> action</div>
       </div>
     </>
   );
