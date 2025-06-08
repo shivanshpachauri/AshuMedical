@@ -50,7 +50,11 @@ export default function Search() {
     e.target.reset();
   }
   return (
-    <>
+    <section
+      style={{
+        marginBottom: "2em",
+      }}
+    >
       {location.pathname != "/" && <Updatemedicine />}
 
       <div className="searchcontainer  shadow-lg flex-wrap bg-body rounded">
@@ -97,11 +101,11 @@ export default function Search() {
         <TableHead />
         <br />
         <List
-          id="searchlist"
           height={500}
           itemCount={data ? data.length : 0}
           itemSize={85}
           width="100%"
+          className="searchlist"
           style={{ overflowX: "hidden" }}
         >
           {({ index, style }) => (
@@ -109,6 +113,6 @@ export default function Search() {
           )}
         </List>
       </div>
-    </>
+    </section>
   );
 }

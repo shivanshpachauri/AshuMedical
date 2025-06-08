@@ -6,6 +6,7 @@
   background-color: hsl(240, 76%, 69%);
 
   clear: both;
+  text-transform: capitalize;
 }
 .footer > p {
   color: white;

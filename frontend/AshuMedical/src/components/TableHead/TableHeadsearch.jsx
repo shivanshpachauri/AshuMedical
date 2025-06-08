@@ -7,10 +7,14 @@ export default function TableHead() {
     togglesearch();
   }
   return (
-    <>
+    <div>
       <div
-        style={{ position: "relative" }}
-        className="d-flex flex-row justify-content-end m-2"
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "end",
+          marginBottom: "1em",
+        }}
       >
         <button
           type="button"
@@ -23,14 +27,25 @@ export default function TableHead() {
           Sort
         </button>
       </div>
-      <div className="container d-flex align-items-center flex-wrap bg-primary text-capitalize rounded shadow-sm text-break text-center">
-        <div className="col-1">id</div>
-        <div className="col-3">name</div>
-        <div className="col-1">price</div>
-        <div className="col-3">Manufacturer</div>
-        <div className="col-2">Pack_size</div>
-        <div className="col-1">Salt</div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(7,1fr)",
+          placeItems: "center",
+          height: "3em",
+          border: "1px solid black",
+          backgroundColor: "blue",
+          textTransform: "capitalize",
+        }}
+      >
+        <div>id</div>
+        <div>name</div>
+        <div>price</div>
+        <div>Manufacturer</div>
+        <div>Pack</div>
+        <div>Salt</div>
+        <div>Actions</div>
       </div>
-    </>
+    </div>
   );
 }

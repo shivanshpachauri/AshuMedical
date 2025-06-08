@@ -51,7 +51,7 @@ export const cartslice = createSlice({
       const existingItem = state.shopping.find(
         (item) => item.name == newitem.name
       );
-      if (existingItem) {
+      if (existingItem && existingItem.quantity > 0) {
         existingItem.quantity--;
       }
     },

@@ -59,12 +59,15 @@ export default function Cart() {
   function handledecrement(item) {
     dispatch(cartActions.decrement(item));
   }
-  const subtotal = _.sumBy(shopping, (item) => {
-    const price = parseFloat(item.price);
-    const quantity = parseFloat(item.quantity);
-    const total = price * quantity;
-    return isNaN(total) ? 0 : total;
-  });
+  const subtotal =
+    Math.round(
+      _.sumBy(shopping, (item) => {
+        const price = parseFloat(item.price);
+        const quantity = parseFloat(item.quantity);
+        const total = price * quantity;
+        return isNaN(total) ? 0 : total;
+      }) * 100
+    ) / 100;
 
   function handlesubmit(e) {
     e.preventDefault();
@@ -94,7 +97,7 @@ export default function Cart() {
               {shopping ? (
                 shopping.map((item, index) => (
                   <tr key={index}>
-                    <th scope="row">{index}</th>
+                    <th scope="row">{index + 1}</th>
                     <td>{item.name}</td>
                     <td>
                       <div className="d-flex">

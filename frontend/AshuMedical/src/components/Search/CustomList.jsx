@@ -1,10 +1,10 @@
 import { areEqual } from "react-window";
 import PropTypes from "prop-types";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useContext } from "react";
 import Swal from "sweetalert2";
-
+import { cartActions } from "../store/cartslice";
 import Deletemedicines from "../Http/Deletemedicines";
 import { EditingContext } from "../Context/Editingcontext";
 import { DeleteContext } from "../Context/deletecontext";
@@ -12,6 +12,7 @@ const CustomList = React.memo(function CustomList({ item, style }) {
   const { toggleEditing, setmedicines } = useContext(EditingContext);
   const { setdeletestate } = useContext(DeleteContext);
 
+  const dispatch = useDispatch();
   const isLoggedin = useSelector((state) => state.authslice.isLoggedIn);
 
   const mutatemedicines = Deletemedicines();
@@ -23,6 +24,18 @@ const CustomList = React.memo(function CustomList({ item, style }) {
     },
     [mutatemedicines, setdeletestate]
   );
+  function handleclick(item) {
+    dispatch(
+      cartActions.setcart({
+        id: item.id,
+        name: item.name,
+        description: item.short_composition1,
+        price: item.price,
+        quantity: item.quantity,
+      })
+    );
+    Swal.fire("Submitted successfully");
+  }
   function handleedit() {
     toggleEditing();
     setmedicines({
@@ -35,21 +48,16 @@ const CustomList = React.memo(function CustomList({ item, style }) {
     });
   }
   return (
-    <div
-      id="searchlist"
-      className="bestsellingtablerow d-flex flex-row rounded "
-      style={style}
-    >
-      <div className="container d-flex">
-        <div className="col-1">{item.id}</div>
+    <div className="searchlist  bestsellingtablerow   " style={style}>
+      <div>{item.id}</div>
 
-        <div className="col-3 ">{item.name}</div>
-        <div className="col-1">{item.price}</div>
-        <div className="col-3  ">{item.manufacturer_name}</div>
-        <div className="col-2 ">{item.pack_size_label}</div>
-        <div className="col-1">{item.short_composition1}</div>
-      </div>
-      {isLoggedin && (
+      <div>{item.name}</div>
+      <div>{item.price}</div>
+      <div>{item.manufacturer_name}</div>
+      <div>{item.pack_size_label}</div>
+      <div>{item.short_composition1}</div>
+
+      {isLoggedin ? (
         <div className="col-0 mt-1 mx-1 d-flex flex-column">
           <button
             type="button"
@@ -78,6 +86,13 @@ const CustomList = React.memo(function CustomList({ item, style }) {
             Edit
           </button>
         </div>
+      ) : (
+        <button
+          className="     btn productcardbutton btn-primary "
+          onClick={() => handleclick(item)}
+        >
+          Buy Now
+        </button>
       )}
     </div>
   );
