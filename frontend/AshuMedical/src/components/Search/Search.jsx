@@ -11,7 +11,6 @@ import Searchmedicines from "../Http/Searchmedicines";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 import Updatemedicine from "../Modals/Updatemedicine";
-import React from "react";
 
 export default function Search() {
   const location = useLocation();
@@ -54,10 +53,7 @@ export default function Search() {
     <>
       {location.pathname != "/" && <Updatemedicine />}
 
-      <div
-        id="searchcontainer"
-        className="d-flex container flex-column shadow-lg flex-wrap bg-body rounded"
-      >
+      <div className="searchcontainer  shadow-lg flex-wrap bg-body rounded">
         <h1 className="m-3 display-5">Search component</h1>
         <form className="text-capitalize container " onSubmit={handlesubmit}>
           <label htmlFor="id">Id</label>

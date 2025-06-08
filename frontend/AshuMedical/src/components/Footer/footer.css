@@ -1,5 +1,13 @@
-#footerid {
+.footer {
   position: relative;
-  /* float: bottom; */
+  height: 5em;
+  display: grid;
+  place-items: center;
+  background-color: hsl(240, 76%, 69%);
+
   clear: both;
+}
+.footer > p {
+  color: white;
+  font-weight: bold;
 }

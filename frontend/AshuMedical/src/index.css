@@ -12,3 +12,6 @@ body {
   --webkit-font-smoothing: antialiased;
   height: 100%;
 }
+.Reactwindowlist > div:nth-child(1) {
+  height: fit-content !important;
+}

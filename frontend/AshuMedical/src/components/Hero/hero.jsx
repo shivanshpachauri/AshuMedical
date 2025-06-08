@@ -53,10 +53,9 @@ export default function Hero() {
 
       <div className="container herocontainer">
         <div
-          className="text-dark d-flex justify-content-center flex-column h-100   rounded-3 shadow-sm"
+          className="text-dark d-flex justify-content-center align-items-center flex-column h-100   rounded-3 shadow-sm"
           style={{
             backgroundColor: "#8F87F1",
-            width: "100%",
           }}
         >
           <h2>Change the background</h2>
@@ -71,11 +70,9 @@ export default function Hero() {
         </div>
 
         <div
-          className="d-flex  justify-content-center flex-column h-100   rounded-3 shadow-sm"
+          className="d-flex  justify-content-center align-items-center flex-column h-100   rounded-3 shadow-sm"
           style={{
             backgroundColor: "#C68EFD",
-            width: "100%",
-            height: "100%",
           }}
         >
           <h2>Add borders</h2>
@@ -90,8 +87,8 @@ export default function Hero() {
         </div>
 
         <div
-          className="d-flex justify-content-center flex-column    h-100  border border-0 rounded-3 shadow-sm"
-          style={{ backgroundColor: "#E9A5F1", width: "100%", height: "100%" }}
+          className="d-flex justify-content-center flex-column  align-items-center  h-100   rounded-3 shadow-sm"
+          style={{ backgroundColor: "#E9A5F1" }}
         >
           <h2>Reset to defaults</h2>
           <button
@@ -105,13 +102,13 @@ export default function Hero() {
         </div>
 
         <div
-          className="d-flex align-items-center justify-content-center flex-column      h-100  border border-0 rounded-3 shadow-sm"
-          style={{ backgroundColor: "#FED2E2", width: "100%", height: "100%" }}
+          className="d-flex align-items-center justify-content-center flex-column      h-100   rounded-3 shadow-sm"
+          style={{ backgroundColor: "#FED2E2" }}
         >
           <h2>Font Size</h2>
-          <div className="d-flex">
+          <div className="d-flex gap-3 ">
             <button
-              className="  btn btn-outline-light"
+              className="btn btn-outline-light"
               type="button"
               onClick={fontincrement}
               style={{

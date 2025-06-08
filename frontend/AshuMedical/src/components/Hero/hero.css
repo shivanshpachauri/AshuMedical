@@ -5,10 +5,18 @@
   grid-template-rows: 12em 12em;
   gap: 1em;
 }
+.herocontainer > div {
+  width: 75%;
+}
 @media only screen and (max-width: 550px) {
   .herocontainer {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    border: 10px solid green;
+    margin-bottom: 2em !important;
+  }
+  .herocontainer > div {
+    width: 90%;
   }
 }
