@@ -45,7 +45,7 @@ export default function TableHead() {
         <div>name</div>
         <div>price</div>
         <div>Manufacturer</div>
-        <div>Pack_size</div>
+        <div>Pack</div>
         <div>Salt</div>
         <div> action</div>
       </div>
