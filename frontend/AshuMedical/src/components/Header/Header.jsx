@@ -2,7 +2,7 @@
 import "./Header.css";
 export default function Header() {
   return (
-    <div className="container  text-capitalize fs-2 fw-2 ">
+    <div className="container  text-capitalize fs-2 fw-2 mt-5 mb-5">
       <h1
         className="header d-flex justify-content-center display-1"
         style={{ color: "#27374d" }}

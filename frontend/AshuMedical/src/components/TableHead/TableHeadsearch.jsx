@@ -33,7 +33,6 @@ export default function TableHead() {
           gridTemplateColumns: "repeat(7,1fr)",
           placeItems: "center",
           height: "3em",
-          border: "1px solid black",
           backgroundColor: "blue",
           textTransform: "capitalize",
         }}

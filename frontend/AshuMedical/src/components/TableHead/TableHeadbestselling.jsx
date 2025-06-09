@@ -7,17 +7,26 @@ export default function TableHead() {
     togglebestselling();
   }
   return (
-    <>
+    <section
+      style={{
+        marginBottom: "1em",
+        gap: "0.5em",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <div
-        style={{ position: "relative" }}
-        className="d-flex flex-row justify-content-end m-2"
+        style={{
+          display: "flex",
+          justifyContent: "end",
+        }}
       >
         <button
           type="button"
           name="ascending"
           id="ascending"
-          className="p-2 btn btn-secondary"
-          style={{ width: "7em" }}
+          className=" btn btn-secondary"
+          style={{ width: "7em", height: "100%" }}
           onClick={handleclick}
         >
           Sort
@@ -26,7 +35,7 @@ export default function TableHead() {
       <div
         className="container bg-primary text-capitalize rounded shadow-sm text-break "
         style={{
-          border: "1px solid black",
+          height: "4em",
           display: "grid",
           gridTemplateColumns: "repeat(7,1fr)",
           placeItems: "center",
@@ -40,6 +49,6 @@ export default function TableHead() {
         <div>Salt</div>
         <div> action</div>
       </div>
-    </>
+    </section>
   );
 }

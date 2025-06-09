@@ -25,11 +25,15 @@ function Bestselling() {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        marginTop: "1em",
+      }}
+    >
       <Updatemedicine />
       <div className="bestsellingtable " style={{ height: "1000px" }}>
         <div className="text-capitalize container ">
-          <h1 className="theading">Medicines</h1>
+          <h1 className="theading mt-5">Medicines</h1>
           {isLoggedIn && (
             <div className="d-flex justify-content-center">
               <button

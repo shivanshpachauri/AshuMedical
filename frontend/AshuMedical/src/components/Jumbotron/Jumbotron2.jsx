@@ -1,8 +1,6 @@
-import React from "react";
-
 export default function Jumbotron2() {
   return (
-    <div className="">
+    <div className="mb-5 mt-5">
       <div className="text-center ">
         <div className="container ">
           <div className="header d-flex flex-column">
