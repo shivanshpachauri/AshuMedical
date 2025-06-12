@@ -7,7 +7,11 @@ export default function TableHead() {
     togglesearch();
   }
   return (
-    <div>
+    <section
+      style={{
+        width: "100%",
+      }}
+    >
       <div
         style={{
           width: "100%",
@@ -32,7 +36,9 @@ export default function TableHead() {
           display: "grid",
           gridTemplateColumns: "repeat(7,1fr)",
           placeItems: "center",
+          gap: "1em",
           height: "3em",
+          borderRadius: "1em",
           backgroundColor: "blue",
           textTransform: "capitalize",
         }}
@@ -43,8 +49,8 @@ export default function TableHead() {
         <div>Manufacturer</div>
         <div>Pack</div>
         <div>Salt</div>
-        <div>Actions</div>
+        <div>Action</div>
       </div>
-    </div>
+    </section>
   );
 }

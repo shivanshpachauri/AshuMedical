@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Sidebarai.css";
 import Fetchai from "../Http/fetchai";
@@ -38,26 +37,31 @@ export default function Sidebarai() {
   }
   return (
     <nav
-      className="rounded col-md-2 d-none d-md-block bg-dark sidebar"
+      className="rounded col-xl-2  d-xl-block bg-dark sidebar"
       style={{
+        overflow: "auto",
         marginLeft: "0.57rem",
       }}
     >
-      <div className="nav flex-column">
-        <h3 className="mx-auto text-light">Save</h3>
-        <input
-          className="mx-auto"
-          name="search"
-          id="aisearch"
-          type="search"
-          value={searchval}
-          onChange={(e) => setsearchval(e.target.value)}
-          style={{ width: "10em", padding: 0 }}
-        />
-        <div
-          className="sidebarlist"
-          style={{ height: "500px", overflow: "auto" }}
-        >
+      <div
+        className="nav flex-column"
+        style={{
+          overflow: "auto",
+        }}
+      >
+        <div className="d-flex flex-column">
+          <h3 className="text-light">Save</h3>
+          <input
+            className=""
+            name="search"
+            id="aisearch"
+            type="search"
+            value={searchval}
+            onChange={(e) => setsearchval(e.target.value)}
+            style={{ width: "10em", padding: 0 }}
+          />
+        </div>
+        <div className="sidebarlist">
           {filtereddata.toReversed().map((item, index) => (
             <NavLink
               key={index}

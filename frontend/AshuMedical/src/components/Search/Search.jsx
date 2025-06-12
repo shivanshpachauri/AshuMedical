@@ -53,6 +53,7 @@ export default function Search() {
     <section
       style={{
         marginBottom: "2em",
+        overflow: "auto",
       }}
     >
       {location.pathname != "/" && <Updatemedicine />}

@@ -6,6 +6,12 @@
   color: white;
   border-radius: 5%;
 }
+.sidebarlist {
+  height: "fit-content";
+  overflow: "auto";
+  display: "flex";
+  flex-direction: "column";
+}
 
 .sidebarlist::-webkit-scrollbar {
   /* display: none; */
@@ -16,4 +22,24 @@
 }
 .sidebarlist::-webkit-scrollbar-thumb {
   background: #000;
+}
+@media only screen and (max-width: 550px) {
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+  }
+  .sidebarlist {
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .sidebarlist > a:hover {
+    background-color: white;
+    color: white;
+  }
+  .sidebar > .nav {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+  }
 }

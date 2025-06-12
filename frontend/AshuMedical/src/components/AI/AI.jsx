@@ -59,47 +59,22 @@ export default function Ai() {
         <Sidebarai />
         <main className="col">
           <Outlet />
-          {/* <Customid /> */}
           {location.pathname == "/ai" && (
             <div className="d-flex flex-column justify-content-center align-items-center">
               <h1>AI </h1>
-              <div
-                className="airesponse d-flex flex-column rounded shadow-lg"
-                style={{
-                  marginTop: "10px",
-                  backgroundColor: "lightblue",
-                  width: "600px",
-                  height: "500px",
-
-                  whiteSpace: "normal",
-                  overflowY: "auto",
-                }}
-              >
+              <div className="rounded shadow-lg">
                 {loading}
                 <div
                   className="airesponse"
-                  style={{
-                    fontSize: "90%",
-                    overflowX: "hidden",
-                    margin: "10px",
-                    padding: "10px",
-                    overflowWrap: "break-word",
-                    fontFamily: "sans-serif",
-                  }}
                   dangerouslySetInnerHTML={{ __html: response }} // Render sanitized HTML
                 />
               </div>
-              <div className="d-flex flex-row">
+              <div className="textareaandbutton ">
                 <textarea
                   id="searchval"
                   name="aisearchinput"
                   className="rounded shadow-lg m-2 p-2"
                   value={message}
-                  style={{
-                    width: "500px",
-                    border: "none",
-                    borderBottom: "1px solid black",
-                  }}
                   onChange={(e) => setMessage(e.target.value)}
                 />
                 <div className="d-flex flex-row">

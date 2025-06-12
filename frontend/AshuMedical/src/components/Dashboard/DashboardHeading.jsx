@@ -1,10 +1,38 @@
+import Swal from "sweetalert2";
+
 export default function DashboardHeading() {
   return (
     <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <h1 className="h2">Dashboard</h1>
       <div className="btn-toolbar mb-2 mb-md-0">
         <div className="btn-group mr-2">
-          <button className="btn btn-sm btn-outline-secondary">Share</button>
+          <button
+            className="btn btn-sm btn-outline-secondary"
+            onClick={() =>
+              Swal.fire({
+                title: "Share",
+                html: `
+            <ul style="list-style-type:none">
+              <li>Ashu medical</li>
+              <li><input type='search' value='https://ashu-medical.netlify.app/'/></li>
+            </ul>
+            `,
+                confirmButtonText: `Copy`,
+                denyButtonText: `Cancel`,
+              }).then(async (result) => {
+                if (result.isConfirmed) {
+                  await navigator.clipboard.writeText(
+                    "https://ashu-medical.netlify.app/"
+                  );
+                  Swal.fire("Copied to clipboard");
+                } else {
+                  Swal.fire("changes are not saved");
+                }
+              })
+            }
+          >
+            Share
+          </button>
           <button
             className="btn btn-sm btn-outline-secondary"
             onClick={() => print()}
@@ -12,7 +40,7 @@ export default function DashboardHeading() {
             Print
           </button>
         </div>
-        <button className="btn btn-sm btn-outline-secondary dropdown-toggle">
+        {/* <button className="btn btn-sm btn-outline-secondary dropdown-toggle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -31,7 +59,7 @@ export default function DashboardHeading() {
             <line x1="3" y1="10" x2="21" y2="10"></line>
           </svg>
           This week
-        </button>
+        </button> */}
       </div>
     </div>
   );
