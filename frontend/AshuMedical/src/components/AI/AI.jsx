@@ -54,47 +54,46 @@ export default function Ai() {
     }
   };
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <Sidebarai />
-        <main className="col">
-          <Outlet />
-          {location.pathname == "/ai" && (
-            <div className="d-flex flex-column justify-content-center align-items-center">
-              <h1>AI </h1>
-              <div className="rounded shadow-lg">
-                {loading}
-                <div
-                  className="airesponse"
-                  dangerouslySetInnerHTML={{ __html: response }} // Render sanitized HTML
-                />
-              </div>
-              <div className="textareaandbutton ">
-                <textarea
-                  id="searchval"
-                  name="aisearchinput"
-                  className="rounded shadow-lg m-2 p-2"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-                <div className="d-flex flex-row">
-                  <Button className="m-2 p-2" onClick={sendMessage}>
-                    Submit
-                  </Button>
-                  <Button
-                    className="m-2 p-2 border-0"
-                    style={{ backgroundColor: "darkblue" }}
-                    onClick={savetodatabase}
-                  >
-                    {" "}
-                    Save
-                  </Button>
-                </div>
+    <div className="d-flex aicontainer container-fluid">
+      <Sidebarai />
+      <main>
+        {location.pathname == "/ai" ? (
+          <div className="d-flex flex-column justify-content-center align-items-center">
+            <h1>AI </h1>
+            <div className="rounded shadow-lg">
+              {loading}
+              <div
+                className="airesponse"
+                dangerouslySetInnerHTML={{ __html: response }} // Render sanitized HTML
+              />
+            </div>
+            <div className="textareaandbutton ">
+              <textarea
+                id="searchval"
+                name="aisearchinput"
+                className="rounded shadow-lg m-2 p-2"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <div className="d-flex flex-row">
+                <Button className="m-2 p-2" onClick={sendMessage}>
+                  Submit
+                </Button>
+                <Button
+                  className="m-2 p-2 border-0"
+                  style={{ backgroundColor: "darkblue" }}
+                  onClick={savetodatabase}
+                >
+                  {" "}
+                  Save
+                </Button>
               </div>
             </div>
-          )}
-        </main>
-      </div>
+          </div>
+        ) : (
+          <Outlet />
+        )}
+      </main>
     </div>
   );
 }

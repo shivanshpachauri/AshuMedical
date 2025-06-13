@@ -50,7 +50,7 @@ export default function Sidebarai() {
         }}
       >
         <div className="d-flex flex-column">
-          <h3 className="text-light">Save</h3>
+          <h3 className="text-light mx-5">Save</h3>
           <input
             className=""
             name="search"
@@ -61,7 +61,7 @@ export default function Sidebarai() {
             style={{ width: "10em", padding: 0 }}
           />
         </div>
-        <div className="sidebarlist">
+        <div className="sidebarlist ">
           {filtereddata.toReversed().map((item, index) => (
             <NavLink
               key={index}

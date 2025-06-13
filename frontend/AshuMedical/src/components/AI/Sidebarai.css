@@ -1,3 +1,6 @@
+.sidebar {
+  width: 15%;
+}
 .sidebarrow:hover {
   background-color: white;
   color: black;
@@ -23,8 +26,9 @@
 .sidebarlist::-webkit-scrollbar-thumb {
   background: #000;
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 1026px) {
   .sidebar {
+    width: 75%;
     display: flex;
     flex-direction: row;
   }
@@ -35,7 +39,7 @@
   }
   .sidebarlist > a:hover {
     background-color: white;
-    color: white;
+    color: black;
   }
   .sidebar > .nav {
     display: flex;

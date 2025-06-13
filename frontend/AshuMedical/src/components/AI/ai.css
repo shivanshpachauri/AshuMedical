@@ -1,3 +1,6 @@
+.aicontainer {
+  gap: 12em;
+}
 .airesponse {
   margin-top: 10px;
   background-color: lightblue;
@@ -29,7 +32,13 @@
 .airesponse::-webkit-scrollbar-thumb {
   background: #000;
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 1026px) {
+  .aicontainer {
+    gap: 1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .airesponse {
     width: 22em;
   }
